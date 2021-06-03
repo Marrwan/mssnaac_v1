@@ -12,10 +12,10 @@ exports.getHomepage = async (req, res) => {
     await MSSNNews.find({}, async (err, mssnnews) => {
       await AcademicNews.find({}, async (err, academicnews) => {
         await ScholarshipNews.find({}, async (err, scholarshipnews) => {
-          // const response = await axios.get("https://type.fit/api/quotes");
-          // const random = Math.floor(Math.random() * response.data.length);
-          // const data = response.data[random];
-          res.render("index", { mssnnews, academicnews, scholarshipnews });
+          const response = await axios.get("https://type.fit/api/quotes");
+          const random = Math.floor(Math.random() * response.data.length);
+          const data = response.data[random];
+          res.render("index", { mssnnews, academicnews, scholarshipnews, data });
         }).sort({ created: "desc" });
       }).sort({ created: "desc" });
     }).sort({ created: "desc" });
