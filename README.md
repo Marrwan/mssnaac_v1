@@ -1,5 +1,5 @@
-<<<<<<< HEAD
-# Akinyele Website version 2
+
+# Akinyele Website version 1
 
 ### Local Authentication with passport
 
