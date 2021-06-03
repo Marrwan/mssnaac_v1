@@ -1,0 +1,33 @@
+
+  <style>
+    html,
+    body,
+    header,
+    .view {
+      height: 100%;
+    }
+    @media (max-width: 740px) {
+      html,
+      body,
+      header,
+      .view {
+        height: 100vh;
+      }
+      .view img{
+        height: 100vh;
+      }
+  
+    }
+    @media (min-width: 800px) and (max-width: 850px) {         
+      html,
+      body,
+      header,
+      .view {
+        height: 100vh;
+      }
+    }
+  </style>
+      <%- include('./partials/message.ejs') %>
+<div class="view overlay">
+  <img class="img-fluid " src="/img/coming.jpg" alt="">
+</div>

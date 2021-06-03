@@ -1,0 +1,301 @@
+
+  <div style="height: 100px;"></div>
+
+
+       <!-- Section: Basic examples -->
+       <section>
+
+        <%- include('./partials/message.ejs') %>
+
+        <div class="card card-cascade narrower z-depth-1">
+
+          <!-- Card image -->
+          <div class="view view-cascade gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
+
+            <div>
+              <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2"><i class="fas fa-th-large mt-0"></i></button>
+              <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2"><i class="fas fa-columns mt-0"></i></button>
+            </div>
+
+            <a href="" class="white-text mx-3">1439/40 A.H</a>
+
+            <div>
+                <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2" data-toggle="modal" data-target="#edit"><i class="fas fa-pencil-alt mt-0"></i></button>
+              
+              <form class="inline" action="" method="post">
+
+                <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2" ><i class="fas fa-trash mt-0" ></i></button>
+              </form>
+            
+                <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2 " data-toggle="modal" data-target="#add"><i class="fas fa-plus mt-0"></i></button>
+
+            </div>
+
+          </div>
+          <!-- MODAL -->
+          <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              
+              <form class="modal-content" action="/login" method="POST">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalScrollableTitle">EDIT REGIME</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                 
+              <div>
+                  <div class="input-group pb-1">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text "><i class="fa fa-clock"></i></span>
+                      </div>
+                    <input type="text" name="text" id="regime" placeholder="REGIME" class="form-control"> 
+                  </div>
+                  <span class="text-danger p-3 error" id="first" style="font-style: italic;"></span>
+              </div>
+              <div>
+                 
+              </div>
+              </div>
+                <div class="modal-footer">
+                  
+                  <button type="submit" class="btn btn-primary btn-md mb-3" id="loginBtn">Save</button>   
+                </div>
+              </form>
+            </div>
+          </div>
+           <!-- MODAL -->
+           
+          <!-- MODAL -->
+          <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              
+              <form class="modal-content" action="/login" method="POST">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalScrollableTitle">Add student</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                 
+              <div>
+                  <div class="input-group pb-1">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text ">Portfolio</span>
+                      </div>
+                      <select name="Portfolio" class="form-control">
+                        <option value="Ameer">Ameer</option>
+                        <option value="N-A Dawah">Dawah</option>
+                        <option value="N-A Admin">Admin</option>
+                        <option value=""></option>
+                        <option value=""></option>
+                        <option value=""></option>
+                      </select>
+                  </div>
+                  <span class="text-danger p-3 error" id="first" style="font-style: italic;"></span>
+              </div>
+              <div>
+                  <div class="input-group pb-1">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text "><i class="fa fa-clock"></i></span>
+                      </div>
+                    <input type="text" name="text" id="regime" placeholder="REGIME" class="form-control"> 
+                  </div>
+                  <span class="text-danger p-3 error" id="first" style="font-style: italic;"></span>
+              </div>
+              <div>
+                  <div class="input-group pb-1">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text "><i class="fa fa-clock"></i></span>
+                      </div>
+                    <input type="text" name="text" id="regime" placeholder="REGIME" class="form-control"> 
+                  </div>
+                  <span class="text-danger p-3 error" id="first" style="font-style: italic;"></span>
+              </div>
+              <div>
+                  <div class="input-group pb-1">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text "><i class="fa fa-clock"></i></span>
+                      </div>
+                    <input type="text" name="text" id="regime" placeholder="REGIME" class="form-control"> 
+                  </div>
+                  <span class="text-danger p-3 error" id="first" style="font-style: italic;"></span>
+              </div>
+              <div>
+                  <div class="input-group pb-1">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text "><i class="fa fa-clock"></i></span>
+                      </div>
+                    <input type="text" name="text" id="regime" placeholder="REGIME" class="form-control"> 
+                  </div>
+                  <span class="text-danger p-3 error" id="first" style="font-style: italic;"></span>
+              </div>
+              <div>
+                  <div class="input-group pb-1">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text "><i class="fa fa-clock"></i></span>
+                      </div>
+                    <input type="text" name="text" id="regime" placeholder="REGIME" class="form-control"> 
+                  </div>
+                  <span class="text-danger p-3 error" id="first" style="font-style: italic;"></span>
+              </div>
+              <div>
+                  <div class="input-group pb-1">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text "><i class="fa fa-clock"></i></span>
+                      </div>
+                    <input type="text" name="text" id="regime" placeholder="REGIME" class="form-control"> 
+                  </div>
+                  <span class="text-danger p-3 error" id="first" style="font-style: italic;"></span>
+              </div>
+              <div>
+                  <div class="input-group pb-1">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text "><i class="fa fa-clock"></i></span>
+                      </div>
+                    <input type="text" name="text" id="regime" placeholder="REGIME" class="form-control"> 
+                  </div>
+                  <span class="text-danger p-3 error" id="first" style="font-style: italic;"></span>
+              </div>
+              <div>
+                  <div class="input-group pb-1">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text "><i class="fa fa-clock"></i></span>
+                      </div>
+                    <input type="text" name="text" id="regime" placeholder="REGIME" class="form-control"> 
+                  </div>
+                  <span class="text-danger p-3 error" id="first" style="font-style: italic;"></span>
+              </div>
+              <div>
+                 
+              </div>
+              </div>
+                <div class="modal-footer">
+                  
+                  <button type="submit" class="btn btn-primary btn-md mb-3" id="loginBtn">Save</button>   
+                </div>
+              </form>
+            </div>
+          </div>
+           <!-- MODAL -->
+
+          <!-- /Card image -->
+
+          <div class="px-4">
+
+            <div class="table-responsive">
+              <!-- Table -->
+              <table class="table table-hover mb-0">
+
+                <!-- Table head -->
+                <thead>
+                  <tr>
+                    <th class="th-sm">Portfolio
+                    </th>
+                      <th class="th-sm">Name
+                      </th>
+                      <th class="th-sm">Department
+                    </th>
+                      <th class="th-sm">Level
+                      </th>
+                      <th class="th-sm">Hall
+                      </th>
+                      <th class="th-sm">Phone Number
+                      </th>
+                      <th class="th-sm">Year of admission
+                      </th>
+                      <th class="th-sm">Year of graduation
+                      </th>
+                      <th class="th-sm">Country of residence
+                      </th>
+                    
+                  </tr>
+                </thead>
+                <!-- Table head -->
+
+                <!-- Table body -->
+                <tbody>
+                  <tr>
+                    						
+                    <td> Ameer</td>
+                    <td>Abdulqadir Alaka</td>
+                    <td>Food tech</td>
+                    <td>700</td>
+                    <td>ATBH</td>
+                    <td>+64212078088</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>New Zealand</td>
+                  </tr>
+                  <tr>
+                   
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                    <td>jacobt@gmail.com</td>
+                    <td>France</td>
+                    <td>Paris</td>
+                  </tr>
+                  <tr>
+                    
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                    <td>larrybird@gmail.com</td>
+                    <td>Germany</td>
+                    <td>Berlin</td>
+                  </tr>
+                  <tr>
+                   
+                    <td>Paul</td>
+                    <td>Topolski</td>
+                    <td>@P_Topolski</td>
+                    <td>ptopolski@gmail.com</td>
+                    <td>Poland</td>
+                    <td>Warsaw</td>
+                  </tr>
+                  <tr>
+                   
+                    <td>Anna</td>
+                    <td>Doe</td>
+                    <td>@andy</td>
+                    <td>annadoe@gmail.com</td>
+                    <td>Spain</td>
+                    <td>Madrid</td>
+                  </tr>
+                  <tfoot>
+                    <th class="th-sm">Portfolio
+                    </th>
+                      <th class="th-sm">Name
+                      </th>
+                      <th class="th-sm">Department
+                    </th>
+                      <th class="th-sm">Level
+                      </th>
+                      <th class="th-sm">Hall
+                      </th>
+                      <th class="th-sm">Phone Number
+                      </th>
+                      <th class="th-sm">Year of admission
+                      </th>
+                      <th class="th-sm">Year of graduation
+                      </th>
+                      <th class="th-sm">Country of residence
+                      </th>
+                  </tfoot>
+                </tbody>
+                <!-- Table body -->
+              </table>
+              <!-- Table -->
+            </div>
+
+            <hr class="my-0">
+
+
+          </div>
+        </div>
+
+      </section>
+      <!-- Section: Basic examples -->

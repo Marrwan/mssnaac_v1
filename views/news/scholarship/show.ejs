@@ -1,0 +1,385 @@
+
+  <div style="height: 70px;" ></div>
+  <div class="container">
+        <!-- Error/ success messages -->
+        <%- include('../../partials/message.ejs') %>
+    <!-- Section: Blog v.4 -->
+    <section class="mt-5 pb-3 wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
+
+      <!-- Grid row -->
+      <div class="row">
+
+        <!-- Grid column -->
+        <div class="col-md-12">
+
+          <!-- Featured image -->
+          <div class="card card-cascade wider reverse">
+            <!-- <div class="view view-cascade overlay">
+              <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(134).jpg" alt="Wide sample post image" class="img-fluid">
+              <a>
+                <div class=""></div>
+              </a>
+            </div> -->
+
+            <!-- Post data -->
+            <div class="card-body card-body-cascade text-center" style="padding: 7px;">
+              <h2><a><strong><%= scholarshipnews.title %> </strong></a></h2>
+              <p>Written by <a><%= scholarshipnews.author %></a>, <%= scholarshipnews.created.toDateString() %></p>
+
+              <!-- Social shares -->
+              <div class="social-counters ">
+
+                <!-- Facebook -->
+                <a class="btn btn-fb  waves-effect waves-light">
+                  <i class="fab fa-facebook-f left "></i>
+                  <span class="hidden-md-down ">Facebook</span>
+                </a>
+                <span class="counter ">46</span>
+
+                <!-- Twitter -->
+                <a class="btn btn-tw  waves-effect waves-light">
+                  <i class="fab fa-twitter left "></i>
+                  <span class="hidden-md-down ">Twitter</span>
+                </a>
+                <span class="counter ">22</span>
+
+                <!-- Comments -->
+                <a class="btn btn-blue-grey  waves-effect waves-light">
+                  <i class="fas fa-comments left "></i>
+                  <span class="hidden-md-down ">Comments</span>
+                </a>
+                <span class="counter "><%= scholarshipnews.comments.length %></span>
+
+                <% if(User){ %>
+                  <%     if(User.userType == "admin"){ %>
+                    <%let modifiedPost = scholarshipnews._id%>
+                <a href="/news/scholarship/<%=modifiedPost %>/edit"  class="btn btn-primary  waves-effect waves-light">
+                  <span class="hidden-md-down ">Edit</span>
+                </a>
+           
+                <form action="/news/scholarship/<%=scholarshipnews._id%>/delete?_method=DELETE"  method="POST" class="btn btn-danger  waves-effect waves-light">
+                  <button type="submit" style="border:none; background-color: transparent; color: #fff;" class=" hidden-md-down" value="Delete">Delete</button>
+                </form>
+                <%} %>
+                <% }%>
+              </div>
+              <!-- Social shares -->
+
+            </div>
+            <!-- Post data -->
+          </div>
+
+          <!-- Excerpt -->
+    
+
+            <div class="excerpt mt-5 wow fadeIn" data-wow-delay="0.3s" style="visibility: visible; animation-name: fadeIn; animation-delay: 0.3s;">
+              <p><%- scholarshipnews.post %>
+              </p>
+            
+
+           
+         
+          </div>
+
+        </div>
+        <!-- Grid column -->
+
+      </div>
+      <!-- Grid row -->
+
+    </section>
+    <!-- Section: Blog v.4 -->
+
+    <hr class="mb-5 mt-4">
+
+    <!-- Section: Blog v.2 -->
+    <section class="mb-5 wow fadeIn" data-wow-delay="0.3s" style="visibility: visible; animation-name: fadeIn; animation-delay: 0.3s;">
+
+      <!-- Section heading -->
+      <h3 class="text-center my-5 text-center h3">Recent posts</h3>
+
+      <!-- Grid row -->
+      <div class="row">
+
+        <!-- Grid column -->
+        <div class="col-lg-4 col-md-12 mb-4">
+
+          <!-- Card Light -->
+          <div class="card">
+            <!-- Card image -->
+            <!-- <div class="view overlay">
+              <img src="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20%28147%29.jpg" class="card-img-top" alt="">
+              <a>
+                <div class="mask waves-effect waves-light"></div>
+              </a>
+            </div> -->
+            <!-- /.Card image -->
+            <!-- Card content -->
+            <div class="card-body">
+              <!-- Social shares button -->
+              <a class="activator mr-3"><i class="fas fa-share-alt"></i></a>
+              <!-- Title -->
+              <h4 class="card-title">Card title</h4>
+              <hr>
+              <!-- Text -->
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                card's content.</p>
+              <a class="link-text">
+                <h5>Read more <i class="fas fa-chevron-right"></i></h5>
+              </a>
+            </div>
+            <!-- /.Card content -->
+          </div>
+          <!-- /.Card Light -->
+
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-lg-4 col-md-6 mb-4">
+
+          <!-- Card Light -->
+          <div class="card">
+            <!-- Card image -->
+            <!-- <div class="view overlay">
+              <img src="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20%2850%29.jpg" class="card-img-top" alt="">
+              <a>
+                <div class="mask waves-effect waves-light"></div>
+              </a>
+            </div> -->
+            <!-- /.Card image -->
+            <!-- Card content -->
+            <div class="card-body">
+              <!-- Social shares button -->
+              <a class="activator mr-3"><i class="fas fa-share-alt"></i></a>
+              <!-- Title -->
+              <h4 class="card-title">Card title</h4>
+              <hr>
+              <!-- Text -->
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                card's content.</p>
+              <a class="link-text">
+                <h5>Read more <i class="fas fa-chevron-right"></i></h5>
+              </a>
+            </div>
+            <!-- /.Card content -->
+          </div>
+          <!-- /.Card Light -->
+
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-lg-4 col-md-6 mb-4">
+
+          <!-- Card Light -->
+          <div class="card">
+            <!-- Card image -->
+            <!-- <div class="view overlay">
+              <img src="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20%2897%29.jpg" class="card-img-top" alt="">
+              <a>
+                <div class="mask waves-effect waves-light"></div>
+              </a>
+            </div> -->
+            <!-- /.Card image -->
+            <!-- Card content -->
+            <div class="card-body">
+              <!-- Social shares button -->
+              <a class="activator mr-3"><i class="fas fa-share-alt"></i></a>
+              <!-- Title -->
+              <h4 class="card-title">Card title</h4>
+              <hr>
+              <!-- Text -->
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                card's content.</p>
+              <a class="link-text">
+                <h5>Read more <i class="fas fa-chevron-right"></i></h5>
+              </a>
+            </div>
+            <!-- /.Card content -->
+          </div>
+          <!-- /.Card Light -->
+
+        </div>
+        <!-- Grid column -->
+
+      </div>
+      <!-- Grid row -->
+
+    </section>
+    <!-- Section: Blog v.2 -->
+
+    <!-- Author box -->
+    <section class="mb-5">
+
+      <div class="jumbotron p-5 text-center text-md-left author-box wow fadeIn" data-wow-delay="0.3s" style="visibility: visible; animation-name: fadeIn; animation-delay: 0.3s;">
+        <!-- Name -->
+        <h4 class="h3-responsive text-center font-weight-bold dark-grey-text">About author</h4>
+        <hr>
+        <div class="row">
+          <!-- Avatar -->
+          <div class="col-12 col-md-2 mb-md-0 mb-4">
+            <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(32).jpg" class="img-fluid rounded-circle z-depth-2">
+          </div>
+          <!-- Author Data -->
+          <div class="col-12 col-md-10">
+            <h5 class="font-weight-bold dark-grey-text mb-3">
+              <strong><%= scholarshipnews.author %></strong>
+            </h5>
+            <div class="personal-sm pb-3">
+              <a class="fb-ic pr-2"><i class="fab fa-facebook-f mr-2"> </i></a>
+              <a class="tw-ic pr-2"><i class="fab fa-twitter mr-2"> </i></a>
+              <a class="gplus-ic pr-2"><i class="fab fa-google-plus-g mr-2"> </i></a>
+              <a class="li-ic pr-2"><i class="fab fa-linkedin-in mr-2"> </i></a>
+            </div>
+            <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint esse nulla quia quam veniam commodi
+              dicta, iusto inventore. Voluptatum pariatur eveniet ea, officiis vitae praesentium beatae
+              quas libero, esse facere.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+    <!-- Author box -->
+
+    <!-- Section: Comments list -->
+    <section class="mb-5 wow fadeIn" data-wow-delay="0.3s" style="visibility: visible; animation-name: fadeIn; animation-delay: 0.3s;">
+
+      <!-- Main wrapper -->
+      <div class="comments-list text-center text-md-left">
+
+        <h3 class="text-center font-weight-bold mb-5 pb-3">Comments <span class="badge pink"><%= scholarshipnews.comments.length %></span></h3>
+        
+        <!-- First row -->
+        <div class="row mb-4">
+
+          <!-- Image column -->
+          <div class="col-sm-2 col-12 mb-md-0 mb-3">
+            <img src="https://mdbootstrap.com/img/Photos/Avatars/img (9).jpg" class="avatar rounded-circle z-depth-1-half">
+          </div>
+
+          <!-- Content column -->
+          <div class="col-sm-10 col-12">
+            <a>
+              <h4 class="font-weight-bold">Tom Smith</h4>
+            </a>
+            <div class="mt-2">
+              <ul class="list-unstyled">
+                <li class="comment-date"><i class="far fa-clock"></i> 05/10/2015</li>
+              </ul>
+            </div>
+            <p class="grey-text">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+          </div>
+          <!-- Content column -->
+
+        </div>
+        <!-- First row -->
+
+        <!-- Second row -->
+        <div class="row mb-4">
+          
+          <!-- Image column -->
+          <div class="col-sm-2 col-12 mb-md-0 mb-3">
+            <img src="https://mdbootstrap.com/img/Photos/Avatars/img (31).jpg" class="avatar rounded-circle z-depth-1-half">
+          </div>
+          
+
+          <!-- Content column -->
+          <div class="col-sm-10 col-12">
+            <a>
+              <h4 class="font-weight-bold">Marta Tev</h4>
+            </a>
+            <div class="mt-2">
+              <ul class="list-unstyled">
+                <li class="comment-date"><i class="far fa-clock"></i> 08/10/2015</li>
+              </ul>
+            </div>
+            <p class="grey-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+              doloremque laudantium,
+              totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae
+              vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur.</p>
+          </div>
+          <!-- /.Content column -->
+
+        </div>
+        <!-- Second row -->
+
+        <!-- Third row -->
+        <div class="row mb-4">
+
+          <!-- Image column -->
+          <div class="col-sm-2 col-12 mb-md-0 mb-3">
+            <img src="https://mdbootstrap.com/img/Photos/Avatars/img (10).jpg" class="avatar rounded-circle z-depth-1-half">
+          </div>
+          
+          <!-- Content column -->
+          <div class="col-sm-10 col-12">
+            <a>
+              <h4 class="font-weight-bold">Anna Maria</h4>
+            </a>
+            <div class="mt-2">
+              <ul class="list-unstyled">
+                <li class="comment-date"><i class="far fa-clock"></i> 17/10/2015</li>
+              </ul>
+            </div>
+            <p class="grey-text">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
+              praesentium voluptatum
+              deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate
+              non provident, similique sunt in culpa qui officia.
+            </p>
+          </div>
+          <!-- /.Content column -->
+        </div>
+        <!-- Third row -->
+
+      </div>
+      <!-- Main wrapper -->
+
+    </section>
+    <!-- Section: Comments list -->
+
+    <!-- Section: Leave a reply (Logged In User) -->
+  <%  if(User){ %>
+    <!-- <%let modifiedPost = scholarshipnews.title.replace(/\s/g, '-')%> -->
+      <form  class="mb-5 wow fadeIn" data-wow-delay="0.3s" style="visibility: visible; animation-name: fadeIn; animation-delay: 0.3s;">
+        
+        <!-- Leave a reply form -->
+        <div class="reply-form">
+          
+        <h3 class="text-center h3 mb-3">Leave a comment</h3>
+        <p class="text-center">Logged in as <%=User.username %></p>
+
+        <!-- Third row -->
+        <div class="row text-center text-md-left">
+
+          <div class="col-sm-2 col-12 mb-md-0 mt-4">
+            <img src="https://mdbootstrap.com/img/Photos/Avatars/img (32).jpg" alt="<%=User.name%>" class="img-fluid avatar rounded-circle z-depth-2">
+          </div>
+
+          <div class="col-sm-10 col-12">
+            <div class="md-form">
+              <textarea type="text" id="form-mess" name="comment[text]" class="md-textarea form-control" rows="3"></textarea>
+              <label for="form-mess">Your message</label>
+            </div>
+          </div>
+          
+          <div class="col-md-12 text-center mt-4">
+            <button type="submit" class="btn btn-pink btn-rounded waves-effect waves-light">Submit</button>
+          </div>
+          
+        </div>
+        <!-- Third row -->
+        
+      </div>
+      <!-- Leave a reply form -->
+      
+    </form>
+    <!-- Section: Leave a reply (Logged In User) -->
+<%  }%>
+
+  </div>
+
+
+

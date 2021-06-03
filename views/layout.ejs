@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en"  >  
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,  initial-scale=1.0">
+    <title>MSSNAAC</title>
+    <link rel="shortcut icon" href="/img/akinyele 2.jpeg" type="image/x-icon">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="/css/mdb.min.css"> 
+  
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- <link rel="stylesheet" href="/css/all.css"> -->
+  
+</head>
+
+<body>
+    
+    <!--the navbar section starts here-->
+    <div id="home">
+     <nav class="navbar navbar-expand-lg navbar-light fixed-top scrolling-navbar white">
+          <a class="navbar-brand" href="/"><img src="/img/Capture aac.PNG" style="width: 100px; height: 50px;" alt="MSSNAAC"></a>
+          <button class=" navbar-toggler" type="button" data-toggle="collapse" data-target="#myNav" style="border: none; outline: none; ">
+            <span class="toggler-icon"><i style="color: #4caf50; font-size: 30px;" class="fa fa-bars"></i></span>
+          </button>
+          <div class="collapse navbar-collapse text-success" id="myNav">
+            <ul class="list-unstyled navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="/about">About Us</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/contact">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link title" href="/programmes" data-offset="90">Programmes</a>
+                </li>   
+                <li class="nav-item">
+                  <a class="nav-link" href="/extramural">Extramural</a>
+                </li>
+                <!--the dropdown goes here-->
+                <li class="nav-item dropdown">
+                  <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">News</a>
+                  <div class="dropdown-menu">
+                      <a href="/news/mssn" class="dropdown-item">MSSN</a>
+                      <a href="/news/academics" class="dropdown-item">Academics</a>
+                      <a href="/news/alfaaedah" target="blank" class="dropdown-item">Alfaeedah</a>
+                      <a href="/news/scholarship" class="dropdown-item">Scholarship</a>
+                  </div>
+              </li>
+              <%if(User){ %>
+                <%if(User.userType == "admin"){ %>
+                  <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Reports</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/reports/cossmus">COSSMUS</a>
+                        <a class="dropdown-item" href="/reports/coordination">Coordination</a>
+                        <a class="dropdown-item" href="/reports/ivc">IVC</a>
+                        <a class="dropdown-item" href="/reports/sisseminar">Sisters' Seminar</a>
+                        <a class="dropdown-item" href="/reports/educonf">Edu-conference</a>
+                    </div>
+                </li>
+                <%}%>
+                <%}%>              
+                  <li class="nav-item">
+                    <a class="nav-link" href="/executives">Executives</a>
+                  </li>
+              </ul>
+              <!--the dropdown goes here-->
+              <%if(!User){ %>
+              <ul class="navbar-nav nav-flex-icons mr-5 px-5">
+                <li class="nav-item ">
+                   <!--  trigger modal -->
+
+                  <a  class="nav-link"  data-toggle="modal" data-target="#exampleModalScrollable">
+                  Login
+                </a>
+    
+                 
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="signup">Register</a>
+                    </li>
+                    <% }else{ %>
+                      <ul class="navbar-nav nav-flex-icons mr-5 px-5">
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle waves-effect" href="#" id="userDropdown" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user"></i> <span class="clearfix d-none d-sm-inline-block"></span></a>
+                      </a>
+          
+                        <div class="dropdown-menu ">
+                          <a class="dropdown-item" href="/dashboard">Dashboard</a>
+                          <a class="dropdown-item" href="/logout">Logout</a>
+                        </div>
+                          </li>
+                      </ul>
+                      <%}%>
+              </ul>
+              </div>
+          </div>   
+      </nav>
+    <!-- Sidebar navigation -->
+    <div id="slide-out" class="side-nav sn-bg-4 fixed">
+      <ul class="custom-scrollbar">
+
+       <!-- without this sidebar navigation div, the post creator will not work  .. Don't know why yet-->
+       
+      </ul>
+      <div class="sidenav-bg mask-strong"></div>
+    </div>
+    <!-- Sidebar navigation -->
+  
+      </div>
+  
+      <!--the navbar section ends here-->
+      
+       <!--the carousel section starts here-->
+ <% if(path == "/"){ %>
+  <div id="images"  class="carousel slide" data-ride="carousel">
+    <ul class="carousel-indicators">
+      <li data-target="#demo" data-slide-to="0" class="active"></li>
+      <li data-target="#demo" data-slide-to="1"></li>
+      <li data-target="#demo" data-slide-to="2"></li>
+    </ul>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="/img/akinyele.PNG" alt="Los Angeles" width="100%" height="700px" class="slider">
+        <!-- <div class="carousel-caption green-text">
+          <h3>MSSNAAC</h3>
+          <p>We had such a great time in ... lori iro</p>
+        </div>    -->
+      </div>
+      <div class="carousel-item">
+        <img src="/img/sample.jpg" alt="Chicago" width="100%" height="700px" class="slider">
+        <div class="carousel-caption green-text">
+          <h3>MSSNAAC</h3>
+          <p>We had such a great time in ... lori iro</p>
+        </div>    
+      </div>
+      <div class="carousel-item">
+        <img src="/img/akinyele 2.jpeg" alt="New York" width="100%" height="700px" class="slider">
+        <!-- <div class="carousel-caption">
+          <h3>New York</h3>
+          <p>We love the Big Apple!</p>
+        </div>    -->
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#images" data-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#images" data-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </a>
+  </div>
+  <%}%>
+  
+<!--the carousel section ends here-->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    
+    <form class="modal-content" action="/login" method="POST">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalScrollableTitle"> Login</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       
+    <div>
+        <div class="input-group pb-1">
+            <div class="input-group-prepend">
+                <span class="input-group-text "><i class="fa fa-user"></i></span>
+            </div>
+          <input type="email" name="email" id="username" placeholder="Email" class="form-control"> 
+        </div>
+        <span class="text-danger p-3 error" id="first" style="font-style: italic;"></span>
+    </div>
+    <div>
+        <div class="input-group pb-1">
+            <div class="input-group-prepend">
+                <span class="input-group-text "><i class="fas fa-key"></i></span>
+            </div>
+            <input type="password" name="password" id="password" placeholder="Password" class="form-control"> 
+        </div>
+        <span class="text-danger p-3 error" id="first" style="font-style: italic;"></span>
+    </div>
+    </div>
+      <div class="modal-footer">
+        
+        <button type="submit" class="btn btn-primary btn-md mb-3" id="loginBtn">Login</button>   
+      </div>
+    </form>
+  </div>
+</div>
+<main style="margin: 10px;">
+  <%-body%>
+</main>
+
+  <!--the footer section starts here-->
+  <footer class="page-footer rgba-stylish-strong text-center text-md-left mt-0 pt-4 text-light" style="background-color: #81C784; opacity: 0.87; text-decoration: none;">
+
+    <!-- Footer Links -->
+    <div class="container">
+  
+      <!-- Footer links -->
+      <div class="row text-center text-md-left mt-3 pb-3">
+  
+        <!-- First column -->
+        <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3 white-text">
+          <h6 class="text-uppercase mb-4 font-weight-bold">About MSSNAAC</h6>
+          <p><b>
+            Muslim Students’ Society of Nigeria, Akinyele Area
+               Council     
+           </b> is one of the Area Councils under the MSSN
+               Oyo State Area Unit.</p>
+        </div>
+        <!-- First column -->
+  
+        <hr class="w-100 clearfix d-md-none">
+  
+        <!-- Second column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+          <h6 class="text-uppercase mb-4 font-weight-bold white-text">News</h6>
+          <p>
+            <a href="/news/mssn" style="text-decoration: none; ">MSSN</a>
+          </p>
+          <p>
+            <a href="/news/alfaaedah" target="blank" style="text-decoration: none; ">Alfaeedah</a>
+          </p>
+          <p>
+            <a href="/news/scholarship" style="text-decoration: none; ">Scholarship</a>
+          </p>
+          <p>
+            <a href="/news/academics" style="text-decoration: none; ">Academics</a>
+          </p>
+        </div>
+        <!-- Second column -->
+  
+        <hr class="w-100 clearfix d-md-none">
+  
+        <!-- Fourth column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3 white-text">
+          <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+          <p>
+            <i class="fas fa-home mr-3"></i>Orogun Ibadan, Oyo, Ng</p>
+          <p>
+            <a href="mailto:mssnaac@gmail.com">
+              <i class="fas fa-envelope mr-3"></i> mssnaac@gmail.com</p>
+            </a>
+          <p>
+            <a href="tel:+2348073302821">
+              <i class="fas fa-phone mr-3"></i> +2348073302821
+            </a>
+          </p>
+          
+        </div>
+        <!-- Fourth column -->
+  
+      </div>
+      <!-- Footer links -->
+  
+      <hr>
+  
+      <div class="row py-3 d-flex align-items-center">
+  
+        <!-- Grid column -->
+        <div class="col-md-7 col-lg-8">
+  
+          <!-- Copyright -->
+          <p class="text-center text-md-left  font-weight-bold">
+            © 2021 Copyright: MSSN Akinyele
+            </a>
+          </p>
+          <!-- Copyright -->
+  
+        </div>
+        <!-- Grid column -->
+  
+        <!-- Grid column -->
+        <div class="col-md-5 col-lg-4 ml-lg-0">
+  
+         <!-- Social buttons -->
+          <div class="social-section text-center text-md-left ">
+            <ul class="list-unstyled list-inline">
+              <li class="list-inline-item mx-0">
+                <a href="/facebook" target="_blank" class="btn-floating btn-sm rgba-white-slight mr-xl-4 waves-effect waves-light">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+              </li>
+              <li class="list-inline-item mx-0">
+                <a href="/twitter" target="_blank" class="btn-floating btn-sm rgba-white-slight mr-xl-4 waves-effect waves-light">
+                  <i class="fab fa-twitter"></i>
+                </a>
+              </li>
+              <li class="list-inline-item mx-0">
+                <a href="/instagram" target="_blank" class="btn-floating btn-sm rgba-white-slight mr-xl-4 waves-effect waves-light">
+                  <i class="fab fa-instagram"></i>
+                </a>
+              </li>
+              <li class="list-inline-item mx-0">
+                <a href="/whatsapp"  target="_blank" class="btn-floating btn-sm rgba-white-slight mr-xl-4 waves-effect waves-light">
+                  <i class="fab fa-whatsapp"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- Social buttons -->
+  
+          <a href="#" class="btn rounded-circle p-3 shadow-lg scroll-link"><i class=" fa fa-arrow-up"></i></a>
+  
+        </div>
+        <!-- Grid column -->
+  
+      </div>
+  
+    </div>
+  
+  </footer>
+      <!--the footer section ends here-->
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+
+      <script src="/js/mdb.min.js"></script>   
+
+
+
+       <!-- TinyMCE -->
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.7.1/tinymce.min.js" integrity="sha512-RnlQJaTEHoOCt5dUTV0Oi0vOBMI9PjCU7m+VHoJ4xmhuUNcwnB5Iox1es+skLril1C3gHTLbeRepHs1RpSCLoQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     -->
+  
+      <script>
+        window.addEventListener('scroll', function(){
+      const scrollHeight = this.window.pageYOffset;
+      const scrollLink = this.document.querySelector('.scroll-link');
+  
+      if(scrollHeight > 600){
+          scrollLink.classList.add('show');
+      }else{
+          scrollLink.classList.remove('show');
+      }
+      
+  });
+      </script>
+      <!-- Custom scripts -->
+  <script>
+
+    // SideNav Initialization
+    $(".button-collapse").sideNav();
+
+    var container = document.querySelector('.custom-scrollbar');
+    var ps = new PerfectScrollbar(container, {
+      wheelSpeed: 2,
+      wheelPropagation: true,
+      minScrollbarLength: 20
+    });
+
+    // TinyMCE Initialization
+    tinymce.init({ 
+    selector:'#post_content',
+     height : "294" , 
+      plugins: 'code,lists, link, image, media, hr, preview, insertdatetime,print, spellchecker, template, toc, wordcount, table, charmap,  powerpaste casechange importcss tinydrive searchreplace autolink autosave save directionality advcode visualblocks visualchars fullscreen image link media mediaembed template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists checklist wordcount tinymcespellchecker a11ychecker imagetools textpattern noneditable help formatpainter permanentpen pageembed charmap tinycomments mentions quickbars linkchecker emoticons advtable',
+    mobile: {
+    plugins: 'print preview powerpaste casechange importcss tinydrive searchreplace autolink autosave save directionality advcode visualblocks visualchars fullscreen image link media mediaembed template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists checklist wordcount tinymcespellchecker a11ychecker textpattern noneditable help formatpainter pageembed charmap mentions quickbars linkchecker emoticons advtable'
+  },
+  menubar: 'file edit view insert format tools table tc help',
+  toolbar: 'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist checklist | forecolor backcolor casechange permanentpen formatpainter removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media pageembed template link anchor codesample | a11ycheck ltr rtl | showcomments addcomment',
+  autosave_ask_before_unload: true,
+  autosave_interval: '30s',
+  autosave_prefix: '{path}{query}-{id}-',
+  autosave_restore_when_empty: false,
+  autosave_retention: '2m',
+  image_advtab: true,
+  
+  image_caption: true,
+  branding: false
+    });
+
+
+</script>
+
+  </script>
+ <% if(path != "/"){%>
+  <script>
+ 
+
+      console.log(document.getElementsByTagName('img'));
+      var x =  document.getElementsByTagName('img')
+      
+      var i;
+      for (i = 0; i < x.length; i++) {
+        x[i].setAttribute("class", "img-fluid")
+      }
+    </script>
+    <%}%>
+  </body>
+  </html>
+   

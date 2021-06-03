@@ -1,0 +1,85 @@
+<%- include('./partials/message'); %>
+<%if(User.userType== "admin"){%>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid">
+                  <div class="row">
+                      <div class="col-sm-3"><a class="btn btn-info" href="/" role="button">Go Home</a></div>
+                  </div>
+                    <h1 class="mt-4">Admin Dashboard</h1>
+                   
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-table mr-1"></i>
+                           List of Registered Students
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Username</th>
+                                            <th>Gender</th>
+                                            <th>Email</th>
+                                            
+                                          
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Username</th>
+                                            <th>Gender</th>
+                                            <th>Email</th>
+                                            
+                                            
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                      <% users.forEach((user)=>{%>
+                                          <% if( user.userType == "student"){ %>
+                                          <% if(user.gender == "male"){ %>
+                                              <tr class="text-info">
+                                                  <td><%=user.name%></td>
+                                                  <td><%=user.username%></td>
+                                                  <td><%=user.gender%></td>
+                                                  <td><%=user.email%></td>
+                                                
+                                          
+                                              </tr>
+                                         <% }else{ %>
+                                              <tr class="text-danger">
+                                                  <td><%=user.name%></td>
+                                                  <td><%=user.username%></td>
+                                                  <td><%=user.gender%></td>
+                                                  <td><%=user.email%></td>
+                                                 
+                                                 
+                                              </tr>
+                                        <%  }%>
+                                        <%  }%>
+                                        
+                                        <%})%>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+           
+        </div>
+    </div>
+<% }else{ %>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid">
+                  <div class="row">
+                      <div class="col-sm-3"><a class="btn btn-info" href="/" role="button">Go Home</a></div>
+                  </div>
+                    <h1 class="mt-4">Student Dashboard</h1>
+                
+    <%}%>
