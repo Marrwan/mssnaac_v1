@@ -3,11 +3,10 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "pm2-runtime start ecosystem.config.js --env production",
+    "start": "node ./bin/www",
     "dev": "nodemon ./bin/www"
   },
   "dependencies": {
-    "@pm2/pm2-version-check": "^1.0.4",
     "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "connect-flash": "^0.1.1",
