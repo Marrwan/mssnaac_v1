@@ -1,4 +1,5 @@
 require("dotenv").config();
+require('events').EventEmitter.prototype._maxListeners = 70;
 const createError = require("http-errors");
 const express = require("express");
 const path = require("path");
@@ -9,6 +10,7 @@ const session = require("express-session");
 const flash = require("connect-flash");
 const passport = require("passport");
 const methodOverride = require("method-override");
+const MongoStore = require("connect-mongo");
 
 require("./config/passport")(passport);
 
@@ -38,7 +40,9 @@ app.use(
     secret: "Abdul",
     saveUninitialized: false,
     resave: false,
-    
+    store: MongoStore.create({
+      mongoUrl: db,
+    }),
   })
 );
 app.use(flash());
