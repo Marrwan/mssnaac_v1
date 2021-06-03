@@ -38,6 +38,7 @@ app.use(
     secret: "Abdul",
     saveUninitialized: false,
     resave: false,
+    
   })
 );
 app.use(flash());
