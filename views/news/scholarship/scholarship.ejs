@@ -1,12 +1,12 @@
 <body>
     <main class="pt-4">
-      <!-- Intro -->
+      <%# Intro %>
       <h1 class="text-center dark-grey-text pb-3 mt-5 pt-5 font-weight-bold">
         <strong>SCHOLARSHIP NEWS</strong>
       </h1>
       <p class="grey-text text-center mb-4 text-uppercase spacing">Welcome to Scholarship news</p>
     
-      <!-- Grid row -->
+      <%# Grid row %>
       <div class="flex-center page-content">
     
         <p class="grey-text text-center mb-5 mx-3">
@@ -14,11 +14,11 @@
         </p>
     
       </div>
-      <!-- Grid row -->
+      <%# Grid row %>
     
-      <!-- Intro -->
+      <%# Intro %>
     
-      <!-- NEWS -->
+      <%# NEWS %>
       <section>
     
         <div class="container-fluid grey lighten-3 pb-5">
@@ -31,38 +31,38 @@
     
               <div class="row pt-5">
     
-                <!-- Main listing -->
+                <%# Main listing %>
                 <div class="col-lg-12 justify-content-center col-12 mt-1">
     
-                  <!-- Section: Classic blog listing -->
+                  <%# Section: Classic blog listing %>
                   <section class="section classic-blog-listing">
     
                     <% scholarshipnews.forEach((scholarshipnews)=>{ %>
-                    <!-- Grid row STARTS EWS -->
+                    <%# Grid row STARTS EWS %>
                     <div class="row mb-4">
 
-                      <!-- Grid column -->
+                      <%# Grid column %>
                       <div class="col-md-12 my-3">
-                        <!-- Card -->
+                        <%# Card %>
                         <div class="card">
     
-                          <!-- Card image -->
-                          <!-- <div class="view overlay">
+                          <%# Card image %>
+                          <%# <div class="view overlay">
                             <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(29).jpg" class="card-img-top" alt="">
                             <a>
                               <div class="mask rgba-white-slight waves-effect waves-light"></div>
                             </a>
-                          </div> -->
-                          <!-- Card image -->
+                          </div> %>
+                          <%# Card image %>
     
-                          <!-- Card content -->
+                          <%# Card content %>
                           <div class="card-body mx-4">
-                            <!-- Title -->
+                            <%# Title %>
                             <h4 class="card-title">
                               <strong><%= scholarshipnews.title %></strong>
                             </h4>
                             <hr>
-                            <!-- Text -->
+                            <%# Text %>
                             <p class="dark-grey-text mb-3"><%= scholarshipnews.excerpt %>
                             </p>
     
@@ -78,26 +78,26 @@
   
                             </p>
                           </div>
-                          <!-- Card content -->
+                          <%# Card content %>
     
                         </div>
-                        <!-- Card -->
+                        <%# Card %>
     
                       </div>
-                      <!-- Grid column -->
+                      <%# Grid column %>
     
                     </div>
-                    <!-- Grid row -->
+                    <%# Grid row %>
                     <%})%>
                   </section>
-                   <!-- Section: Classic blog listing -->
+                   <%# Section: Classic blog listing %>
               <%const array_chunks = (array, chunk_size) => Array(Math.ceil(array.length / chunk_size)).fill().map((_, index) => index * chunk_size).map(begin => array.slice(begin, begin + chunk_size)); %>
               <% let news_chunks = array_chunks(allnews, limit) %> 
-              <!-- Pagination dark grey -->
+              <%# Pagination dark grey %>
 
               <nav class="mb-5 pb-2">
                 <ul class="pagination pg-dark flex-center">
-                  <!-- Arrow left -->
+                  <%# Arrow left %>
                   <li class="page-item">
                     <a  href="?page=<%=  parseInt(page) - 1%>" class="page-link waves-effect waves-effect <%= page == 1? "disabled" : '' %> " aria-label="Previous">
                       <span aria-hidden="true">«</span>
@@ -105,16 +105,16 @@
                     </a>
                   </li>
 
-                  <!-- Numbers -->
+                  <%# Numbers %>
                   <% news_chunks .forEach((post,i) =>{ %> 
-                    <!-- Numbers -->
+                    <%# Numbers %>
                     <li class="page-item <%= page == i+1 ? "active" : '' %> ">
                       <a href="?page=<%= i +1%>"  class="page-link waves-effect waves-effect"><%= i +1%></a>
                     </li>
                 <% post_n = i  %>
                     <%})%>
           
-                  <!-- Arrow right -->
+                  <%# Arrow right %>
                   <li class="page-item">
                     <a href="?page=<%=  parseInt(page)+ 1%>" class="page-link waves-effect waves-effect <%= page == news_chunks.length ? 'disabled' : ''  %>" aria-label="Next">
                       <span aria-hidden="true">»</span>
@@ -123,10 +123,10 @@
                   </li>
                 </ul>
               </nav>
-              <!-- Pagination dark grey -->
+              <%# Pagination dark grey %>
 
             </div>
-            <!-- Main listing -->
+            <%# Main listing %>
     
               </div>
             </div>
@@ -136,7 +136,7 @@
         </div>
     
       </section>
-      <!-- Blog -->
+      <%# Blog %>
     
     </main>
     

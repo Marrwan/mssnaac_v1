@@ -3,16 +3,16 @@
 <div class="container">
     <%- include('../../partials/message.ejs') %>
     <form action="/news/scholarship/new" method="post">
-  <!-- Section: Create Page -->
+  <%# Section: Create Page %>
   <section class="my-5">
 
-    <!-- Grid row -->
+    <%# Grid row %>
     <div class="row">
 
-      <!-- Grid column -->
+      <%# Grid column %>
       <div class="col-lg-8">
 
-        <!-- post title card -->
+        <%# post title card %>
         <div class="card mb-4 post-title-panel">
           <div class="card-body">
             <div class="md-form mt-1 mb-0">
@@ -21,8 +21,8 @@
             </div>
           </div>
         </div>
-        <!-- post title card -->
-        <!-- Excerpt Card -->
+        <%# post title card %>
+        <%# Excerpt Card %>
         <div class="card mb-4">
          <div class="card-body">
            <div class="md-form mb-0 mt-2">
@@ -31,55 +31,55 @@
            </div>
          </div>
        </div>
-       <!-- Excerpt Card -->
+       <%# Excerpt Card %>
 
-        <!-- post content card -->
+        <%# post content card %>
         <div class="card mb-4">
           <textarea name="post" id="post_content"><%= typeof post != 'undefined' ? post : '' %></textarea>
         </div>
              </div>
-        <!-- post content card -->
-      <!-- Grid column -->
+        <%# post content card %>
+      <%# Grid column %>
 
-      <!-- Grid column -->
+      <%# Grid column %>
       <div class="col-lg-4">
 
-        <!-- Card -->
+        <%# Card %>
         <div class="card card-cascade narrower mb-5">
 
-          <!-- Card image -->
+          <%# Card image %>
           <div class="view view-cascade gradient-card-header blue-gradient">
             <h4 class="font-weight-500 mb-0">Publish</h4>
           </div>
-          <!-- Card image -->
+          <%# Card image %>
 
-          <!-- Card content -->
+          <%# Card content %>
           <div class="card-body card-body-cascade">
 
             <p><i class="fas fa-flag mr-1" aria-hidden="true"></i> Status: <strong>Draft</strong></p>
             <p><i class="far fa-eye mr-1" aria-hidden="true"></i> Visibility: <strong>Public</strong></p>    
             <p><i class="far fa-calendar-alt mr-1" aria-hidden="true"></i> Publish: <strong>Immediately</strong></p>
             <div class="text-right">
-              <!-- <button class="btn btn-flat waves-effect">Discard</button> -->
+              <%# <button class="btn btn-flat waves-effect">Discard</button> %>
               <button type="submit" class="btn btn-primary">Publish</button>
             </div>
 
           </div>
-          <!-- Card content -->
+          <%# Card content %>
 
         </div>
-        <!-- Card -->
+        <%# Card %>
         
-        <!-- Card -->
+        <%# Card %>
         <div class="card card-cascade narrower">
 
-          <!-- Card image -->
+          <%# Card image %>
           <div class="view view-cascade gradient-card-header blue-gradient">
             <h4 class="font-weight-500 mb-0">Categories</h4>
           </div>
-          <!-- Card image -->
+          <%# Card image %>
 
-          <!-- Card content -->
+          <%# Card content %>
           <div class="card-body card-body-cascade">
             <fieldset class="form-check mb-4">
               <input class="form-check-input" type="checkbox" id="color-1">
@@ -102,19 +102,19 @@
               <label class="form-check-label" for="color-5">Random Stories</label>
             </fieldset>
           </div>
-          <!-- Card content -->
+          <%# Card content %>
 
         </div>
-        <!-- Card -->
+        <%# Card %>
 
       </div>
-      <!-- Grid column -->
+      <%# Grid column %>
 
     </div>
-    <!-- Grid row -->
+    <%# Grid row %>
 
   </section>
-  <!-- Section: Create Page -->
+  <%# Section: Create Page %>
 
 </form>
 </div>
