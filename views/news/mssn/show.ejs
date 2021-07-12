@@ -11,7 +11,6 @@
 
         <%# Grid column %>
         <div class="col-md-12">
-
           <%# Featured image %>
           <div class="card card-cascade wider reverse">
             <%# <div class="view view-cascade overlay">
@@ -76,11 +75,7 @@
               <p><%- mssnnews.post %>
               </p>
             
-              <%# <a href="https://www.facebook.com/sharer/sharer.php?u=news/mssn/<%=mssnnews._id%>" class="btn btn-blue-grey  waves-effect waves-light">
-                <i class="fas fa-facebook-f left "></i>
-                https://twitter.com/intent/tweet?url=${url}&text=${title}
-                https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title}
-              </a> %>
+             
              
            
          
@@ -103,7 +98,7 @@
       <%# Section heading %>
       <h3 class="text-center my-5 text-center h3">Recent posts</h3>
 
-      <%# Grid row %>
+      <%# Grid row %> 
       <div class="row">
 
         <%# Grid column %>
@@ -347,7 +342,6 @@
 
     <%# Section: Leave a reply (Logged In User) %>
   <%  if(User){ %>
-    <%# <%let modifiedPost = mssnnews.title.replace(/\s/g, '-')%> %>
       <form  class="mb-5 wow fadeIn" data-wow-delay="0.3s" style="visibility: visible; animation-name: fadeIn; animation-delay: 0.3s;">
         
         <%# Leave a reply form %>
