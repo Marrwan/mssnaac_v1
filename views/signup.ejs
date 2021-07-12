@@ -11,12 +11,12 @@
                           <h2 class="h2-responsive text-center "><strong>Sign up </strong></h2>
                           <%- include('./partials/message.ejs') %>
                         
-                          <!-- <hr class="m-y-2"> -->
+                          <%# <hr class="m-y-2"> %>
   
-                          <!--Naked Form-->
+                          <%#  Naked Form %>
                           <div class="card-block">
   
-                              <!--Body-->
+                              <%# Body %>
                               <form action="/signup" method="POST">
   
                                  
@@ -34,7 +34,7 @@
                                       <label for="form2">Username</label>
                                   </div>
   
-                                  <!--Email validation-->
+                                  <%# Email validation%>
                                 
                                   <div class="md-form">
                                       <i class="fa fa-envelope prefix"></i>
@@ -42,21 +42,21 @@
                                       <label for="form9" data-error="wrong" data-success="right">Your email</label>
                                   </div>
 
-                                  <!-- Password -->
+                                  <%#  Password %>
                                   <div class="md-form">
                                       <i class="fa fa-lock prefix"></i>
                                       <input type="password" name="password" id="form9" class="form-control validate" >
                                       <label for="password" >Password</label>
                                   </div>
 
-                                  <!-- password 2 -->
+                                  <%#  password 2 %>
                                   <div class="md-form">
                                       <i class="fa fa-lock prefix"></i>
                                       <input type="password" name="confirm" id="form9" class="form-control validate">
                                       <label for="password" >Confirm password</label>
                                   </div>
 
-                                  <!-- Gender -->
+                                  <%#  Gender %>
                                   <div class="md-form">
                                       <i class="fa fa-transgender prefix"></i>
                                   
@@ -68,23 +68,23 @@
                                      
                                   </div>
 
-                                  <!-- Usertype -->
+                                  <%#  Usertype %>
                                   <div class="md-form" hidden>
                                       <i class="fa fa-users-cog prefix"></i>
                                       <select class="custom-select form-control ml-5 " id="inputGroupSelect01" name="userType" style="width: 90%;">
-                                        <!-- <option disabled selected>User type</option> -->
+                                        <%#  <option disabled selected>User type</option> %>
                                         <option value="admin">Admin</option>
                                         <option value="student" selected>Student</option>
                                     </select>
                                   </div>
   
-                                  <!--Textarea with icon-->
+                                  <%# Textarea with icon%>
                                 
-                                  <!-- <div class="md-form">
+                                  <%#  <div class="md-form">
                                        <i class="fa fa-pencil prefix"></i>
                                       <textarea type="text" id="form7" class="md-textarea"></textarea>
                                       <label for="form7">Textarea</label>
-                                  </div> -->
+                                  </div> %>
   
                                
   
@@ -98,7 +98,7 @@
                               </div>
   
                           </div>
-                          <!--Naked Form-->
+                          <%# Naked Form%>
   
                       </div>
                   </div>
