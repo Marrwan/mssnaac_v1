@@ -8,6 +8,7 @@ module.exports = function (passport) {
   passport.use(
     new LocalStrategy({ usernameField: "email" }, (email, password, done) => {
       //Match User
+      email = email.toLowerCase();
       User.findOne({ email: email })
         .then((user) => {
           if (!user) {

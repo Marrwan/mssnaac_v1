@@ -7,17 +7,15 @@
     <link rel="shortcut icon" href="/img/akinyele 2.jpeg" type="image/x-icon">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="/css/bootstrap.min.css">-->
     <link rel="stylesheet" href="/css/mdb.min.css"> 
-  
     <link rel="stylesheet" href="/css/style.css">
-    <!-- <link rel="stylesheet" href="/css/all.css"> -->
+
   
 </head>
 
 <body>
     
-    <!--the navbar section starts here-->
+    <%#the navbar section starts here%>
     <div id="home">
      <nav class="navbar navbar-expand-lg navbar-light fixed-top scrolling-navbar white">
           <a class="navbar-brand" href="/"><img src="/img/Capture aac.PNG" style="width: 100px; height: 50px;" alt="MSSNAAC"></a>
@@ -38,7 +36,7 @@
                 <li class="nav-item">
                   <a class="nav-link" href="/extramural">Extramural</a>
                 </li>
-                <!--the dropdown goes here-->
+                <%#the dropdown goes here%>
                 <li class="nav-item dropdown">
                   <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">News</a>
                   <div class="dropdown-menu">
@@ -66,11 +64,11 @@
                     <a class="nav-link" href="/executives">Executives</a>
                   </li>
               </ul>
-              <!--the dropdown goes here-->
+              <%#the dropdown goes here%>
               <%if(!User){ %>
               <ul class="navbar-nav nav-flex-icons mr-5 px-5">
                 <li class="nav-item ">
-                   <!--  trigger modal -->
+                   <%#  trigger modal %>
 
                   <a  class="nav-link"  data-toggle="modal" data-target="#exampleModalScrollable">
                   Login
@@ -79,7 +77,7 @@
                  
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="signup">Register</a>
+                      <a class="nav-link" href="/signup">Register</a>
                     </li>
                     <% }else{ %>
                       <ul class="navbar-nav nav-flex-icons mr-5 px-5">
@@ -100,22 +98,22 @@
               </div>
           </div>   
       </nav>
-    <!-- Sidebar navigation -->
+    <%# Sidebar navigation %>
     <div id="slide-out" class="side-nav sn-bg-4 fixed">
       <ul class="custom-scrollbar">
 
-       <!-- without this sidebar navigation div, the post creator will not work  .. Don't know why yet-->
+       <%# without this sidebar navigation div, the post creator will not work  .. Don't know why yet%>
        
       </ul>
       <div class="sidenav-bg mask-strong"></div>
     </div>
-    <!-- Sidebar navigation -->
+    <%# Sidebar navigation %>
   
       </div>
   
-      <!--the navbar section ends here-->
+      <%#the navbar section ends here%>
       
-       <!--the carousel section starts here-->
+       <%#the carousel section starts here%>
  <% if(path == "/"){ %>
   <div id="images"  class="carousel slide" data-ride="carousel">
     <ul class="carousel-indicators">
@@ -126,10 +124,10 @@
     <div class="carousel-inner">
       <div class="carousel-item active">
         <img src="/img/akinyele.PNG" alt="Los Angeles" width="100%" height="700px" class="slider">
-        <!-- <div class="carousel-caption green-text">
+        <%# <div class="carousel-caption green-text">
           <h3>MSSNAAC</h3>
           <p>We had such a great time in ... lori iro</p>
-        </div>    -->
+        </div>    %>
       </div>
       <div class="carousel-item">
         <img src="/img/sample.jpg" alt="Chicago" width="100%" height="700px" class="slider">
@@ -140,10 +138,10 @@
       </div>
       <div class="carousel-item">
         <img src="/img/akinyele 2.jpeg" alt="New York" width="100%" height="700px" class="slider">
-        <!-- <div class="carousel-caption">
+        <%# <div class="carousel-caption">
           <h3>New York</h3>
           <p>We love the Big Apple!</p>
-        </div>    -->
+        </div>    %>
       </div>
     </div>
     <a class="carousel-control-prev" href="#images" data-slide="prev">
@@ -155,10 +153,10 @@
   </div>
   <%}%>
   
-<!--the carousel section ends here-->
+<%#the carousel section ends here%>
 
 
-<!-- Modal -->
+<%# Modal %>
 <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     
@@ -201,16 +199,16 @@
   <%-body%>
 </main>
 
-  <!--the footer section starts here-->
+  <%#the footer section starts here%>
   <footer class="page-footer rgba-stylish-strong text-center text-md-left mt-0 pt-4 text-light" style="background-color: #81C784; opacity: 0.87; text-decoration: none;">
 
-    <!-- Footer Links -->
+    <%# Footer Links %>
     <div class="container">
   
-      <!-- Footer links -->
+      <%# Footer links %>
       <div class="row text-center text-md-left mt-3 pb-3">
   
-        <!-- First column -->
+        <%# First column %>
         <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3 white-text">
           <h6 class="text-uppercase mb-4 font-weight-bold">About MSSNAAC</h6>
           <p><b>
@@ -219,11 +217,11 @@
            </b> is one of the Area Councils under the MSSN
                Oyo State Area Unit.</p>
         </div>
-        <!-- First column -->
+        <%# First column %>
   
         <hr class="w-100 clearfix d-md-none">
   
-        <!-- Second column -->
+        <%# Second column %>
         <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
           <h6 class="text-uppercase mb-4 font-weight-bold white-text">News</h6>
           <p>
@@ -239,11 +237,11 @@
             <a href="/news/academics" style="text-decoration: none; ">Academics</a>
           </p>
         </div>
-        <!-- Second column -->
+        <%# Second column %>
   
         <hr class="w-100 clearfix d-md-none">
   
-        <!-- Fourth column -->
+        <%# Fourth column %>
         <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3 white-text">
           <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
           <p>
@@ -259,32 +257,32 @@
           </p>
           
         </div>
-        <!-- Fourth column -->
+        <%# Fourth column %>
   
       </div>
-      <!-- Footer links -->
+      <%# Footer links %>
   
       <hr>
   
       <div class="row py-3 d-flex align-items-center">
   
-        <!-- Grid column -->
+        <%# Grid column %>
         <div class="col-md-7 col-lg-8">
   
-          <!-- Copyright -->
+          <%# Copyright %>
           <p class="text-center text-md-left  font-weight-bold">
             © 2021 Copyright: MSSN Akinyele
             </a>
           </p>
-          <!-- Copyright -->
+          <%# Copyright %>
   
         </div>
-        <!-- Grid column -->
+        <%# Grid column %>
   
-        <!-- Grid column -->
+        <%# Grid column %>
         <div class="col-md-5 col-lg-4 ml-lg-0">
   
-         <!-- Social buttons -->
+         <%# Social buttons %>
           <div class="social-section text-center text-md-left ">
             <ul class="list-unstyled list-inline">
               <li class="list-inline-item mx-0">
@@ -309,33 +307,32 @@
               </li>
             </ul>
           </div>
-          <!-- Social buttons -->
+          <%# Social buttons %>
   
           <a href="#" class="btn rounded-circle p-3 shadow-lg scroll-link"><i class=" fa fa-arrow-up"></i></a>
   
         </div>
-        <!-- Grid column -->
+        <%# Grid column %>
   
       </div>
   
     </div>
   
   </footer>
-      <!--the footer section ends here-->
+      <%#the footer section ends here%>
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       
-  <!-- Bootstrap tooltips -->
+  <%# Bootstrap tooltips %>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-  <!-- Bootstrap core JavaScript -->
+  <%# Bootstrap core JavaScript %>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
 
       <script src="/js/mdb.min.js"></script>   
 
 
 
-       <!-- TinyMCE -->
+       <%# TinyMCE %>
        <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.7.1/tinymce.min.js" integrity="sha512-RnlQJaTEHoOCt5dUTV0Oi0vOBMI9PjCU7m+VHoJ4xmhuUNcwnB5Iox1es+skLril1C3gHTLbeRepHs1RpSCLoQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     -->
   
       <script>
         window.addEventListener('scroll', function(){
@@ -350,7 +347,7 @@
       
   });
       </script>
-      <!-- Custom scripts -->
+      <%# Custom scripts %>
   <script>
 
     // SideNav Initialization

@@ -10,7 +10,7 @@ exports.getSignupForm = (req, res) => {
 };
 exports.signupHandler = (req, res, next) => {
  
-  const {
+  let {
     name,
     username,
     email,
@@ -70,7 +70,8 @@ exports.signupHandler = (req, res, next) => {
           gender,
         });
       } else {
-        const newUser = new User({
+       email = email.toLowerCase();
+        let newUser = new User({
           email,
           name,
           password,

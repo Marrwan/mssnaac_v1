@@ -16,14 +16,24 @@ require("./config/passport")(passport);
 
 const app = express();
 
-//db
-const db = process.env.mongoURI;
 
-// const db = require("./config/config").mongoURI;
+//db
+let db 
+if (process.env.NODE_ENV == "development") {
+  db = require("./config/config").mongoURI;
+} else {
+  db = process.env.mongoURI;
+}
+let connection = mongoose.connect(db, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+
 const AppError = require("./utilities/appError");
 mongoose
   .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log("server connected"));
+  .then(process.env.NODE_ENV == "development" ? () => console.log("server connected") : "");
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
