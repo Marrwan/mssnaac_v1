@@ -12,12 +12,10 @@ exports.getHomepage = async (req, res) => {
     await MSSNNews.find({}, async (err, mssnnews) => {
       await AcademicNews.find({}, async (err, academicnews) => {
         await ScholarshipNews.find({}, async (err, scholarshipnews) => {
-          // const response = await axios.get("https://type.fit/api/quotes");
           const response = await axios({ method: 'GET',
           url: 'https://api.sunnah.com/v1/hadiths/random',
           headers: { 'x-api-key': 'SqD712P3E82xnwOAEOkGd5JZH8s9wRR24TqNFzjk' },
           body: '{}' });
-          console.log(response.data.hadith[0].chapterTitle);
           const random = Math.floor(Math.random() * response.data.length);
           const data = response.data.hadith[0];
           res.render("index", { mssnnews, academicnews, scholarshipnews, data });
