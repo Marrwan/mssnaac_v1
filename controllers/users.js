@@ -8,8 +8,8 @@ const User = require("../models/User");
 exports.getSignupForm = (req, res) => {
   res.render("signup");
 };
-exports.signupHandler = (req, res, next) => {
- 
+exports.signupHandler = async(req, res, next) => {
+ try{
   let {
     name,
     username,
@@ -21,7 +21,6 @@ exports.signupHandler = (req, res, next) => {
   } = req.body;
 email = email.toLowerCase();
   let errors = [];
-
   if (
     !name ||
     !username ||
@@ -56,7 +55,7 @@ email = email.toLowerCase();
 
     // res.redirect('back')
   } else {
-    User.findOne({ email: email }).then((founduser) => {
+   let founduser = await User.findOne({ email: email })
       errors.push({ msg: "A user with that email already exist" });
       if (founduser) {
         res.render("signup", {
@@ -79,30 +78,27 @@ email = email.toLowerCase();
           userType,
           gender,
         });
-        bcrypt.genSalt(10, (err, salt) => {
-          bcrypt.hash(newUser.password, salt, (err, hashed) => {
+      await  bcrypt.genSalt(10, (err, salt) => {
+          bcrypt.hash(newUser.password, salt, async(err, hashed) => {
             newUser.password = hashed;
-            newUser
-              .save()
-              .then((user) => {
+        await newUser.save()
                 req.flash(
                   "success_msg",
                   "Congrats! You are now a registered member"
-                );
+                )
                 passport.authenticate("local", {
                   successRedirect: "/dashboard",
                   failureRedirect: "/login",
                   failureFlash: true,
                 })(req, res, next);
-              })
-              .catch((err) => {
-                throw err;
-              });
+              
           });
         });
       }
-    });
   }
+} catch (error) {
+  return new AppError(error.message, error.status);
+}
 };
 exports.login = (req, res, next) => {
     passport.authenticate("local", {

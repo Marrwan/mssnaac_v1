@@ -6,34 +6,29 @@ const User = require("../models/User");
 const AppError = require("../utilities/appError");
 
 exports.getMSSNNews = async (req, res) => {
-  let { page = 1, limit = 5 } = req.query;
-  await MSSNNews.find({}, async (err, mssnnews) => {
-    if (err) {
-      return new AppError(err.message, err.status);
-    }
-    await MSSNNews.find({}, (err, allnews) => {
-      if (err) {
-        return new AppError(err.message, err.status);
-      }
+  try {
+let { page = 1, limit = 5 } = req.query;
+let mssnnews = await MSSNNews.find({})
+  .sort({ created: "desc" })
+  .limit(limit * 1)
+  .skip((page - 1) * limit);
+let allnews =  await MSSNNews.find({})
       res.render("news/mssn/mssn", { mssnnews, allnews, page, limit });
-    });
-  })
-    .sort({ created: "desc" })
-    .limit(limit * 1)
-    .skip((page - 1) * limit);
+  } catch (error) {
+    return new AppError(error.message, error.status);
+  }
 };
 exports.getNewMSSNForm = async (req, res) => {
-  MSSNNews.find({}, (err, mssnnews) => {
-    if (err) {
-      throw new AppError(err.message, err.status);
-    } else {
+  try {
+    let mssnnews = MSSNNews.find({})
       res.render("news/mssn/new", { mssnnews });
-    }
-  });
+} catch (error) {
+  return new AppError(error.message, error.status);
+}
 };
 exports.newMSSNHandler = async (req, res) => {
-  await MSSNNews.find({}, async (err, mssnnews) => {
-    if (err) throw err;
+  try {
+ let mssnnews =  await MSSNNews.find({})
     const { title, post, excerpt } = req.body;
     let errors = [];
     if (!title || !post || !excerpt) {
@@ -45,10 +40,7 @@ exports.newMSSNHandler = async (req, res) => {
     if (errors.length > 0) {
       res.render("news/mssn/new", { title, post, excerpt, errors, mssnnews });
     } else {
-      await MSSNNews.findOne({ title }, async (err, foundMSSNnews) => {
-        if (err) {
-          return new AppError(err.message, err.status);
-        }
+    let foundMSSNnews =   await MSSNNews.findOne({ title })
         if (foundMSSNnews) {
           errors.push({ msg: "A post with this title already exist" });
           res.render("news/mssn/new", {
@@ -66,41 +58,33 @@ exports.newMSSNHandler = async (req, res) => {
             author,
             excerpt,
           });
-          await newMSSNnews.save((err, savedNews) => {
-            if (err) throw err;
+        let savedNews =  await newMSSNnews.save()
             req.flash("success_msg", `Post has been successfully added`);
             res.redirect("/news/mssn");
-          });
         }
-      });
     }
-  });
+} catch (error) {
+  return new AppError(error.message, error.status);
+}
 };
 exports.getSpecificMSSN = async (req, res) => {
-  // <%let modifiedPost = mssnnews.title.replace(/\s/g, '-')%>
-  // let title = req.params.title.replace(/-/gi, " ");
   let id = req.params.id
-
-  await MSSNNews.findOne({ _id: id}, (err, mssnnews) => {
-    if (err) {
-      return new AppError(err.message, err.status);
-    }
-
+let mssnnews =  await MSSNNews.findOne({ _id: id})
     res.render("news/mssn/show", { mssnnews });
-  });
 };
 exports.getEditMSSNForm = async (req, res) => {
+  try {
   let id = req.params.id;
-  await MSSNNews.findOne({_id: id }, (err, mssnnews) => {
-    if (err) {
-      return new AppError(err.message, err.status);
-    }
+ let mssnnews =  await MSSNNews.findOne({_id: id })
     res.render("news/mssn/edit", { mssnnews });
-  });
+} catch (error) {
+  return new AppError(error.message, error.status);
+}
 };
 exports.editMSSNHandler = async (req, res) => {
+  try {
   let id = req.params.id;
-  await MSSNNews.findOne({ _id: id }, async (err, mssnnews) => {
+ let mssnnews = await MSSNNews.findOne({ _id: id })
     const { title, post, excerpt } = req.body;
     let errors = [];
     if (!title || !post || !excerpt) {
@@ -118,66 +102,53 @@ exports.editMSSNHandler = async (req, res) => {
         mssnnews,
       });
     } else {
-      await MSSNNews.findOneAndUpdate(
-        {_id : id},
-        req.body,
-        (err, updatedMSSNnews) => {
-          if (err) {
-            return new AppError(err.message, err.status);
-          }
+      await MSSNNews.findOneAndUpdate({_id : id},req.body)     
           req.flash("success_msg", `Update Successfull`);
           res.redirect(`/news/mssn`);
-        }
-      );
     }
-  });
+} catch (error) {
+  return new AppError(error.message, error.status);
+}
 };
 exports.deleteMSSN = async (req, res) => {
+  try{
   let id = req.params.id;
-  await MSSNNews.findOneAndRemove(
-    {_id: id },
-    (err, deleted) => {
-      if (err) {
-        res.redirect(`/news/mssn/${req.params.title}`);
-        req.flash("error_msg", err);
-        console.log(err);
-      } else {
-        req.flash("success_msg", `successfully deleted`);
+  await MSSNNews.findOneAndRemove({_id: id })
+       req.flash("success_msg", `successfully deleted`);
         res.redirect("/news/mssn");
-      }
-    }
-  );
+} catch (error) {
+  return new AppError(error.message, error.status);
+}
 };
 
 exports.getAcademicNews = async (req, res) => {
+  try{
   let { page = 1, limit = 5 } = req.query;
-  await AcademicNews.find({}, async (err, academicnews) => {
-    if (err) {
-      return new AppError(err.message, err.status);
-    }
-    await AcademicNews.find({}, (err, allnews) => {
-      if (err) {
-        return new AppError(err.message, err.status);
-      }
+  await AcademicNews.find({}) 
+  .sort({ created: "desc" })
+    .limit(limit * 1)
+    .skip((page - 1) * limit);
+  let allnews =  await AcademicNews.find({})
       res.render("news/academics/academics", {
         academicnews,
         allnews,
         page,
         limit,
       });
-    });
-  })
-    .sort({ created: "desc" })
-    .limit(limit * 1)
-    .skip((page - 1) * limit);
+  } catch (error) {
+    return new AppError(error.message, error.status);
+  }
 };
 exports.getNewAcademicForm = (req, res) => {
-  AcademicNews.find({}, (err, academicnews) => {
-    if (err) throw err;
-    res.render("news/academics/new", { academicnews });
-  });
+  try{
+let academicnews =  AcademicNews.find({})
+    res.render("news/academics/new", { academicnews })
+} catch (error) {
+  return new AppError(error.message, error.status);
+}
 };
 exports.newAcademicHandler = (req, res) => {
+  try{
   AcademicNews.find({}, (err, academicnews) => {
     if (err) throw err;
     const { title, post, excerpt } = req.body;
@@ -225,27 +196,32 @@ exports.newAcademicHandler = (req, res) => {
       });
     }
   });
+} catch (error) {
+  return new AppError(error.message, error.status);
+}
 };
 exports.getSpecificAcademic = (req, res) => {
-  // let title = req.params.title.replace(/-/gi, " ");
+  try{
 let id = req.params.id;
-  AcademicNews.findOne({ _id: id }, (err, academicnews) => {
-    if (err) throw err;
+ let academicnews = AcademicNews.findOne({ _id: id })
     res.render("news/academics/show", { academicnews });
-  });
+} catch (error) {
+  return new AppError(error.message, error.status);
+}
 };
 exports.getEditAcademicForm = (req, res) => {
+  try{
   let id = req.params.id;
-  AcademicNews.findOne({_id : id }, (err, academicnews) => {
-    if (err) throw err;
+  AcademicNews.findOne({_id : id })
     res.render("news/academics/edit", { academicnews });
-  });
+} catch (error) {
+  return new AppError(error.message, error.status);
+}
 };
 exports.editAcademicHandler = async (req, res) => {
+  try{
   let id = req.params.id;
-  await AcademicNews.findOne(
-    { _id : id },
-    (err, academicnews) => {
+let academicnews =  await AcademicNews.findOne({ _id : id })
       const { title, post, excerpt } = req.body;
       let errors = [];
       if (!title || !post || !excerpt) {
@@ -263,54 +239,43 @@ exports.editAcademicHandler = async (req, res) => {
           academicnews,
         });
       } else {
-        AcademicNews.findOneAndUpdate(
-          { _id : id },
-          req.body,
-          (err, updatedAcademic) => {
-            if (err) throw err;
+  await  AcademicNews.findOneAndUpdate( { _id : id },   req.body)
             req.flash("success_msg", `Update Successfull`);
             res.redirect(`/news/academics`);
-          }
-        );
       }
     }
-  );
+ catch (error) {
+  return new AppError(error.message, error.status);
+}
 };
 exports.deleteAcademic = (req, res) => {
+  try{
   let id = req.params.id;
-  AcademicNews.findOneAndRemove({ _id : id }, (err, deleted) => {
-    if (err) {
-      res.redirect(`/news/academics/${id}`);
-      req.flash("error_msg", err);
-     
-    } else {
-      req.flash("success_msg", `successfully deleted`);
+  AcademicNews.findOneAndRemove({ _id : id })
+ req.flash("success_msg", `successfully deleted`);
       res.redirect("/news/academics");
-    }
-  });
+} catch (error) {
+  return new AppError(error.message, error.status);
+}
 };
 
 exports.getScholarshipNews = async (req, res) => {
+  try{
   let { page = 1, limit = 5 } = req.query;
-  await ScholarshipNews.find({}, async (err, scholarshipnews) => {
-    if (err) {
-      return new AppError(err.message, err.status);
-    }
-    await ScholarshipNews.find({}, (err, allnews) => {
-      if (err) {
-        return new AppError(err.message, err.status);
-      }
+  let scholarshipnews = await ScholarshipNews.find({}).sort({ created: "desc" })
+    .limit(limit * 1)
+    .skip((page - 1) * limit);
+ 
+  let allnews =   await ScholarshipNews.find({})
       res.render("news/scholarship/scholarship", {
         scholarshipnews,
         allnews,
         page,
         limit,
       });
-    });
-  })
-    .sort({ created: "desc" })
-    .limit(limit * 1)
-    .skip((page - 1) * limit);
+  } catch (error) {
+    return new AppError(error.message, error.status);
+  }
 };
 exports.getNewScholarshipForm = (req, res) => {
   ScholarshipNews.find({}, (err, scholarshipnews) => {
@@ -318,9 +283,9 @@ exports.getNewScholarshipForm = (req, res) => {
     res.render("news/scholarship/new", { scholarshipnews });
   });
 };
-exports.newScholarshipHandler = (req, res) => {
-  ScholarshipNews.find({}, (err, scholarshipnews) => {
-    if (err) throw err;
+exports.newScholarshipHandler = async(req, res) => {
+  try{
+let scholarshipnews = await  ScholarshipNews.find({})
     const { title, post, excerpt } = req.body;
     let errors = [];
     if (!title || !post || !excerpt) {
@@ -338,8 +303,7 @@ exports.newScholarshipHandler = (req, res) => {
         scholarshipnews,
       });
     } else {
-      ScholarshipNews.findOne({ title }, (err, foundScholarshipNews) => {
-        if (err) throw err;
+ let foundScholarshipNews = await ScholarshipNews.findOne({ title })
         if (foundScholarshipNews) {
           errors.push({ msg: "A post with this title already exist" });
           res.render("news/scholarship/new", {
@@ -363,30 +327,34 @@ exports.newScholarshipHandler = (req, res) => {
             res.redirect("/news/scholarship");
           });
         }
-      });
     }
-  });
+} catch (error) {
+  return new AppError(error.message, error.status);
+}
 };
-exports.getSpecificScholarship = (req, res) => {
-  // let title = req.params.title.replace(/-/gi, " ");
+exports.getSpecificScholarship = async (req, res) => {
+try{
   let id = req.params.id;
-  ScholarshipNews.findOne({ _id: id }, (err, scholarshipnews) => {
-    if (err) throw err;
+ let scholarshipnews = await ScholarshipNews.findOne({ _id: id }, (err, scholarshipnews) => {
     res.render("news/scholarship/show", { scholarshipnews });
   });
+} catch (error) {
+  return new AppError(error.message, error.status);
+}
 };
-exports.getEditScholarshipForm = (req, res) => {
+exports.getEditScholarshipForm = async(req, res) => {
+  try{
   let id = req.params.id;
-  ScholarshipNews.findOne({ _id : id }, (err, scholarshipnews) => {
-    if (err) throw err;
+ let scholarshipnews = await ScholarshipNews.findOne({ _id : id })
     res.render("news/scholarship/edit", { scholarshipnews });
-  });
+} catch (error) {
+  return new AppError(error.message, error.status);
+}
 };
 exports.editScholarshipHandler = async (req, res) => {
+  try{
   let id = req.params.id;
-  await ScholarshipNews.findOne(
-    { _id : id },
-    (err, scholarshipnews) => {
+ let scholarshipnews =  await ScholarshipNews.findOne({ _id : id })
       const { title, post, excerpt } = req.body;
       let errors = [];
       if (!title || !post || !excerpt) {
@@ -404,31 +372,20 @@ exports.editScholarshipHandler = async (req, res) => {
           scholarshipnews,
         });
       } else {
-        ScholarshipNews.findOneAndUpdate(
-          {_id : id },
-          req.body,
-          (err, updatedScholarshipNews) => {
-            if (err) throw err;
+      await  ScholarshipNews.findOneAndUpdate( {_id : id }, req.body)
             req.flash("success_msg", `Update Successfull`);
             res.redirect(`/news/scholarship/${req.params.title}`);
-          }
-        );
       }
-    }
-  );
+} catch (error) {
+  return new AppError(error.message, error.status);
+}
 };
-exports.deleteScholarship = (req, res) => {
-  ScholarshipNews.findOneAndRemove(
-    {_id : id },
-    (err, deleted) => {
-      if (err) {
-        res.redirect(`/news/scholarship/${req.params.title}`);
-        req.flash("error_msg", err);
-        console.log(err);
-      } else {
-        req.flash("success_msg", `successfully deleted`);
-        res.redirect("/news/scholarship");
-      }
-    }
-  );
+exports.deleteScholarship = async(req, res) => {
+  try{
+ await ScholarshipNews.findOneAndRemove(  {_id : id })
+ req.flash("success_msg", `successfully deleted`);
+        res.redirect("/news/scholarship"); 
+} catch (error) {
+  return new AppError(error.message, error.status);
+}
 };
