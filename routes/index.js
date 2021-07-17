@@ -6,8 +6,6 @@ var router = express.Router();
 
 // GET-ROUTE : Get home page.
 router.get("/", index.getHomepage);
-//  GET-ROUTE : Dashboard
-router.get("/dashboard", isLoggedIn, index.getDashboard);
 
 //  GET-ROUTE : Logout user.
 router.get("/logout", index.logout);
@@ -35,18 +33,14 @@ router.get("/contact", (req, res) => {
 });
 // GET-ROUTE : executives page
 router.get("/executives",index.getExecutives);
-router.post("/regime/new",index.newRegimeHandler);
-router.put("/regime/:year",index.updateRegimeHandler);
-router.delete("/regime/:year/delete",index.deleteRegimeHandler);
+router.post("/executives/new",index.newExecutivesHandler);
+
 // GET-ROUTE : extramural page
 router.get("/extramural", (req, res) => {
   res.render("extramural");
 });
 
-router
-.route("/portfolio/new")
-// .get(index.getPortfolioPage)
-.post( index.newPortfolioHandler )
+
 // facebook
 router.get("/facebook", (req, res) => {
   res.redirect("https://www.facebook.com/MSSNAAC/");
