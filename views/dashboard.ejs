@@ -41,6 +41,7 @@
                     <div class="d-inline-flex ">
                        <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2" data-toggle="modal" data-target="#edit"><i class="fas black-text fa-pencil-alt mt-0"></i></button>
                        <%# EDIT REGIME MODAL %>
+                       
            <div class="modal fade black-text" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
               <form class="modal-content" action="/regime/<%= regime._id %>?_method=PUT" method="POST">

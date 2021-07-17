@@ -15,13 +15,13 @@ exports.getHomepage = async (req, res) => {
  let mssnnews =    await MSSNNews.find({}).sort({ created: "desc" });
  let academicnews =   await AcademicNews.find({}).sort({ created: "desc" });
  let scholarshipnews =    await ScholarshipNews.find({}).sort({ created: "desc" });
-// let response = await axios({ method: 'GET',
-          // url: 'https://api.sunnah.com/v1/hadiths/random',
-          // headers: { 'x-api-key': 'SqD712P3E82xnwOAEOkGd5JZH8s9wRR24TqNFzjk' },
-          // body: '{}' });
-// const random = Math.floor(Math.random() * response.data.length);
-//const data = response.data.hadith[0];
-      return  res.render("index", { mssnnews, academicnews, scholarshipnews, /*data */ });
+let response = await axios({ method: 'GET',
+          url: 'https://api.sunnah.com/v1/hadiths/random',
+          headers: { 'x-api-key': 'SqD712P3E82xnwOAEOkGd5JZH8s9wRR24TqNFzjk' },
+          body: '{}' });
+const random = Math.floor(Math.random() * response.data.length);
+const data = response.data.hadith[0];
+      return  res.render("index", { mssnnews, academicnews, scholarshipnews, data  });
   } catch (error) {
     return new AppError(error.message, error.status);
   }

@@ -10,14 +10,14 @@ module.exports = {
         if(req.isAuthenticated() && req.user.userType == 'admin'){
             return next();
         }
-        req.flash('error_msg', 'Sorry, this view is only for the admin');
+        req.flash('error_msg', 'Sorry, this is available only  for the admin');
         res.redirect('/')
     },
     isStudent: function(req,res,next){
         if(req.isAuthenticated() && req.user.userType == 'student' ){
             return next();
         }
-        req.flash('error_msg', 'Sorry, this view is only for the students');
+        req.flash('error_msg', 'Sorry, this  is only available for the students');
         res.redirect('/')
     }
 }

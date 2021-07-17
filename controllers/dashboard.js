@@ -4,6 +4,7 @@ const User = require("../models/User");
 const AppError = require("../utilities/appError");
 const Regime = require("../models/Regime");
 const  Executives = require("../models/Executives");
+
 exports.getDashboard = async (req, res) => {
   try {
     let users = await User.find({})

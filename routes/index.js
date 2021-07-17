@@ -1,5 +1,5 @@
 const express = require("express");
-const { isLoggedIn } = require("../auth/auth");
+const { isLoggedIn, isAdmin } = require("../auth/auth");
 const index = require("../controllers");
 
 var router = express.Router();
@@ -33,7 +33,7 @@ router.get("/contact", (req, res) => {
 });
 // GET-ROUTE : executives page
 router.get("/executives",index.getExecutives);
-router.post("/executives/new",index.newExecutivesHandler);
+router.post("/executives/new", isLoggedIn, isAdmin, index.newExecutivesHandler);
 
 // GET-ROUTE : extramural page
 router.get("/extramural", (req, res) => {

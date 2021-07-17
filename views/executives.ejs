@@ -1,6 +1,9 @@
        <section>
         <%- include('./partials/message.ejs') %>
-        <%# NEW EXECUTIVES  %> 
+        
+        <% if (User) { %>
+         <% if (User.userType == "admin") { %>
+ <%# NEW EXECUTIVES  %> 
         <a class="btn btn-primary"  data-toggle="modal" data-target="#newExecutive">Add new executive</a>
           <%#  MODAL %>
           <div class="modal fade" id="newExecutive" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
@@ -141,7 +144,8 @@
            <%# MODAL %>
            
         <%# NEW EXECUTIVES   %> 
-
+ <% } %>
+        <% } %>
         <%# REGIME TABLE %> 
         <div class=" accordion md-accordion "  id="accordionEx" role="tablist" aria-multiselectable="true">
         <% regimes.forEach(regime => { %>
