@@ -10,7 +10,7 @@ const session = require("express-session");
 const flash = require("connect-flash");
 const passport = require("passport");
 const methodOverride = require("method-override");
-const MongoStore = require("connect-mongo");
+const MongoStore = require("connect-mongo"); 
 
 require("./config/passport")(passport);
 
@@ -31,6 +31,7 @@ let connection = mongoose.connect(db, {
 
 
 const AppError = require("./utilities/appError");
+const { CallTracker } = require("assert");
 mongoose
   .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(process.env.NODE_ENV == "development" ? () => console.log("server connected") : "");

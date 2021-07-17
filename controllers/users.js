@@ -19,7 +19,7 @@ exports.signupHandler = (req, res, next) => {
     gender,
     userType,
   } = req.body;
-
+email = email.toLowerCase();
   let errors = [];
 
   if (

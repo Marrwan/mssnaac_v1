@@ -34,13 +34,19 @@ router.get("/contact", (req, res) => {
   res.render("contact");
 });
 // GET-ROUTE : executives page
-router.get("/executives", (req, res) => {
-  res.render("executives");
-});
+router.get("/executives",index.getExecutives);
+router.post("/regime/new",index.newRegimeHandler);
+router.put("/regime/:year",index.updateRegimeHandler);
+router.delete("/regime/:year/delete",index.deleteRegimeHandler);
 // GET-ROUTE : extramural page
 router.get("/extramural", (req, res) => {
   res.render("extramural");
 });
+
+router
+.route("/portfolio/new")
+// .get(index.getPortfolioPage)
+.post( index.newPortfolioHandler )
 // facebook
 router.get("/facebook", (req, res) => {
   res.redirect("https://www.facebook.com/MSSNAAC/");

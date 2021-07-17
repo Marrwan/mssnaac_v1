@@ -3,70 +3,156 @@
     <div id="layoutSidenav">
         <div id="layoutSidenav_content">
             <main>
+                
                 <div class="container-fluid">
+                    
                   <div class="row">
+
                       <div class="col-sm-3"><a class="btn btn-info" href="/" role="button">Go Home</a></div>
                   </div>
+                  
+
+
                     <h1 class="mt-4">Admin Dashboard</h1>
                    
-                    <div class="card mb-4">
-                        <div class="card-header">
-                            <i class="fas fa-table mr-1"></i>
-                           List of Registered Students
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Username</th>
-                                            <th>Gender</th>
-                                            <th>Email</th>
-                                            
-                                          
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Username</th>
-                                            <th>Gender</th>
-                                            <th>Email</th>
-                                            
-                                            
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                      <% users.forEach((user)=>{%>
-                                          <% if( user.userType == "student"){ %>
-                                          <% if(user.gender == "male"){ %>
-                                              <tr class="text-info">
-                                                  <td><%=user.name%></td>
-                                                  <td><%=user.username%></td>
-                                                  <td><%=user.gender%></td>
-                                                  <td><%=user.email%></td>
-                                                
-                                          
-                                              </tr>
-                                         <% }else{ %>
-                                              <tr class="text-danger">
-                                                  <td><%=user.name%></td>
-                                                  <td><%=user.username%></td>
-                                                  <td><%=user.gender%></td>
-                                                  <td><%=user.email%></td>
-                                                 
-                                                 
-                                              </tr>
-                                        <%  }%>
-                                        <%  }%>
+        <p class="btn btn-primary"  data-toggle="modal" data-target="#newPortfolio">List of portfolios</p>
+        <%# portfolio modal%>
+        <div class="modal fade" id="newPortfolio" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            
+            <form class="modal-content" action="/portfolio/new" method="POST">
+              <div class="modal-header">
+               
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+               
+            <div>
+              <p>List of portfolios</p>
+              <div >
+                <% portfolios.forEach(portfolio => { %>
+                  <div class="d-flex justify-content-between">
+                 <li>
+                   <%= portfolio.title %>
+                  </li> 
+                    <div class="d-inline-flex ">
+                       <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2" data-toggle="modal" data-target="#edit"><i class="fas black-text fa-pencil-alt mt-0"></i></button>
+                        <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2" data-toggle="modal" data-target="#edit"><i class="red-text fas fa-trash mt-0"></i></button></div>
+                      </div>
+                  <% }) %>
+                </div>
+                <div class="input-group pb-1">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text "><i class="fa fa-user"></i></span>
+                    </div>
+                  <input type="text" name="title" id="portfolio" placeholder="Add new portfolio" class="form-control"> 
+                   </div>
+                <span class="text-danger p-3 error" id="first" style="font-style: italic;"></span>
+            </div>
+            <div>
+               
+            </div>
+            </div>
+              <div class="modal-footer">
+                
+                <button type="submit" class="btn btn-primary btn-md mb-3" id="loginBtn">Save</button>   
+              </div>
+            </form>
+          </div>
+        </div> 
+        <%# portfolio modal %> 
+
+        
+        <a href="" class="btn btn-primary"  data-toggle="modal" data-target="#listUsers">List of registered Students</a>
+        <%# registered users modal%>
+        <div class="modal fade" id="listUsers" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            
+            <div class="modal-content">
+              <div class="modal-header">
+               
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+               
+            <div>
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table mr-1"></i>
+                       List of Registered Students
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Username</th>
+                                        <th>Gender</th>
+                                        <th>Email</th>
                                         
-                                        <%})%>
-                                    </tbody>
-                                </table>
-                            </div>
+                                      
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Username</th>
+                                        <th>Gender</th>
+                                        <th>Email</th>
+                                        
+                                        
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                  <% users.forEach((user)=>{%>
+                                      <% if( user.userType == "student"){ %>
+                                      <% if(user.gender == "male"){ %>
+                                          <tr class="text-info">
+                                              <td><%=user.name%></td>
+                                              <td><%=user.username%></td>
+                                              <td><%=user.gender%></td>
+                                              <td><%=user.email%></td>
+                                            
+                                      
+                                          </tr>
+                                     <% }else{ %>
+                                          <tr class="text-danger">
+                                              <td><%=user.name%></td>
+                                              <td><%=user.username%></td>
+                                              <td><%=user.gender%></td>
+                                              <td><%=user.email%></td>
+                                             
+                                             
+                                          </tr>
+                                    <%  }%>
+                                    <%  }%>
+                                    
+                                    <%})%>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
+                </div>
+ 
+            </div>
+            <div>
+               
+            </div>
+            </div>
+              <div class="modal-footer">
+                
+                <button type="submit" class="btn btn-primary btn-md mb-3" id="loginBtn">Save</button>   
+              </div>
+            </div>
+          </div>
+        </div> 
+        <%# registered users modal %> 
+                   
                 </div>
             </main>
            
