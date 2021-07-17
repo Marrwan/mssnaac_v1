@@ -1,6 +1,5 @@
-import { Schema, model } from "mongoose";
-
-const executivesSchema = new Schema({
+const mongoose = require("mongoose");
+const executivesSchema = new mongoose.Schema({
  name : {
      type: String
  },
@@ -8,23 +7,29 @@ const executivesSchema = new Schema({
      type: Number
  },
  phoneNumber : {
-     type: Number
+     type:String
  },
  portfolio: {
      type: String
- },
- hallOfResidence : {
+ },            
+ hall : {
      type: String
  },
  yearOfAdmission : {
-     type: Number
+     type: String
  },
  yearOfGraduation : {
-     type: Number
+     type: String
  },
  country: {
+     type: String
+ },
+ regime: {
+     type: String
+ },
+ department: {
      type: String
  }
 });
 
-export default model("Executive", executivesSchema);
+module.exports =  mongoose.model("Executive", executivesSchema);

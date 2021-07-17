@@ -1,49 +1,12 @@
        <section>
         <%- include('./partials/message.ejs') %>
-        <%# NEW REGIME MODAL%>
-        <a  class="btn btn-primary"  data-toggle="modal" data-target="#newRegime">Add new regime</a>
-        <div class="modal fade" id="newRegime" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            
-            <form class="modal-content" action="/regime/new" method="POST">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalScrollableTitle">NEW REGIME</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-               
-            <div>
-                <div class="input-group pb-1">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text "><i class="fa fa-clock"></i></span>
-                    </div>
-                  <input type="text" name="year" id="regime" placeholder="REGIME" class="form-control"> 
-                </div>
-                <span class="text-danger p-3 error" id="first" style="font-style: italic;"></span>
-            </div>
-            <div>
-               
-            </div>
-            </div>
-              <div class="modal-footer">
-                
-                <button type="submit" class="btn btn-primary btn-md mb-3" id="loginBtn">Save</button>   
-              </div>
-            </form>
-          </div>
-        </div> 
-        <%# NEW REGIME MODAL %> 
-        
         <%# NEW EXECUTIVES  %> 
-        <a href="/executives/new" class="btn btn-primary"  data-toggle="modal" data-target="#newExecutive">Add new executive</a>
-
+        <a class="btn btn-primary"  data-toggle="modal" data-target="#newExecutive">Add new executive</a>
           <%#  MODAL %>
           <div class="modal fade" id="newExecutive" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
               
-              <form class="modal-content" action="/login" method="POST">
+              <form class="modal-content" action="/executives/new" method="POST">
                 <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalScrollableTitle">Add student</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -58,7 +21,7 @@
                   <div class="input-group-prepend">
                       <span class="input-group-text ">Portfolio</span>
                   </div>
-                  <select name="Portfolio" class="form-control">
+                  <select name="portfolio" class="form-control">
                     <% portfolios.forEach(portfolio => { %>
                       <option value="<%= portfolio.title %> "><%= portfolio.title %> </option>
                     <% }) %>
@@ -70,7 +33,7 @@
                   <div class="input-group-prepend">
                       <span class="input-group-text ">Name</span>
                   </div>
-                 <input type="text" name="name" class="form-control">
+                 <input type="text" name="name" class="form-control" value="<%= typeof name != 'undefined' ? name : '' %>">
               </div>
                 <%# name %> 
                 <%# level %> 
@@ -96,7 +59,7 @@
                   <div class="input-group-prepend">
                       <span class="input-group-text ">Phone Number</span>
                   </div>
-                  <input type="tel" name="phoneNumber" class="form-control">
+                  <input type="tel" name="phoneNumber" class="form-control" value="<%= typeof phoneNumber != 'undefined' ? phoneNumber : '' %>">
               </div>
                 <%# phone number %> 
                 <%# Hall %> 
@@ -104,7 +67,7 @@
                   <div class="input-group-prepend">
                       <span class="input-group-text ">Hall</span>
                   </div>
-                  <select name="Portfolio" class="form-control">
+                  <select name="hall" class="form-control">
                     <% portfolios.forEach(portfolio => { %>
                       <option value="<%= portfolio.title %> "><%= portfolio.title %> </option>
                     <% }) %>
@@ -116,7 +79,7 @@
                   <div class="input-group-prepend">
                       <span class="input-group-text ">Department</span>
                   </div>
-                  <input type="text" name="department" class="form-control">
+                  <input type="text" name="department" class="form-control" value="<%= typeof department != 'undefined' ? department : '' %>">
               </div>
                 <%# Department %> 
                 <%# Admission %> 
@@ -124,7 +87,7 @@
                   <div class="input-group-prepend">
                       <span class="input-group-text ">Admission Year</span>
                   </div>
-                  <input type="date" name="yearOfAdmission" class="form-control">
+                  <input type="date" name="yearOfAdmission" class="form-control" value="<%= typeof yearOfAdmission != 'undefined' ? yearOfAdmission : '' %>">
                  
               </div>
                 <%# Admission %> 
@@ -133,7 +96,7 @@
                   <div class="input-group-prepend">
                       <span class="input-group-text ">Graduation Year</span>
                   </div>
-                  <input type="date" name="YearOfGraduation" class="form-control">
+                  <input type="date" name="yearOfGraduation" class="form-control" value="<%= typeof yearOfGraduation != 'undefined' ? yearOfGraduation : '' %>">
               </div>
                 <%# Graduation %> 
                 <%# Country %> 
@@ -176,55 +139,18 @@
             </div>
           </div>
            <%# MODAL %>
+           
         <%# NEW EXECUTIVES   %> 
 
         <%# REGIME TABLE %> 
-        <div class="c accordion md-accordion "  id="accordionEx" role="tablist" aria-multiselectable="true">
+        <div class=" accordion md-accordion "  id="accordionEx" role="tablist" aria-multiselectable="true">
         <% regimes.forEach(regime => { %>
-           <%# EDIT REGIME MODAL %>
-           <div class="modal fade black-text" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <form class="modal-content" action="/regime/<%= regime.year %>?_method=PUT" method="POST">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalScrollableTitle">EDIT REGIME</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">           
-              <div>
-                  <div class="input-group pb-1">
-                      <div class="input-group-prepend">
-                          <span class="input-group-text "><i class="fa fa-clock"></i></span>
-                      </div>
-                    <input type="text" name="text" id="regime" placeholder="REGIME" class="form-control" value="<%= regime.year %>"> 
-                  </div>
-                  <span class="text-danger p-3 error" id="first" style="font-style: italic;"></span>
-              </div>
-              <div>
-                 
-              </div>
-              </div>
-                <div class="modal-footer">
-                  
-                  <button type="submit" class="btn btn-primary btn-md mb-3" id="loginBtn">Save</button>   
-                </div>
-              </form>
-            </div>
-          </div>
-           <%# EDIT REGIME MODAL %>
+           
       <div class="card card-cascade narrower z-depth-1 mb-5 mt-5">
           <%# Card image %>
           <div class="view view-cascade gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
             <div>
-                 <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2" data-toggle="modal" data-target="#edit"><i class="fas fa-pencil-alt mt-0"></i></button>
-             
-              <form class="inline" action="/regime/<%= regime.year %>/delete?_method=DELETE" method="POST">
-                <button type="submit" class="btn btn-outline-white btn-rounded btn-sm px-2" ><i class="fas fa-trash mt-0" ></i></button>
-              </form>
             
-                <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2 " data-toggle="modal" data-target="#add"><i class="fas fa-plus mt-0"></i></button>
-
             </div>
             <a data-toggle="collapse" href="#collapse<%= regime._id %>" aria-expanded="false" aria-controls="collapse6" class="white-text mx-3 collapsed"><%= regime.year %>  A.H
               <i class="fas p-2 fa-angle-up rotate-icon"></i>
@@ -247,7 +173,7 @@
               <table class="table table-hover mb-0">
 
                 <%# Table head %>
-                <thead>
+                <thead  style="border-bottom: 5px grey solid">
                   <tr>
                     <th class="th-sm">Portfolio
                     </th>
@@ -271,23 +197,30 @@
                   </tr>
                 </thead>
                 <%# Table head %>
-
+          
                 <%# Table body %>
                 <tbody>
-                  <tr>
-                    						
-                    <td> Ameer</td>
-                    <td>Abdulqadir Alaka</td>
-                    <td>Food tech</td>
-                    <td>700</td>
-                    <td>ATBH</td>
-                    <td>+64212078088</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>New Zealand</td>
-                  </tr>
                 
-                  <tfoot>
+                 
+                  <% executives.forEach(executive => { %>
+                    <% if (executive.regime.trim() == regime.year) { %> 
+                      
+                  <tr>
+                    				 
+                    <td><%= executive.portfolio %>  </td>
+                    <td><%= executive.name %> </td>
+                    <td><%= executive.department %> </td>
+                    <td><%= executive.level %> </td>
+                    <td><%= executive.hall %> </td>
+                    <td><%= executive.phoneNumber %> </td>
+                    <td><%= executive.yearOfAdmission %> </td>
+                    <td><%= executive.yearOfGraduation %> </td>
+                    <td><%= executive.country %> </td>
+                  </tr>
+                  <% } %>
+                <% }) %>
+
+                  <tfoot style="border-top: 5px grey solid">
                     <th class="th-sm">Portfolio
                     </th>
                       <th class="th-sm">Name

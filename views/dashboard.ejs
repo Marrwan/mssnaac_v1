@@ -15,6 +15,95 @@
 
                     <h1 class="mt-4">Admin Dashboard</h1>
                    
+                     <%# NEW REGIME MODAL%>
+        <a  class="btn btn-primary"  data-toggle="modal" data-target="#newRegime">LiST OF REGIMES</a>
+        <div class="modal fade" id="newRegime" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            
+            
+              <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalScrollableTitle">LiST OF REGIMES</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+               
+            <div>
+              <p>List of Regimes</p>
+              <div >
+                <% regimes.forEach(regime => { %>
+                  <div class="d-flex justify-content-between">
+                 <li>
+                   <%= regime.year %> A.H
+                  </li> 
+                    <div class="d-inline-flex ">
+                       <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2" data-toggle="modal" data-target="#edit"><i class="fas black-text fa-pencil-alt mt-0"></i></button>
+                       <%# EDIT REGIME MODAL %>
+           <div class="modal fade black-text" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <form class="modal-content" action="/regime/<%= regime._id %>?_method=PUT" method="POST">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalScrollableTitle">EDIT <%= regime.year %> REGIME </h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">           
+              <div>
+                  <div class="input-group pb-1">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text "><i class="fa fa-clock"></i></span>
+                      </div>
+                    <input type="text" name="year" id="regime" placeholder="REGIME" class="form-control" > 
+                  </div>
+                  <span class="text-danger p-3 error" id="first" style="font-style: italic;"></span>
+              </div>
+              <div>
+                 
+              </div>
+              </div>
+                <div class="modal-footer">
+                  
+                  <button type="submit" class="btn btn-primary btn-md mb-3" id="loginBtn">Save</button>   
+                </div>
+              </form>
+            </div>
+          </div>
+           <%# EDIT REGIME MODAL %>
+                      <form action="/regime/<%= regime._id %>/delete?_method=DELETE" method="post">
+                        <button type="submit" class="btn btn-outline-white btn-rounded btn-sm px-2" >
+                          <i class="red-text fas fa-trash mt-0"></i>
+                        </button>
+            </form>
+                      </div>
+                      </div>
+                  <% }) %>
+                </div>
+             
+                <span class="text-danger p-3 error" id="first" style="font-style: italic;"></span>
+            </div>
+            <div>
+               
+            </div>
+            </div>
+
+              <div class="modal-footer">
+                <form  action="/regime/new" method="POST">
+                  <div class="input-group pb-1">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text "><i class="fa fa-clock"></i></span>
+                    </div>
+                  <input type="text" name="year" id="regime" placeholder="ADD NEW REGIME" class="form-control"> 
+                </div>
+                <button type="submit" class="btn btn-primary btn-md mb-3" id="loginBtn">Save</button>   
+              </form>
+              </div>
+          </div>
+          </div>
+        </div> 
+        <%# NEW REGIME MODAL %> 
         <p class="btn btn-primary"  data-toggle="modal" data-target="#newPortfolio">List of portfolios</p>
         <%# portfolio modal%>
         <div class="modal fade" id="newPortfolio" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
