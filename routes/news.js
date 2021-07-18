@@ -17,17 +17,17 @@ router
   // CREATE-ROUTE : adds new mssnnews.
   .post(isLoggedIn, isAdmin, news.newMSSNHandler);
 router
-  .route("/mssn/:id")
+  .route("/mssn/:slug")
   // SHOW-ROUTE : show specific mssn news
   .get(news.getSpecificMSSN);
 router
-  .route("/mssn/:id/edit")
+  .route("/mssn/:slug/edit")
   // EDIT-ROUTE : shows form to edit specific mssn news
   .get(isLoggedIn, isAdmin, news.getEditMSSNForm)
   //  EDIT-ROUTE : edit a specific mssn news.
   .put(isLoggedIn, isAdmin, news.editMSSNHandler);
 //  DELETE-ROUTE : deletes a specific mssn news
-router.delete("/mssn/:id/delete", isLoggedIn, isAdmin, news.deleteMSSN);
+router.delete("/mssn/:slug/delete", isLoggedIn, isAdmin, news.deleteMSSN);
 // =============================================================
 
 // ACADEMICS NEWS ROUTE
@@ -43,18 +43,18 @@ router
   // CREATE-ROUTE : adds ew academicnews.
   .post(isLoggedIn, isAdmin, news.newAcademicHandler);
 router
-  .route("/academics/:id")
+  .route("/academics/:slug")
   // SHOW-ROUTE : show specific academic news
   .get(news.getSpecificAcademic);
 router
-  .route("/academics/:id/edit")
+  .route("/academics/:slug/edit")
   // EDIT-ROUTE : shows form to edit specific academic news
   .get(isLoggedIn, isAdmin, news.getEditAcademicForm)
   //  EDIT-ROUTE : edit a specific academic news.
   .put(isLoggedIn, isAdmin, news.editAcademicHandler);
 //  DELETE-ROUTE : deletes a specific mssn news
 router.delete(
-  "/academics/:id/delete",
+  "/academics/:slug/delete",
   isLoggedIn,
   isAdmin,
   news.deleteAcademic
@@ -73,18 +73,18 @@ router
   // CREATE-ROUTE : adds ew scholarshipnews.
   .post(isLoggedIn, isAdmin, news.newScholarshipHandler);
 router
-  .route("/scholarship/:id")
+  .route("/scholarship/:slug")
   // SHOW-ROUTE : show specific scholarship news
   .get(news.getSpecificScholarship);
 router
-  .route("/scholarship/:id/edit")
+  .route("/scholarship/:slug/edit")
   // EDIT-ROUTE : shows form to edit specific scholarship news
   .get(isLoggedIn, isAdmin, news.getEditScholarshipForm)
   //  EDIT-ROUTE : edit a specific scholarship news.
   .put(isLoggedIn, isAdmin, news.editScholarshipHandler);
 //  DELETE-ROUTE : deletes a specific scholarship news
 router.delete(
-  "/scholarship/:id/delete",
+  "/scholarship/:slug/delete",
   isLoggedIn,
   isAdmin,
   news.deleteScholarship
