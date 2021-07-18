@@ -1,5 +1,6 @@
 var mongoose = require("mongoose");
-
+var slug = require("mongoose-slug-generator");
+mongoose.plugin(slug);
 const AcademicNewsSchema = new mongoose.Schema({
   title: {
     type: String,
@@ -7,6 +8,10 @@ const AcademicNewsSchema = new mongoose.Schema({
   post: {
     type: String,
   },
+  slug: {
+    type: String,
+     slug: "title" 
+   },
   author: {
     type: String,
   },

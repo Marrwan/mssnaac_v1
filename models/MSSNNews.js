@@ -1,9 +1,15 @@
 var mongoose = require("mongoose");
+var slug = require("mongoose-slug-generator");
+mongoose.plugin(slug);
 
 const MSSNNewsSchema = new mongoose.Schema({
   title: {
     type: String,
   },
+  slug: {
+     type: String,
+      slug: "title" 
+    },
   post: {
     type: String,
   },
