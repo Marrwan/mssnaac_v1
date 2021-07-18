@@ -17,7 +17,11 @@
       <%# Grid row %>
     
       <%# Intro %>
-    
+      <% if(User){ %>
+        <%     if(User.userType == "admin"){ %>
+         <a href="/news/scholarship/new" class="btn btn-primary">Add new post</a>
+        <%     } %>
+        <% }%>
       <%# NEWS %>
       <section>
     
@@ -71,8 +75,8 @@
                                 <i class="far fa-comments pr-2 pl-3"></i><%= scholarshipnews.comments.length %></a></p>
                             <p class="font-small dark-grey-text mb-0 font-weight-bold"><%= scholarshipnews.author %></p>
                             <p class="text-right mb-0 text-uppercase dark-grey-text font-weight-bold">
-                              <%let modifiedPost = scholarshipnews._id%>
-                              <a href="/news/scholarship/<%= modifiedPost %>">read more
+                             
+                              <a href="/news/scholarship/<%= scholarshipnews.slug %>">read more
                                 <i class="fas fa-chevron-right" aria-hidden="true"></i>
                               </a>
   

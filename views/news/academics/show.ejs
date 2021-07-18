@@ -52,12 +52,11 @@
 
                 <% if(User){ %>
                   <%     if(User.userType == "admin"){ %>
-                    <%let modifiedPost = academicnews._id%>
-                <a href="/news/academics/<%=modifiedPost %>/edit"  class="btn btn-primary  waves-effect waves-light">
+                <a href="/news/academics/<%=academicnews.slug %>/edit"  class="btn btn-primary  waves-effect waves-light">
                   <span class="hidden-md-down ">Edit</span>
                 </a>
            
-                <form action="/news/academics/<%=academicnews._id%>/delete?_method=DELETE"  method="POST" class="btn btn-danger  waves-effect waves-light">
+                <form action="/news/academics/<%=academicnews.slug%>/delete?_method=DELETE"  method="POST" class="btn btn-danger  waves-effect waves-light">
                   <button type="submit" style="border:none; background-color: transparent; color: #fff;" class=" hidden-md-down" value="Delete">Delete</button>
                 </form>
                 <%} %>

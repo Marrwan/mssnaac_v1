@@ -51,12 +51,12 @@
 
                 <% if(User){ %>
                   <%     if(User.userType == "admin"){ %>
-                    <%let modifiedPost = mssnnews._id%>
-                <a href="/news/mssn/<%=modifiedPost %>/edit"  class="btn btn-primary  waves-effect waves-light">
+                    
+                <a href="/news/mssn/<%=mssnnews.slug %>/edit"  class="btn btn-primary  waves-effect waves-light">
                   <span class="hidden-md-down ">Edit</span>
                 </a>
            
-                <form class="inline" action="/news/mssn/<%=mssnnews._id%>/delete?_method=DELETE"  method="POST" >
+                <form class="inline" action="/news/mssn/<%=mssnnews.slug%>/delete?_method=DELETE"  method="POST" >
                   <button class="btn btn-danger  waves-effect waves-light" type="submit" style="border:none; background-color: transparent; color: #fff;" class=" hidden-md-down" value="Delete">Delete</button>
                 </form>
                 <%} %>

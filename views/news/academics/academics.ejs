@@ -76,8 +76,8 @@
                                 <i class="far fa-comments pr-2 pl-3"></i><%= academicnews.comments.length %></a></p>
                             <p class="font-small dark-grey-text mb-0 font-weight-bold"><%= academicnews.author %></p>
                             <p class="text-right mb-0 text-uppercase dark-grey-text font-weight-bold">
-                              <%let modifiedPost = academicnews._id%>
-                              <a href="/news/academics/<%= modifiedPost %>">read more
+                           
+                              <a href="/news/academics/<%= academicnews.slug %>">read more
                                 <i class="fas fa-chevron-right" aria-hidden="true"></i>
                               </a>
   
