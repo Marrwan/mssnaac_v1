@@ -68,14 +68,18 @@ exports.newMSSNHandler = async (req, res) => {
 }
 };
 exports.getSpecificMSSN = async (req, res) => {
-  let id = req.params.id
-let mssnnews =  await MSSNNews.findOne({ _id: id})
+  try{
+  let slug = req.params.slug
+let mssnnews =  await MSSNNews.findOne({ slug})
     res.render("news/mssn/show", { mssnnews });
+  } catch (error) {
+    return new AppError(error.message, error.status);
+  }
 };
 exports.getEditMSSNForm = async (req, res) => {
   try {
-  let id = req.params.id;
- let mssnnews =  await MSSNNews.findOne({_id: id })
+  let slug = req.params.slug;
+ let mssnnews =  await MSSNNews.findOne({slug })
     res.render("news/mssn/edit", { mssnnews });
 } catch (error) {
   return new AppError(error.message, error.status);
@@ -83,8 +87,8 @@ exports.getEditMSSNForm = async (req, res) => {
 };
 exports.editMSSNHandler = async (req, res) => {
   try {
-  let id = req.params.id;
- let mssnnews = await MSSNNews.findOne({ _id: id })
+  let slug = req.params.slug;
+ let mssnnews = await MSSNNews.findOne({slug})
     const { title, post, excerpt } = req.body;
     let errors = [];
     if (!title || !post || !excerpt) {
@@ -102,7 +106,7 @@ exports.editMSSNHandler = async (req, res) => {
         mssnnews,
       });
     } else {
-      await MSSNNews.findOneAndUpdate({_id : id},req.body)     
+      await MSSNNews.findOneAndUpdate({slug},req.body)     
           req.flash("success_msg", `Update Successfull`);
           res.redirect(`/news/mssn`);
     }
@@ -112,8 +116,8 @@ exports.editMSSNHandler = async (req, res) => {
 };
 exports.deleteMSSN = async (req, res) => {
   try{
-  let id = req.params.id;
-  await MSSNNews.findOneAndRemove({_id: id })
+  let slug = req.params.slug;
+  await MSSNNews.findOneAndRemove({slug})
        req.flash("success_msg", `successfully deleted`);
         res.redirect("/news/mssn");
 } catch (error) {
@@ -124,7 +128,7 @@ exports.deleteMSSN = async (req, res) => {
 exports.getAcademicNews = async (req, res) => {
   try{
   let { page = 1, limit = 5 } = req.query;
-  await AcademicNews.find({}) 
+  let academicnews = await AcademicNews.find({}) 
   .sort({ created: "desc" })
     .limit(limit * 1)
     .skip((page - 1) * limit);
@@ -200,19 +204,19 @@ exports.newAcademicHandler = (req, res) => {
   return new AppError(error.message, error.status);
 }
 };
-exports.getSpecificAcademic = (req, res) => {
+exports.getSpecificAcademic = async(req, res) => {
   try{
-let id = req.params.id;
- let academicnews = AcademicNews.findOne({ _id: id })
+let slug = req.params.slug;
+ let academicnews = await AcademicNews.findOne({ slug })
     res.render("news/academics/show", { academicnews });
 } catch (error) {
   return new AppError(error.message, error.status);
 }
 };
-exports.getEditAcademicForm = (req, res) => {
+exports.getEditAcademicForm = async(req, res) => {
   try{
-  let id = req.params.id;
-  AcademicNews.findOne({_id : id })
+  let slug = req.params.slug;
+  let academicnews = await AcademicNews.findOne({slug })
     res.render("news/academics/edit", { academicnews });
 } catch (error) {
   return new AppError(error.message, error.status);
@@ -220,8 +224,8 @@ exports.getEditAcademicForm = (req, res) => {
 };
 exports.editAcademicHandler = async (req, res) => {
   try{
-  let id = req.params.id;
-let academicnews =  await AcademicNews.findOne({ _id : id })
+  let slug = req.params.slug;
+let academicnews =  await AcademicNews.findOne({ slug })
       const { title, post, excerpt } = req.body;
       let errors = [];
       if (!title || !post || !excerpt) {
@@ -239,7 +243,7 @@ let academicnews =  await AcademicNews.findOne({ _id : id })
           academicnews,
         });
       } else {
-  await  AcademicNews.findOneAndUpdate( { _id : id },   req.body)
+  await  AcademicNews.findOneAndUpdate( { slug },   req.body)
             req.flash("success_msg", `Update Successfull`);
             res.redirect(`/news/academics`);
       }
@@ -248,10 +252,10 @@ let academicnews =  await AcademicNews.findOne({ _id : id })
   return new AppError(error.message, error.status);
 }
 };
-exports.deleteAcademic = (req, res) => {
+exports.deleteAcademic = async(req, res) => {
   try{
-  let id = req.params.id;
-  AcademicNews.findOneAndRemove({ _id : id })
+  let slug = req.params.slug;
+ await AcademicNews.findOneAndRemove({ slug })
  req.flash("success_msg", `successfully deleted`);
       res.redirect("/news/academics");
 } catch (error) {
@@ -334,8 +338,8 @@ let scholarshipnews = await  ScholarshipNews.find({})
 };
 exports.getSpecificScholarship = async (req, res) => {
 try{
-  let id = req.params.id;
- let scholarshipnews = await ScholarshipNews.findOne({ _id: id }, (err, scholarshipnews) => {
+  let slug = req.params.slug;
+ let scholarshipnews = await ScholarshipNews.findOne({ slug }, (err, scholarshipnews) => {
     res.render("news/scholarship/show", { scholarshipnews });
   });
 } catch (error) {
@@ -344,8 +348,8 @@ try{
 };
 exports.getEditScholarshipForm = async(req, res) => {
   try{
-  let id = req.params.id;
- let scholarshipnews = await ScholarshipNews.findOne({ _id : id })
+  let slug = req.params.slug;
+ let scholarshipnews = await ScholarshipNews.findOne({ slug })
     res.render("news/scholarship/edit", { scholarshipnews });
 } catch (error) {
   return new AppError(error.message, error.status);
@@ -353,8 +357,8 @@ exports.getEditScholarshipForm = async(req, res) => {
 };
 exports.editScholarshipHandler = async (req, res) => {
   try{
-  let id = req.params.id;
- let scholarshipnews =  await ScholarshipNews.findOne({ _id : id })
+  let slug = req.params.slug;
+ let scholarshipnews =  await ScholarshipNews.findOne({ slug })
       const { title, post, excerpt } = req.body;
       let errors = [];
       if (!title || !post || !excerpt) {
@@ -372,9 +376,9 @@ exports.editScholarshipHandler = async (req, res) => {
           scholarshipnews,
         });
       } else {
-      await  ScholarshipNews.findOneAndUpdate( {_id : id }, req.body)
+      await  ScholarshipNews.findOneAndUpdate( {slug }, req.body)
             req.flash("success_msg", `Update Successfull`);
-            res.redirect(`/news/scholarship/${req.params.title}`);
+            res.redirect(`/news/scholarship/${scholarshipnews.slug}`);
       }
 } catch (error) {
   return new AppError(error.message, error.status);
@@ -382,7 +386,8 @@ exports.editScholarshipHandler = async (req, res) => {
 };
 exports.deleteScholarship = async(req, res) => {
   try{
- await ScholarshipNews.findOneAndRemove(  {_id : id })
+    let slug = req.params.slug;
+ await ScholarshipNews.findOneAndRemove({slug })
  req.flash("success_msg", `successfully deleted`);
         res.redirect("/news/scholarship"); 
 } catch (error) {
