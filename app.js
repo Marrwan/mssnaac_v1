@@ -24,17 +24,17 @@ if (process.env.NODE_ENV == "development") {
 } else {
   db = process.env.mongoURI;
 }
-let connection = mongoose.connect(db, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-
 
 const AppError = require("./utilities/appError");
-const { CallTracker } = require("assert");
 mongoose
-  .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(process.env.NODE_ENV == "development" ? () => console.log("server connected") : "");
+  .connect(db, {  
+     useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false})
+  .then(process.env.NODE_ENV == "development" ? () => console.log("server connected") : "")
+  .catch((error)=>{
+    process.env.NODE_ENV == "development" ? console.log(error): new AppError(error.message, error.status)
+  })
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -48,7 +48,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(
   session({
-    secret: "Abdul",
+    secret: "AbdulbasitAlabi",
     saveUninitialized: false,
     resave: false,
     store: MongoStore.create({
@@ -82,10 +82,6 @@ app.all("*", (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
 });
 
-// catch 404 and forward to error handler
-// app.use(function (req, res, next) {
-//   next(createError(404));
-// });
 
 // error handler
 app.use(function (err, req, res, next) {
@@ -99,8 +95,5 @@ app.use(function (err, req, res, next) {
   } else {
     res.status(status).send(message);
   }
-  // render the error page
-  // res.status(err.status || 500);
-  // res.render('error');
 });
 module.exports = app;
