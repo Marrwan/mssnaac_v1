@@ -20,7 +20,8 @@ const userSchema = new mongoose.Schema({
   },
   email: {
     type: String,
-    lowercase: true
+    lowercase: true,
+    unique : [true, "A user with that email already exist!"]
   },
 });
 
