@@ -106,7 +106,7 @@ exports.editMSSNHandler = async (req, res) => {
         mssnnews,
       });
     } else {
-      await MSSNNews.findOneAndUpdate({slug},req.body)     
+      await MSSNNews.findOneAndUpdate({slug},req.body, {runValidators: true})     
           req.flash("success_msg", `Update Successfull`);
           res.redirect(`/news/mssn`);
     }
@@ -243,7 +243,7 @@ let academicnews =  await AcademicNews.findOne({ slug })
           academicnews,
         });
       } else {
-  await  AcademicNews.findOneAndUpdate( { slug },   req.body)
+  await  AcademicNews.findOneAndUpdate( { slug }, req.body, {runValidators: true})
             req.flash("success_msg", `Update Successfull`);
             res.redirect(`/news/academics`);
       }
@@ -376,7 +376,7 @@ exports.editScholarshipHandler = async (req, res) => {
           scholarshipnews,
         });
       } else {
-      await  ScholarshipNews.findOneAndUpdate( {slug }, req.body)
+      await  ScholarshipNews.findOneAndUpdate( {slug }, req.body, {runValidators: true})
             req.flash("success_msg", `Update Successfull`);
             res.redirect(`/news/scholarship/${scholarshipnews.slug}`);
       }
