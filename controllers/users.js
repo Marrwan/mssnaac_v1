@@ -19,7 +19,6 @@ exports.signupHandler = async(req, res, next) => {
     gender,
     userType,
   } = req.body;
-email = email.toLowerCase();
   let errors = [];
   if (
     !name ||
