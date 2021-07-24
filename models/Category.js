@@ -14,14 +14,14 @@ const categorySchema = new mongoose.Schema({
 //  next()
 // })
 
-categorySchema.virtual('catNews').get( async function(){
-    let newsArray = []
-    let allnews = await News.find({})
-    for (const news of allnews) {
-          news.category == this.title ? newsArray.push(news) : ''
-    }
+// categorySchema.virtual('catNews').get( async function(){
+//     let newsArray = []
+//     let allnews = await News.find({})
+//     for (const news of allnews) {
+//           news.category == this.title ? newsArray.push(news) : ''
+//     }
     
-    return newsArray
-})
+//     return newsArray
+// })
 
 module.exports = mongoose.model("Category", categorySchema)
