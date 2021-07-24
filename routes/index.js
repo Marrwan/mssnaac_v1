@@ -1,10 +1,11 @@
 const express = require("express");
 const { isLoggedIn, isAdmin } = require("../auth/auth");
 const index = require("../controllers");
+const AppError = require("../utilities/appError");
 
 var router = express.Router();
 
-// GET-ROUTE : Get home page.
+// GET-ROUTE : Get home page. 
 router.get("/", index.getHomepage);
 
 //  GET-ROUTE : Logout user.
@@ -56,5 +57,8 @@ router.get("/instagram", (req, res) => {
 // Whatsapp
 router.get("/whatsapp", (req, res) => {
   res.redirect("https://wa.me/+2348073302821");
+});
+router.all("*", (req, res, next) => {
+  next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
 });
 module.exports = router;

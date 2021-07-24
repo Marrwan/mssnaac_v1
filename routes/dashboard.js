@@ -8,7 +8,7 @@ var router = express.Router();
 router.get("/dashboard", isLoggedIn, dashboard.getDashboard);
 
 router.post("/regime/new", isLoggedIn, isAdmin, dashboard.newRegimeHandler);
-router.put("/regime/:id", isLoggedIn, isAdmin, dashboard.updateRegimeHandler);
+router.put("/regime/:id/edit", isLoggedIn, isAdmin, dashboard.updateRegimeHandler);
 router.delete("/regime/:id/delete", isLoggedIn, isAdmin, dashboard.deleteRegimeHandler);
 router
 .route("/portfolio/new")
