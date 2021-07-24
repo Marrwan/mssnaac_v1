@@ -31,6 +31,7 @@ mongoose
   .connect(db, {  
      useNewUrlParser: true,
     useUnifiedTopology: true,
+    useCreateIndex: true,
     useFindAndModify: false})
   .then(process.env.NODE_ENV == "development" ? () => console.log("server connected") : "")
   .catch((error)=>{
