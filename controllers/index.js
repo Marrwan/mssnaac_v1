@@ -1,27 +1,21 @@
 const axios = require("axios");
 // LOAD MODELS
-
-const MSSNNews = require("../models/MSSNNews");
-const AcademicNews = require("../models/AcademicNews");
-const ScholarshipNews = require("../models/ScholarshipNews");
 const Portfolio = require('../models/Portfolio');
-const User = require("../models/User");
 const AppError = require("../utilities/appError");
 const Regime = require("../models/Regime");
 const  Executives = require("../models/Executives");
+const News = require("../models/News");
 
 exports.getHomepage = async (req, res) => {
   try {
- let mssnnews =    await MSSNNews.find({}).sort({ created: "desc" });
- let academicnews =   await AcademicNews.find({}).sort({ created: "desc" });
- let scholarshipnews =    await ScholarshipNews.find({}).sort({ created: "desc" });
-let response = await axios({ method: 'GET',
-          url: 'https://api.sunnah.com/v1/hadiths/random',
-          headers: { 'x-api-key': 'SqD712P3E82xnwOAEOkGd5JZH8s9wRR24TqNFzjk' },
-          body: '{}' });
-const random = Math.floor(Math.random() * response.data.length);
-const data = response.data.hadith[0];
-      return  res.render("index", { mssnnews, academicnews, scholarshipnews, data  });
+ let news =    await News.find({}).sort({ created: "desc" });
+// let response = await axios({ method: 'GET',
+          // url: 'https://api.sunnah.com/v1/hadiths/random',
+          // headers: { 'x-api-key': 'SqD712P3E82xnwOAEOkGd5JZH8s9wRR24TqNFzjk' },
+          // body: '{}' });
+// const random = Math.floor(Math.random() * response.data.length);
+//const data = response.data.hadith[0];
+      return  res.render("index", { news,  /*data */ });
   } catch (error) {
     return new AppError(error.message, error.status);
   }

@@ -1,0 +1,21 @@
+const Comment = require('../models/Comment');
+const News = require('../models/News');
+
+exports.getNewCommentForm = (req,res)=>{
+    res.render('comments/new')
+}
+
+exports.newCommentHandler = async(req,res)=>{
+    try { 
+    let {slug} = req.params;
+    let {text} = req.body;
+    let author = req.user;
+    let news = await News.findOne({slug});
+    let comment = await Comment.create({text,author,news});
+   await news.comments.push(comment)
+    await news.save()
+res.redirect(`/news/${slug}`)
+  } catch (error) {
+        console.log(error);
+    }
+}
