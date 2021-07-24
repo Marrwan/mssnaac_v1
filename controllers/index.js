@@ -9,13 +9,13 @@ const News = require("../models/News");
 exports.getHomepage = async (req, res) => {
   try {
  let news =    await News.find({}).sort({ created: "desc" });
-// let response = await axios({ method: 'GET',
-          // url: 'https://api.sunnah.com/v1/hadiths/random',
-          // headers: { 'x-api-key': 'SqD712P3E82xnwOAEOkGd5JZH8s9wRR24TqNFzjk' },
-          // body: '{}' });
-// const random = Math.floor(Math.random() * response.data.length);
-//const data = response.data.hadith[0];
-      return  res.render("index", { news,  /*data */ });
+let response = await axios({ method: 'GET',
+          url: 'https://api.sunnah.com/v1/hadiths/random',
+          headers: { 'x-api-key': 'SqD712P3E82xnwOAEOkGd5JZH8s9wRR24TqNFzjk' },
+          body: '{}' });
+const random = Math.floor(Math.random() * response.data.length);
+const data = response.data.hadith[0];
+      return  res.render("index", { news,  data });
   } catch (error) {
     return new AppError(error.message, error.status);
   }
