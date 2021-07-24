@@ -13,6 +13,7 @@ const methodOverride = require("method-override");
 const MongoStore = require("connect-mongo"); 
 
 require("./config/passport")(passport);
+const AppError = require("./utilities/appError");
 
 const app = express();
 
@@ -25,7 +26,7 @@ if (process.env.NODE_ENV == "development") {
   db = process.env.mongoURI;
 }
 
-const AppError = require("./utilities/appError");
+
 mongoose
   .connect(db, {  
      useNewUrlParser: true,
@@ -33,7 +34,7 @@ mongoose
     useFindAndModify: false})
   .then(process.env.NODE_ENV == "development" ? () => console.log("server connected") : "")
   .catch((error)=>{
-    process.env.NODE_ENV == "development" ? console.log(error): new AppError(error.message, error.status)
+     new AppError(error.message, error.status)
   })
 
 // view engine setup
@@ -72,11 +73,13 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.use(require("./routes/index"));
 app.use(require("./routes/dashboard"));
 app.use(require("./routes/users"));
+app.use('/category', require("./routes/category"));
 app.use("/news", require("./routes/news"));
+app.use('/comments', require('./routes/comment'))
 
+app.use(require("./routes/index"));
 // HANDLING UNHANDLED ROUTES
 app.all("*", (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
