@@ -2,7 +2,7 @@ var mongoose = require("mongoose");
 var slug = require("mongoose-slug-generator");
 mongoose.plugin(slug);
 
-const MSSNNewsSchema = new mongoose.Schema({
+const newsSchema = new mongoose.Schema({
   title: {
     type: String,
   },
@@ -10,6 +10,9 @@ const MSSNNewsSchema = new mongoose.Schema({
      type: String,
       slug: "title" 
     },
+category : {
+    type: String
+},
   post: {
     type: String,
   },
@@ -26,9 +29,22 @@ const MSSNNewsSchema = new mongoose.Schema({
   comments: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "MssnComment",
+      ref: "Comment",
     },
   ],
 });
 
-module.exports = mongoose.model("MSSNnews", MSSNNewsSchema);
+newsSchema.pre(/(findOne)/,   function(next){
+  this.populate({
+    path: 'comments',
+    select: "author _id news created text",
+  })
+   next()
+  })
+
+// newsSchema.virtual('comments', {
+//   ref: 'Comment',
+//   foreignField: 'news',
+//   localField: '_id',
+// });
+module.exports = mongoose.model("News", newsSchema);
