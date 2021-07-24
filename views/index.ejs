@@ -59,199 +59,79 @@
 
 <%#   NEWS %>
 <div class="container">
-      <section id="news" class="section news-section">
+       
+          <%#   SECOND NEWS SECTION %>
+    
+          <section id="news" class="pt-2 mt-3 pb-3 section news-section">
+
+            <h5 class="text-center dark-grey-text text-uppercase font-weight-bold spacing my-5 pt-2 pb-4 wow fadeIn" data-wow-delay="0.2s" style="visibility: visible; animation-name: fadeIn; animation-delay: 0.2s;">
+              <strong>LATEST NEWS</strong>
+            </h5>
   
-        <h2 class="pink-text text-uppercase font-weight-bold mb-2 pt-4 wow fadeIn" data-wow-delay=".2s" style="visibility: visible; animation-name: fadeIn; animation-delay: 0.2s;">News &amp; updates</h2>
+     
    
-        <hr class="between-sections"> 
-        <%#   FIRST NEWS SECTION%>
-        <% let mssnnewses = mssnnews.slice(0,3) %>
-        <section>
-          <h5 class="text-center mb-5 mt-5 pt-4 font-weight-bold wow fadeIn"> <a href="/news/mssn">MSSN </a> </h5>
-      
-           <%#   Single news row %>
-           <% mssnnewses.forEach(mssnnews => { %> 
-
-            <div class="row mb-4">
-
-              <%#   Grid column %>
-              <div class="col-md-12">
-                <%#   Card %>
-                <div class="card">
-
-                  <%#   Card image %>
-                  <%#   <div class="view overlay">
-                    <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(144).jpg" class="card-img-top" alt="">
+            <% let partNews = news.slice(0,6) %> 
+            <!-- Grid row -->
+            <div class="row">
+              <% partNews.forEach(news => { %>
+              <!-- Grid column -->
+              <div class="col-md-6 col-lg-4">
+    
+                <!--Card-->
+                <div class="card card-personal mb-4">
+    
+                  <!--Card image-->
+                  <div class="view overlay">
+                    <img class="card-img-top" src="" alt="Card image cap">
                     <a>
                       <div class="mask rgba-white-slight waves-effect waves-light"></div>
                     </a>
-                  </div> %>
-                  <%#   Card image %>
-
-                  <%#   Card content %>
-                  <div class="card-body mx-4">
-                    <%#   Title %>
-                    <h4 class="card-title">
-                      <strong><%= mssnnews.title %></strong>
-                    </h4>
+                  </div>
+                  <!--Card image-->
+    
+                  <!--Card content-->
+                  <div class="card-body">
+                    <!--Title-->
+                    <a>
+                      <h5 class="font-weight-bold text-uppercase">
+                        <strong><%= news.title %> </strong>
+                      </h5>
+                    </a>
+                    <a>
+                      <span class="badge badge-info py-2 px-2"><%= news.category %> </span>
+                    </a>
+    
+                    <!--Text-->
+                    <p class="grey-text mt-2"><%= news.excerpt %> 
+                      <!--Grid row-->
+                      </p>
+              
                     <hr>
-                    <%#   Text %>
-                    <p class="dark-grey-text mb-3"><%= mssnnews.excerpt %>
-                      </p>
-                    <p></p>
-                    <p class="font-small font-weight-bold blue-grey-text mb-1">
-                      <i class="far fa-clock-o"></i>  <%=mssnnews.created.toDateString() %>  </p>
-                    <p class="font-small dark-grey-text mb-0 font-weight-bold"><%= mssnnews.author %></p>
-                    <p class="text-right mb-0 text-uppercase dark-grey-text font-weight-bold">
-                      <%let modifiedPost = mssnnews._id%>
-                      <a href="/news/mssn/<%= modifiedPost %>">read more
-                        <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                    <!--Grid column-->
+                    <div class="col-12 text-center">
+                      <a href="/news/<%=news.slug%>" class="btn btn-info btn-sm font-weight-bold btn-rounded waves-effect waves-light">
+                        <strong>Read More...</strong>
                       </a>
-                    </p>
-                  </div>
-                  <%#   Card content %>
-
-                </div>
-                <%#   Card %>
-
-              </div>
-              <%#   Grid column %>
-
-            </div>
-       
-        <%})%>
-  
-        <%#   Single news row %>
-        <hr class="between-sections mt-4 mb-4">
-  
-        </section> 
-        <%#   FIRST NEWS SECTION%>
-          <hr class="between-sections mt-4 mb-4" style="color: #333; background-color: #333; height: 1px;">
-        
-          <%#   SECOND NEWS SECTION %>
-          <% let academicnewses = academicnews.slice(0,3) %>
-          <section>
-            <h5 class="text-center mb-5 mt-5 pt-4 font-weight-bold wow fadeIn"> <a href="/news/academics">ACADEMICS </a> </h5>
-        
-             <%#   Single news row %>
-             <% academicnewses.forEach(academicnews => { %> 
-              <div class="row mb-4">
-
-                <%#   Grid column %>
-                <div class="col-md-12">
-                  <%#   Card %>
-                  <div class="card">
-  
-                    <%#   Card image %>
-                    <%#   <div class="view overlay">
-                      <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(144).jpg" class="card-img-top" alt="">
-                      <a>
-                        <div class="mask rgba-white-slight waves-effect waves-light"></div>
-                      </a>
-                    </div> %>
-                    <%#   Card image %>
-  
-                    <%#   Card content %>
-                    <div class="card-body mx-4">
-                      <%#   Title %>
-                      <h4 class="card-title">
-                        <strong><%= academicnews.title %></strong>
-                      </h4>
-                      <hr>
-                      <%#   Text %>
-                      <p class="dark-grey-text mb-3"><%= academicnews.excerpt %>
-                        </p>
-                      <p></p>
-                      <p class="font-small font-weight-bold blue-grey-text mb-1">
-                        <i class="far fa-clock-o"></i>  <%=academicnews.created.toDateString() %>  </p>
-                      <p class="font-small dark-grey-text mb-0 font-weight-bold"><%= academicnews.author %></p>
-                      <p class="text-right mb-0 text-uppercase dark-grey-text font-weight-bold">
-                        <%let modifiedPost = academicnews._id%>
-                        <a href="/news/academics/<%= modifiedPost %>">read more
-                          <i class="fas fa-chevron-right" aria-hidden="true"></i>
-                        </a>
-                      </p>
                     </div>
-                    <%#   Card content %>
-  
+                    <!--Grid column-->
+    
                   </div>
-                  <%#   Card %>
-  
+                  <!--Card content-->
+    
                 </div>
-                <%#   Grid column %>
-  
+                <!--Card-->
+    
               </div>
-          <%})%>
-    
-          <%#   Single news row %>
-          <hr class="between-sections mt-4 mb-4">
-    
+              <!-- Grid column -->
+              <% }) %>
+            </div>
+            <!-- Grid row -->
+     
           </section> 
          <%#   SECOND NEWS SECTION %>
 
             <hr class="between-sections mt-4 mb-4" style="color: #333; background-color: #333; height: 1px;">
      
-      <%#   THIRD NEWS SECTION %>
-      <section>
-        <h5 class="text-center mb-5 mt-5 pt-4 font-weight-bold wow fadeIn"> <a href="/news/scholarship">SCHOLARSHIP </a> </h5>
-        <% let scholarshipnewses = scholarshipnews.slice(0,3) %>
-         <%#   Single news row %>
-         <% scholarshipnewses.forEach(scholarshipnews => { %> 
-          <div class="row mb-4">
-
-            <%#   Grid column %>
-            <div class="col-md-12">
-              <%#   Card %>
-              <div class="card">
-
-                <%#   Card image %>
-                <%#   <div class="view overlay">
-                  <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(144).jpg" class="card-img-top" alt="">
-                  <a>
-                    <div class="mask rgba-white-slight waves-effect waves-light"></div>
-                  </a>
-                </div> %>
-                <%#   Card image %>
-
-                <%#   Card content %>
-                <div class="card-body mx-4">
-                  <%#   Title %>
-                  <h4 class="card-title">
-                    <strong><%= scholarshipnews.title %></strong>
-                  </h4>
-                  <hr>
-                  <%#   Text %>
-                  <p class="dark-grey-text mb-3"><%= scholarshipnews.excerpt %>
-                    </p>
-                  <p></p>
-                  <p class="font-small font-weight-bold blue-grey-text mb-1">
-                    <i class="far fa-clock-o"></i>  <%=scholarshipnews.created.toDateString() %>  </p>
-                  <p class="font-small dark-grey-text mb-0 font-weight-bold"><%= scholarshipnews.author %></p>
-                  <p class="text-right mb-0 text-uppercase dark-grey-text font-weight-bold">
-                    <%let modifiedPost = scholarshipnews._id%>
-                    <a href="/news/scholarship/<%= modifiedPost %>">read more
-                      <i class="fas fa-chevron-right" aria-hidden="true"></i>
-                    </a>
-                  </p>
-                </div>
-                <%#   Card content %>
-
-              </div>
-              <%#   Card %>
-
-            </div>
-            <%#   Grid column %>
-
-          </div>
-      <%})%>
-
-      <%#   Single news row %>
-      <hr class="between-sections mt-4 mb-4">
-
-      </section> 
-     <%#   THIRD NEWS SECTION %>
- 
-      </section>
       
       <%#   Fifth section %>
 </div>
@@ -378,4 +258,4 @@ style="background-image: url('/img/sample.jpg');">
   
     </section>
    </div>
-   <%#   CONTACT %>
+   <%#   CONTACT %> 381

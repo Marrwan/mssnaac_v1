@@ -16,7 +16,7 @@
                     <h1 class="mt-4">Admin Dashboard</h1>
                    
                      <%# NEW REGIME MODAL%>
-        <a  class="btn btn-primary"  data-toggle="modal" data-target="#newRegime">LiST OF REGIMES</a>
+        <p  class="btn btn-primary"  data-toggle="modal" data-target="#newRegime">LiST OF REGIMES</p>
         <div class="modal fade" id="newRegime" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
             
@@ -39,12 +39,12 @@
                    <%= regime.year %> A.H
                   </li> 
                     <div class="d-inline-flex ">
-                       <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2" data-toggle="modal" data-target="#edit"><i class="fas black-text fa-pencil-alt mt-0"></i></button>
+                       <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2" data-toggle="modal" data-target="#edit<%= regime._id %>"><i class="fas black-text fa-pencil-alt mt-0"></i></button>
                        <%# EDIT REGIME MODAL %>
                        
-           <div class="modal fade black-text" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+           <div class="modal fade black-text" id="edit<%= regime._id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
-              <form class="modal-content" action="/regime/<%= regime._id %>?_method=PUT" method="POST">
+              <form class="modal-content" action="/regime/<%= regime._id %>/edit?_method=PUT" method="POST">
                 <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalScrollableTitle">EDIT <%= regime.year %> REGIME </h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -105,6 +105,7 @@
           </div>
         </div> 
         <%# NEW REGIME MODAL %> 
+        
         <p class="btn btn-primary"  data-toggle="modal" data-target="#newPortfolio">List of portfolios</p>
         <%# portfolio modal%>
         <div class="modal fade" id="newPortfolio" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
@@ -155,7 +156,68 @@
         <%# portfolio modal %> 
 
         
-        <a href="" class="btn btn-primary"  data-toggle="modal" data-target="#listUsers">List of registered Students</a>
+        
+            <%# NEWS CATEGORY MODAL%>
+            <p  class="btn btn-primary"  data-toggle="modal" data-target="#newsCategory">LiST OF NEWS CATEGORIES</p>
+            <div class="modal fade" id="newsCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                
+                
+                  <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalScrollableTitle">LIST OF CATEGORIES</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                   
+                <div>
+                  <p>List of categories</p>
+                  <div >
+                    <% categories.forEach(category => { %>
+                      <div class="d-flex justify-content-between">
+                     <li>
+                       <%= category.title %> 
+                      </li> 
+                        <div class="d-inline-flex ">
+                           <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2" ><i class="fas black-text fa-pencil-alt mt-0"></i></button>
+                        
+                          <form action="/category/<%= category.title %>/delete?_method=DELETE" method="POST">
+                            <button type="submit" class="btn btn-outline-white btn-rounded btn-sm px-2" >
+                              <i class="red-text fas fa-trash mt-0"></i>
+                            </button>
+                </form>
+                          </div>
+                          </div>
+                      <% }) %>
+                    </div>
+                 
+                    <span class="text-danger p-3 error" id="first" style="font-style: italic;"></span>
+                </div>
+                <div>
+                   
+                </div>
+                </div>
+    
+                  <div class="modal-footer">
+                    <form action="/category/new" method="POST">
+                      <div class="input-group pb-1">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text "><i class="fa fa-clock"></i></span>
+                        </div>
+                      <input type="text" name="title" id="category" placeholder="ADD NEW CATEGORY" class="form-control"> 
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-md mb-3" id="loginBtn">Save</button>   
+                  </form>
+                  </div>
+              </div>
+              </div>
+            </div> 
+            <%# NEWS CATEGORY MODAL %> 
+
+        
+        <p class="btn btn-primary"  data-toggle="modal" data-target="#listUsers">List of registered Students</p>
         <%# registered users modal%>
         <div class="modal fade" id="listUsers" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
@@ -248,6 +310,8 @@
            
         </div>
     </div>
+
+    
 <% }else{ %>
     <div id="layoutSidenav">
         <div id="layoutSidenav_content">

@@ -1,8 +1,8 @@
 
-<div style="height: 100px;" ></div>
+
 <div class="container">
-    <%- include('../../partials/message.ejs') %>
-    <form action="/news/mssn/<%=mssnnews.slug %>/edit?_method=PUT" method="post">
+    <%- include('../partials/message.ejs') %>
+    <form action="/news/<%=news.slug %>/edit?_method=PUT" method="post">
   <%# Section: Create Page %>
   <section class="my-5">
 
@@ -16,7 +16,7 @@
         <div class="card mb-4 post-title-panel">
           <div class="card-body">
             <div class="md-form mt-1 mb-0">
-              <input type="text" id="form1" class="form-control" name= "title" value="<%= mssnnews.title %>">
+              <input type="text" id="form1" class="form-control" name= "title" value="<%= news.title %>">
               <label class="form-check-label" for="form1" class="">Post title</label>
             </div>
           </div>
@@ -25,14 +25,14 @@
 
         <%# Second card %>
         <div class="card mb-4">
-          <textarea name="post" id="post_content"> <%= mssnnews.post %></textarea>
+          <textarea name="post" id="post_content"> <%= news.post %></textarea>
         </div>
         <%# Second card %>
  <%# Third Card %>
  <div class="card mb-4">
   <div class="card-body">
     <div class="md-form mb-0 mt-2">
-      <textarea name="excerpt"   class="md-textarea form-control" rows="3"><%= mssnnews.excerpt  %></textarea>
+      <textarea name="excerpt"   class="md-textarea form-control" rows="3"><%= news.excerpt  %></textarea>
       <label class="form-check-label" for="form7">Excerpt</label>
     </div>
   </div>
@@ -73,39 +73,27 @@
         <%# Card %>
         <div class="card card-cascade narrower">
 
-          <%# Card image %>
-          <div class="view view-cascade gradient-card-header blue-gradient">
-            <h4 class="font-weight-500 mb-0">Categories</h4>
+            <%# Card image %>
+            <div class="view view-cascade gradient-card-header blue-gradient">
+              <h4 class="font-weight-500 mb-0">Categories</h4>
+            </div>
+            <%# Card image %>
+  
+            <%# Card content %>
+            <div class="col-lg-4 col-md-6 mb-4 card-body card-body-cascade">
+  <% categories.forEach(category => { %>
+              <fieldset class="form-check mb-4">
+                <input class="form-check-input" value="<%= typeof category.title != 'undefined' ? category.title : '' %>" name="category" type="radio" id="<%= category._id %>" >
+                <label class="form-check-label" for="<%= category._id %>"><%= category.title %> </label>
+              </fieldset>
+  <% }) %>
+             
+            </div>
+           
+            <%# Card content %>
+  
           </div>
-          <%# Card image %>
-
-          <%# Card content %>
-          <div class="card-body card-body-cascade">
-            <fieldset class="form-check mb-4">
-              <input class="form-check-input" type="checkbox" id="color-1">
-              <label class="form-check-label" for="color-1">Material Design</label>
-            </fieldset>
-            <fieldset class="form-check mb-4">
-              <input class="form-check-input" type="checkbox" id="color-2">
-              <label class="form-check-label" for="color-2">Tutorials</label>
-            </fieldset>
-            <fieldset class="form-check mb-4">
-              <input class="form-check-input" type="checkbox" id="color-3">
-              <label class="form-check-label" for="color-3">Marketing Automation</label>
-            </fieldset>
-            <fieldset class="form-check mb-4">
-              <input class="form-check-input" type="checkbox" id="color-4">
-              <label class="form-check-label" for="color-4">Design Resources</label>
-            </fieldset>
-            <fieldset class="form-check">
-              <input class="form-check-input" type="checkbox" id="color-5">
-              <label class="form-check-label" for="color-5">Random Stories</label>
-            </fieldset>
-          </div>
-          <%# Card content %>
-
-        </div>
-        <%# Card %>
+          <%# Card %>
 
       </div>
       <%# Grid column %>
