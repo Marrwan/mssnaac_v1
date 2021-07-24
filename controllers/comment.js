@@ -1,4 +1,4 @@
-const Comment = require('../models/Comment');
+const Comment = require('../models/Comment.js');
 const News = require('../models/News');
 
 exports.getNewCommentForm = (req,res)=>{
