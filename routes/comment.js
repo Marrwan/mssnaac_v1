@@ -1,9 +1,9 @@
-const { newCommentHandler, getNewCommentForm } = require('../controllers/comment');
-
+const { newCommentHandler } = require('../controllers/comment');
+const { isAdmin, isLoggedIn } = require("../auth/auth");
 
 const router = require('express').Router();
-router.route('/:slug/new')
-.get(getNewCommentForm)
-.post(newCommentHandler)
+router
+.route('/:slug/new')
+.post(isLoggedIn,isAdmin, newCommentHandler)
 
 module.exports = router;

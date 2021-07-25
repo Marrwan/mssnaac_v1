@@ -8,3 +8,4 @@ router.patch("/:title/edit",isLoggedIn ,isAdmin , editCategoryHandler)
 router.delete("/:title/delete" ,isLoggedIn ,isAdmin , deleteCategoryHandler)
 
 module.exports = router;
+

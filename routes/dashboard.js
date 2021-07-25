@@ -13,4 +13,8 @@ router.delete("/regime/:id/delete", isLoggedIn, isAdmin, dashboard.deleteRegimeH
 router
 .route("/portfolio/new")
 .post(isLoggedIn, isAdmin, dashboard.newPortfolioHandler )
+
+router.post('/dashboard/newevent', isLoggedIn,isAdmin, dashboard.newEventHadler)
+router.delete("/dashboard/:id/delete", isLoggedIn,isAdmin, dashboard.deleteEventHandler)
 module.exports = router;
+
