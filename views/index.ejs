@@ -65,11 +65,7 @@
       <div class="text-center white-text w-100">
         <h2 class="font-weight-bold mb-3 pt-4 mt-4"><%= event.title %> </h2>
         <% let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] %> 
-        <%# let time =     event.date.getTime()- new Date().getTime()%> 
-        <%# let day =   Math.floor(time / (1000 * 60 * 60 * 24)) %> 
-        <%# let hour =  Math.floor((time % (1000 * 60 * 60 * 24))/ (1000 * 60 * 60)) %> 
-        <%# let minutes =   Math.floor((time % (1000 * 60 * 60 ))/ (1000 * 60 ))%> 
-        <%# let seconds =   Math.floor((time % (1000 * 60 ))/ (1000 ))%> 
+       
 
         <p class="font-weight-bold white-text"><%= days[event.date.getDay()] %>  <%= event.date.toLocaleString()%>  </p>
     
@@ -83,7 +79,7 @@
             <hr class="white mx-5">
             <h1 class="display-4 font-weight-bold white-text">
            
-              <strong id="day"><%# day %> </strong>
+              <strong id="day"> </strong>
             
             </h1>
             <hr class="white mx-5">
@@ -95,7 +91,7 @@
           <div class="col-lg-3 col-md-4">
             <hr class="white mx-5">
             <h1 class="display-4 font-weight-bold white-text ">
-              <strong id="hour"><%# hour %> </strong>
+              <strong id="hour"> </strong>
             </h1>
             <hr class="white mx-5">
             <p class="font-weight-bold spacing pt-3">HOURS</p>
@@ -106,7 +102,7 @@
           <div class="col-lg-3 col-md-4">
             <hr class="white mx-5">
             <h1 class="display-4 font-weight-bold white-text">
-              <strong id="minutes"> <%# minutes %></strong>
+              <strong id="minutes"> </strong>
             </h1>
             <hr class="white mx-5">
             <p class="font-weight-bold spacing">MINS</p>
@@ -116,7 +112,7 @@
           <div class="col-lg-3 col-md-4">
             <hr class="white mx-5">
             <h1 class="display-4 font-weight-bold white-text">
-              <strong id="seconds"> <%#  seconds %></strong>
+              <strong id="seconds"> </strong>
             </h1>
             <hr class="white mx-5">
             <p class="font-weight-bold spacing">SECS</p>
@@ -221,8 +217,8 @@ style="background-image: url('/img/sample.jpg');">
   <div class="text-center white-text w-responsive  mb-5 pt-5">  
     <h5 class="text-center font-italic wow fadeIn" data-wow-delay="0.2s"><%- data.chapterTitle%> </h5>
     <p class=""></i> 
-      <%# data.body%>
-      <%-   HADEETH API %>
+      <%- data.body%>
+      <%#   HADEETH API %>
       </p>
   </div>
 </div>
