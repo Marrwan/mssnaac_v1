@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 
 const commmentSchema = new mongoose.Schema(
   {
-    news: {
+    blog: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'News',
+      ref: 'Blog',
       required: [true, 'A Comment must belong to a post !'],
     },
     author: {
@@ -32,7 +32,7 @@ commmentSchema.pre(/^find/, function (next) {
     path: 'author',
     select: 'username ',
   }).populate({
-    path : 'news',
+    path : 'blog',
     select: 'title'
   })
 
