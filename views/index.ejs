@@ -56,6 +56,84 @@
   <%#  /Section: About%>
 </div>
 <%#  About MSSN%>
+<hr class="between-sections mt-0 mb-4">
+<% if (events) { %>
+<% events.forEach(event => { %>
+  <%# EVENTS %> 
+  <div class="streak streak-photo streak-long-2" id="eventTime" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/46.jpg');">
+    <div class="flex-center mask rgba-indigo-strong">
+      <div class="text-center white-text w-100">
+        <h2 class="font-weight-bold mb-3 pt-4 mt-4"><%= event.title %> </h2>
+        <% let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] %> 
+        <%# let time =     event.date.getTime()- new Date().getTime()%> 
+        <%# let day =   Math.floor(time / (1000 * 60 * 60 * 24)) %> 
+        <%# let hour =  Math.floor((time % (1000 * 60 * 60 * 24))/ (1000 * 60 * 60)) %> 
+        <%# let minutes =   Math.floor((time % (1000 * 60 * 60 ))/ (1000 * 60 ))%> 
+        <%# let seconds =   Math.floor((time % (1000 * 60 ))/ (1000 ))%> 
+
+        <p class="font-weight-bold white-text"><%= days[event.date.getDay()] %>  <%= event.date.toLocaleString()%>  </p>
+    
+
+        <div class="display-1 " id="eventInfo"></div>
+        <!--Grid row-->
+        <div class="row mt-5 mb-5" id="eventInfo2">
+
+          <!--Grid column-->
+          <div class="col-lg-3 col-md-4">
+            <hr class="white mx-5">
+            <h1 class="display-4 font-weight-bold white-text">
+           
+              <strong id="day"><%# day %> </strong>
+            
+            </h1>
+            <hr class="white mx-5">
+            <p class="font-weight-bold spacing">DAYS</p>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-lg-3 col-md-4">
+            <hr class="white mx-5">
+            <h1 class="display-4 font-weight-bold white-text ">
+              <strong id="hour"><%# hour %> </strong>
+            </h1>
+            <hr class="white mx-5">
+            <p class="font-weight-bold spacing pt-3">HOURS</p>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-lg-3 col-md-4">
+            <hr class="white mx-5">
+            <h1 class="display-4 font-weight-bold white-text">
+              <strong id="minutes"> <%# minutes %></strong>
+            </h1>
+            <hr class="white mx-5">
+            <p class="font-weight-bold spacing">MINS</p>
+          </div>
+          <!--Grid column-->
+          <!--Grid column-->
+          <div class="col-lg-3 col-md-4">
+            <hr class="white mx-5">
+            <h1 class="display-4 font-weight-bold white-text">
+              <strong id="seconds"> <%#  seconds %></strong>
+            </h1>
+            <hr class="white mx-5">
+            <p class="font-weight-bold spacing">SECS</p>
+          </div>
+          <!--Grid column-->
+      
+        </div>
+        
+        <!--Grid row-->
+      </div>
+
+    </div>
+  </div>
+  <%# EVENTS %>
+  <% }) %>
+  <% } %>
+  <hr class="between-sections mt-0 mb-4">
 
 <%#   blog %>
 <div class="container">
@@ -127,7 +205,7 @@
             </div>
             <!-- Grid row -->
      
-          </section> 
+        
          <%#   SECOND blog SECTION %>
 
             <hr class="between-sections mt-4 mb-4" style="color: #333; background-color: #333; height: 1px;">
@@ -143,19 +221,17 @@ style="background-image: url('/img/sample.jpg');">
   <div class="text-center white-text w-responsive  mb-5 pt-5">  
     <h5 class="text-center font-italic wow fadeIn" data-wow-delay="0.2s"><%- data.chapterTitle%> </h5>
     <p class=""></i> 
-      <%- data.body%>
-      <%#   HADEETH API %>
+      <%# data.body%>
+      <%-   HADEETH API %>
       </p>
   </div>
 </div>
 </div>
-<%#  /Streak%>
-
-    
-     
-      
+<%#  /Streak%> 
  
   <hr class="between-sections mt-0 mb-4">
+
+  
               
 
   <%#   CONTACT %>
@@ -240,14 +316,13 @@ style="background-image: url('/img/sample.jpg');">
   
             <div class="col-md-4">
               <a href="" class="btn-floating primary-color waves-effect waves-light"><i class="fas fa-phone"></i></a>
-              <p class="mb-1">+2349064377766</p>n
-              <p class="mb-md-0">Mon - Fri</p>
+              <p class="mb-1">+2349064377766</p>
+              
             </div>
   
             <div class="col-md-4">
               <a href="mailto://info@gmail.com" class="btn-floating primary-color waves-effect waves-light"><i class="fas fa-envelope"></i></a>
-              <p class="mb-1">info@gmail.com</p>
-              <p class="mb-0">sale@gmail.com</p>
+              <p class="mb-1 ml-2">info@gmail.com</p>
             </div>
           </div>
   
@@ -260,5 +335,41 @@ style="background-image: url('/img/sample.jpg');">
    </div>
 
    <%#   CONTACT %> 
-=======
+
    <%#   CONTACT %> 
+   <% if (events) { %>
+    
+
+<script>
+"<% events.forEach(event => { %>"
+  Timer("<%=event.date%>")
+"<% }); %>"
+
+
+  function Timer(dt) {
+    let td = new Date(dt);
+    let tm = new Date(dt);
+    tm.setDate(new Date(dt).getDate() + 1 )
+  
+    let x = setInterval(() => {
+    let time =     new Date(dt) - new Date().getTime()
+let day =   Math.floor(time / (1000 * 60 * 60 * 24)) 
+let hour =  Math.floor((time % (1000 * 60 * 60 * 24))/ (1000 * 60 * 60)) 
+let minutes =   Math.floor((time % (1000 * 60 * 60 ))/ (1000 * 60 ))
+let seconds =   Math.floor((time % (1000 * 60 ))/ (1000 ))
+document.getElementById('day').innerHTML = day
+document.getElementById('hour').innerHTML = hour
+document.getElementById('minutes').innerHTML = minutes
+document.getElementById('seconds').innerHTML = seconds
+   
+      if(time < 0){
+        document.getElementById('eventInfo').innerHTML = "IT HAS STARTED!"
+        document.getElementById('eventInfo2').style.display = "none"
+      }else if(td == tm){
+        document.getElementById('eventTime').style.display = "none"
+      }
+   }, 1000);
+  }
+ 
+ </script>
+    <% } %>

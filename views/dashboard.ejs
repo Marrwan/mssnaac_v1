@@ -157,9 +157,9 @@
 
         
         
-            <%# NEWS CATEGORY MODAL%>
-            <p  class="btn btn-primary"  data-toggle="modal" data-target="#newsCategory">LiST OF NEWS CATEGORIES</p>
-            <div class="modal fade" id="newsCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+            <%# BLOG CATEGORY MODAL%>
+            <p  class="btn btn-primary"  data-toggle="modal" data-target="#BLOGCategory">LiST OF BLOG CATEGORIES</p>
+            <div class="modal fade" id="BLOGCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered" role="document">
                 
                 
@@ -214,7 +214,7 @@
               </div>
               </div>
             </div> 
-            <%# NEWS CATEGORY MODAL %> 
+            <%# BLOG CATEGORY MODAL %> 
 
         
         <p class="btn btn-primary"  data-toggle="modal" data-target="#listUsers">List of registered Students</p>
@@ -305,6 +305,57 @@
         </div> 
         <%# registered users modal %> 
                    
+        <p class="btn btn-primary"  data-toggle="modal" data-target="#newEvent">See upcoming event</p>
+        <%# event modal%>
+        <div class="modal fade" id="newEvent" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            
+            <div class="modal-content" >
+              <div class="modal-header">
+               
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+               
+            <div>
+              <p>Upcoming Event</p>
+              <div >
+                <% events.forEach(event => { %>
+                  <div class="d-flex justify-content-between">
+                 <li>
+                   <%= event.title %>
+                  </li> 
+                    <form action="/dashboard/<%= event._id%>/delete?_method=DELETE" method="POST" class="d-inline-flex">
+                        <button type="submit" class="btn btn-outline-white btn-rounded btn-sm px-2" ><i class="red-text fas fa-trash mt-0"></i></button>
+                      </form>
+                      </div>
+                  <% }) %>
+                  
+                </div>
+                <div class="input-group pb-1">
+                  <form action="/dashboard/newevent" method="POST">
+                   
+                  <input type="text" name="title"  placeholder="Title of event" class="form-control block"> 
+                  <input type="url" name="image"  placeholder="image url" class="form-control block"> 
+                  <input type="datetime-local" name="date"  placeholder="date" class="form-control block"> 
+                  
+                   </div>
+                   <button type="submit" class="btn btn-primary btn-md mb-3" id="loginBtn">Save</button>
+                  </form>
+                <span class="text-danger p-3 error" id="first" style="font-style: italic;"></span>
+            </div>
+            <div>
+               
+            </div>
+            </div>
+            
+            </form>
+          </div>
+        </div> 
+        <%# event modal %> 
+
                 </div>
             </main>
            

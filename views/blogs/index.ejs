@@ -36,13 +36,13 @@
 
  <%# blogs Section %> 
  <section>
-     
+
+    <div class="container-fluid grey lighten-4">     
   <% if(User){ %>
     <%     if(User.userType == "admin"){ %>
      <a href="/blogs/new" class="btn btn-primary">Add new post</a>
     <%     } %>
     <% }%>
-    <div class="container-fluid grey lighten-4">
         <%- include('../partials/message.ejs') %>
       <hr class="my-5">
       <div class="container">

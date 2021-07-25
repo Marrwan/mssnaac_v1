@@ -4,7 +4,11 @@
         <%# Error/ success messages %>
         <%- include('../partials/message.ejs') %>
     <%# Section: Blog v.4 %>
-    <section class="mt-5 pb-3 wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
+    <% if (!blog) { %>
+     Sorry the post you are looking for is either moved or deleted. Go back to the <a href="/blogs"> blog page</a>
+    <%  } else { %>
+     
+   <section class="mt-5 pb-3 wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
 
       <%# Grid row %>
       <div class="row">
@@ -22,8 +26,8 @@
 
             <%# Post data %>
             <div class="card-body card-body-cascade text-center" style="padding: 7px;">
-              <h2><a><strong><%= blogs.title %> </strong></a></h2>
-              <p>Written by <a><%= blogs.author %></a>, <%= blogs.created.toDateString() %></p>
+              <h2><a><strong><%= blog.title %> </strong></a></h2>
+              <p>Written by <a><%= blog.author %></a>, <%= blog.created.toDateString() %></p>
 
               <%# Social shares %>
               <div class="social-counters ">
@@ -47,16 +51,16 @@
                   <i class="fas fa-comments left "></i>
                   <span class="hidden-md-down ">Comments</span>
                 </a>
-                <span class="counter "><%= blogs.comments ? blogs.comments.length: '' %></span>
+                <span class="counter "><%= blog.comments ? blog.comments.length: '' %></span>
 
                 <% if(User){ %>
                   <%     if(User.userType == "admin"){ %>
                     
-                <a href="/blogs/<%=blogs.slug %>/edit"  class="btn btn-primary  waves-effect waves-light">
+                <a href="/blogs/<%=blog.slug %>/edit"  class="btn btn-primary  waves-effect waves-light">
                   <span class="hidden-md-down ">Edit</span>
                 </a>
            
-                <form class="inline" action="/blogs/<%=blogs.slug%>/delete?_method=DELETE"  method="POST" >
+                <form class="inline" action="/blogs/<%=blog.slug%>/delete?_method=DELETE"  method="POST" >
                   <button class="btn btn-danger  waves-effect waves-light" type="submit" style="border:none; background-color: transparent; color: #fff;" class=" hidden-md-down" value="Delete">Delete</button>
                 </form>
                 <%} %>
@@ -72,7 +76,7 @@
     
 
             <div class="excerpt mt-5 wow fadeIn" data-wow-delay="0.3s" style="visibility: visible; animation-name: fadeIn; animation-delay: 0.3s;">
-              <p><%- blogs.post %>
+              <p><%- blog.post %>
               </p>
           </div>
 
@@ -82,8 +86,9 @@
       </div>
       <%# Grid row %>
 
-    </section>
+   </section>
     <%# Section: Blog v.4 %>
+   <%} %> 
 
     <hr class="mb-5 mt-4">
 
@@ -205,15 +210,16 @@
     <%# Section: Blog v.2 %>
 
    
-
+    <% if (blog) { %>
+     
     <%# Section: Comments list %>
     <section class="mb-5 wow fadeIn" data-wow-delay="0.3s" style="visibility: visible; animation-name: fadeIn; animation-delay: 0.3s;">
 
       <%# Main wrapper %>
       <div class="comments-list text-center text-md-left">
 
-        <h3 class="text-center font-weight-bold mb-5 pb-3">Comments <span class="badge pink"><%= blogs.comments ? blogs.comments.length: '' %></span></h3>
-        <% blogs.comments.forEach(comment => { %>
+        <h3 class="text-center font-weight-bold mb-5 pb-3">Comments <span class="badge pink"><%= blog.comments ? blog.comments.length: '' %></span></h3>
+        <% blog.comments.forEach(comment => { %>
          
           <%# Comments row %>
      
@@ -241,18 +247,18 @@
         </div>  
            
         <%# Comments row %>
-<% }) %>
+      <% }) %>
       
 
       </div>
       <%# Main wrapper %>
 
-    </section>
+  </section>
     <%# Section: Comments list %>
 
     <%# Section: Leave a reply (Logged In User) %>
   <%  if(User){ %>
-      <form action="/comments/<%= blogs.slug %>/new"  method="POST" class="mb-5 wow fadeIn" data-wow-delay="0.3s" style="visibility: visible; animation-name: fadeIn; animation-delay: 0.3s;">
+      <form action="/comments/<%= blog.slug %>/new"  method="POST" class="mb-5 wow fadeIn" data-wow-delay="0.3s" style="visibility: visible; animation-name: fadeIn; animation-delay: 0.3s;">
         
         <%# Leave a reply form %>
         <div class="reply-form">
@@ -287,7 +293,7 @@
     </form>
     <%# Section: Leave a reply (Logged In User) %>
 <%  }%>
-
+ <%} %> 
   </div>
 
 
