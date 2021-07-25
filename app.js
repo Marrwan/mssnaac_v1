@@ -77,7 +77,7 @@ app.use(function (req, res, next) {
 app.use(require("./routes/dashboard"));
 app.use(require("./routes/users"));
 app.use('/category', require("./routes/category"));
-app.use("/news", require("./routes/news"));
+app.use("/blogs", require("./routes/blog"));
 app.use('/comments', require('./routes/comment'))
 
 app.use(require("./routes/index"));
