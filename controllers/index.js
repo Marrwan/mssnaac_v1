@@ -4,18 +4,18 @@ const Portfolio = require('../models/Portfolio');
 const AppError = require("../utilities/appError");
 const Regime = require("../models/Regime");
 const  Executives = require("../models/Executives");
-const News = require("../models/News");
+const Blog = require("../models/Blog");
 
 exports.getHomepage = async (req, res) => {
   try {
- let news =    await News.find({}).sort({ created: "desc" });
+ let blogs =    await Blog.find({}).sort({ created: "desc" });
 let response = await axios({ method: 'GET',
           url: 'https://api.sunnah.com/v1/hadiths/random',
           headers: { 'x-api-key': 'SqD712P3E82xnwOAEOkGd5JZH8s9wRR24TqNFzjk' },
           body: '{}' });
 const random = Math.floor(Math.random() * response.data.length);
 const data = response.data.hadith[0];
-      return  res.render("index", { news,  data });
+      return  res.render("index", { blogs,  data  });
   } catch (error) {
     return new AppError(error.message, error.status);
   }

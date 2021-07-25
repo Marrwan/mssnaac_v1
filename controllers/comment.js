@@ -1,5 +1,5 @@
 const Comment = require('../models/Comments');
-const News = require('../models/News');
+const News = require('../models/Blog');
 
 exports.getNewCommentForm = (req,res)=>{
     res.render('comments/new')
@@ -14,7 +14,7 @@ exports.newCommentHandler = async(req,res)=>{
     let comment = await Comment.create({text,author,news});
    await news.comments.push(comment)
     await news.save()
-res.redirect(`/news/${slug}`)
+res.redirect(`/blogs/${slug}`)
   } catch (error) {
         console.log(error);
     }

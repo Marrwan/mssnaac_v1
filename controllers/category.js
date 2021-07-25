@@ -1,5 +1,5 @@
 const Category = require("../models/Category");
-const News = require("../models/News");
+const News = require("../models/Blog");
 const AppError = require("../utilities/appError");
 
 exports.newCategoryHandler = async (req,res)=>{
