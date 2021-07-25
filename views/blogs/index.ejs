@@ -1,14 +1,3 @@
-<style>
-    #blogs{
-display: flex;
-justify-content: space-around;
-
-    }
-    li{
-        list-style: none;
-    }
-
-</style>
 
 <%# Homepage Section %> 
 <section>
@@ -43,21 +32,7 @@ justify-content: space-around;
   </section>
   <%# Homepage Section %> 
  
-  <%# blogs NavBar %> 
 
-  <ul id="blogs">
-      <% categories.forEach(category => { %>
-       
-  
-    <li class="nav-item">
-        <a href="/blogs/?category=<%= category.title %> " class="nav-link"><%= category.title %> </a>
-      </li>
-          <% }) %>
-      <li class="nav-item">
-        <a href="/blogs/?category=alfaaedah" target="blank" class="nav-link">Alfaeedah</a>
-      </li>
-</ul> 
- <%# blogs NavBar %> 
 
  <%# blogs Section %> 
  <section>
