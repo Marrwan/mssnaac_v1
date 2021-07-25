@@ -2,7 +2,7 @@
 
 <div class="container">
     <%- include('../partials/message.ejs') %>
-    <form action="/news/<%=news.slug %>/edit?_method=PUT" method="post">
+    <form action="/blogs/<%=blog.slug %>/edit?_method=PUT" method="post">
   <%# Section: Create Page %>
   <section class="my-5">
 
@@ -16,7 +16,7 @@
         <div class="card mb-4 post-title-panel">
           <div class="card-body">
             <div class="md-form mt-1 mb-0">
-              <input type="text" id="form1" class="form-control" name= "title" value="<%= news.title %>">
+              <input type="text" id="form1" class="form-control" name= "title" value="<%= blog.title %>">
               <label class="form-check-label" for="form1" class="">Post title</label>
             </div>
           </div>
@@ -25,14 +25,14 @@
 
         <%# Second card %>
         <div class="card mb-4">
-          <textarea name="post" id="post_content"> <%= news.post %></textarea>
+          <textarea name="post" id="post_content"> <%= blog.post %></textarea>
         </div>
         <%# Second card %>
  <%# Third Card %>
  <div class="card mb-4">
   <div class="card-body">
     <div class="md-form mb-0 mt-2">
-      <textarea name="excerpt"   class="md-textarea form-control" rows="3"><%= news.excerpt  %></textarea>
+      <textarea name="excerpt"   class="md-textarea form-control" rows="3"><%= blog.excerpt  %></textarea>
       <label class="form-check-label" for="form7">Excerpt</label>
     </div>
   </div>

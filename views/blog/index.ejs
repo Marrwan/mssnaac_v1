@@ -1,5 +1,5 @@
 <style>
-    #news{
+    #blogs{
 display: flex;
 justify-content: space-around;
 
@@ -17,7 +17,7 @@ justify-content: space-around;
       <%# Excerpt %>
       <br>
       <h1 class="text-center dark-grey-text pb-3 mt-5 pt-5">
-        <strong>NEWS</strong> PAGE</h1>
+        <strong>BlOG</strong> PAGE</h1>
 
       <p class="grey-text text-center mb-4 text-uppercase spacing">Welcome! </p>
 
@@ -43,28 +43,28 @@ justify-content: space-around;
   </section>
   <%# Homepage Section %> 
  
-  <%# News NavBar %> 
+  <%# blogs NavBar %> 
 
-  <ul id="news">
+  <ul id="blogs">
       <% categories.forEach(category => { %>
        
   
     <li class="nav-item">
-        <a href="/news/?category=<%= category.title %> " class="nav-link"><%= category.title %> </a>
+        <a href="/blogs/?category=<%= category.title %> " class="nav-link"><%= category.title %> </a>
       </li>
           <% }) %>
       <li class="nav-item">
-        <a href="/news/?category=alfaaedah" target="blank" class="nav-link">Alfaeedah</a>
+        <a href="/blogs/?category=alfaaedah" target="blank" class="nav-link">Alfaeedah</a>
       </li>
 </ul> 
- <%# News NavBar %> 
+ <%# blogs NavBar %> 
 
- <%# News Section %> 
+ <%# blogs Section %> 
  <section>
      
   <% if(User){ %>
     <%     if(User.userType == "admin"){ %>
-     <a href="/news/new" class="btn btn-primary">Add new post</a>
+     <a href="/blogs/new" class="btn btn-primary">Add new post</a>
     <%     } %>
     <% }%>
     <div class="container-fluid grey lighten-4">
@@ -80,7 +80,7 @@ justify-content: space-around;
 
             <!-- Section: Blog v.3 -->
             <section class="pb-3 text-center text-lg-left">
-<% news.forEach(news => { %>
+<% blogs.forEach(blog => { %>
  
 
               <!-- Grid row -->
@@ -105,21 +105,21 @@ justify-content: space-around;
                     <div class="card-body mx-4">
                       <!-- Title -->
                       <h4 class="card-title">
-                        <strong> <%= news.title%> </strong>
+                        <strong> <%= blog.title%> </strong>
                       </h4>
                       <hr>
                       <div class=" text-sm-center text-md-right text-lg-left">
                           <% let color %> 
-                          <% if (news.category == "Education") { %>
+                          <% if (blog.category == "Education") { %>
                            <% color = "orange-text" %> 
-                           <% } else if (news.category == "Scholarship") { %>
+                           <% } else if (blog.category == "Scholarship") { %>
                             <% color = "blue-text" %> 
-                          <% }else if (news.category == "Mssn") { %> %>
+                          <% }else if (blog.category == "Mssn") { %> %>
                             <% color = "green-text" %>
                           <% } %> 
                         <p class=" <%= color %>  font-small font-weight-bold mb-1 spacing">
                           <a >
-                            <strong> <%= news.category %> </strong>
+                            <strong> <%= blog.category %> </strong>
                           </a>
                         </p>
                       </div>
@@ -127,14 +127,14 @@ justify-content: space-around;
                       <!-- Text -->
                       
                       
-                       <p class="dark-grey-text mb-4">  <%= news.excerpt %> 
+                       <p class="dark-grey-text mb-4">  <%= blog.excerpt %> 
                         </p>
                       <p></p>
                       <p class="font-small font-weight-bold blue-grey-text mb-1">
-                        <i class="far fa-clock-o"></i>  <%= news.created.toDateString() %> </p>
-                      <p class="font-small dark-grey-text mb-0 font-weight-bold"> <%= news.author %> </p>
+                        <i class="far fa-clock-o"></i>  <%= blog.created.toDateString() %> </p>
+                      <p class="font-small dark-grey-text mb-0 font-weight-bold"> <%= blog.author %> </p>
                       <p class="text-right mb-0 text-uppercase dark-grey-text font-weight-bold">
-                        <a href="/news/<%= news.slug %> ">read more
+                        <a href="/blogs/<%= blog.slug %> ">read more
                           <i class="fas fa-chevron-right" aria-hidden="true"></i>
                         </a>
                       </p>
@@ -156,7 +156,7 @@ justify-content: space-around;
 
             <!-- Pagination dark grey -->
             <%const array_chunks = (array, chunk_size) => Array(Math.ceil(array.length / chunk_size)).fill().map((_, index) => index * chunk_size).map(begin => array.slice(begin, begin + chunk_size)); %>
-              <% let news_chunks = array_chunks(allnews, limit) %> 
+              <% let blogs_chunks = array_chunks(allblogs, limit) %> 
               <%# Pagination dark grey d%>
 
               <nav class="mb-5 pb-2">
@@ -170,7 +170,7 @@ justify-content: space-around;
                   </li>
 
                   <%# Numbers d%>
-                  <% news_chunks .forEach((post,i) =>{ %> 
+                  <% blogs_chunks .forEach((post,i) =>{ %> 
                     <%# Numbers d%>
                     <li class="page-item <%= page == i+1 ? "active" : '' %> ">
                       <a href="?<%= categori != "" ?`category=${categori}&` : "" %>page=<%= i +1%>"  class="page-link waves-effect waves-effect"><%= i +1%></a>
@@ -180,7 +180,7 @@ justify-content: space-around;
           
                   <%# Arrow right d%>
                   <li class="page-item">
-                    <a href="?page=<%=  parseInt(page)+ 1%>" class="page-link waves-effect waves-effect <%= page == news_chunks.length ? 'disabled' : ''  %>" aria-label="Next">
+                    <a href="?page=<%=  parseInt(page)+ 1%>" class="page-link waves-effect waves-effect <%= page == blogs_chunks.length ? 'disabled' : ''  %>" aria-label="Next">
                       <span aria-hidden="true">»</span>
                       <span class="sr-only">Next</span>
                     </a>
@@ -196,10 +196,41 @@ justify-content: space-around;
           <div class="col-lg-3 col-12 mt-1">
 
           
+<%# Section: Categories %>
+            <section class="section mb-5">
+
+              <%#  Card %>
+              <div class="card card-body pb-0">
+                <div class="single-post">
+
+                  <p class="font-weight-bold dark-grey-text text-center spacing grey lighten-4 py-2 mb-4">
+                    <strong>CATEGORIES</strong>
+                  </p>
+                  
+                  <ul class="list-group my-4">
+                      <% categories.forEach(category => { %>
+                        <% let blogsArray = [] %> 
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                      <a href="/blogs?category=<%=category.title%>">
+                        <% allunalteredblogs.forEach(blog => { %>
+                            <%    blog.category == category.title ? blogsArray.push(blog) : ''%>
+                         <% }) %>
+                        <p class="mb-0"><%=category.title%></p>
+                      </a>
+                      <span class="badge teal badge-pill font-small"> <%= blogsArray.length %>  </span>
+                    </li> 
+                    <% }) %>
+                 
+                  </ul>
+                </div>
+
+              </div>
+
+            </section>
+            <%# Section: Categories %>
 
             <%# Section: Featured posts %>
             <section class="section widget-content mt-5">
-
               <%#  Card %>
               <div class="card card-body pb-0"> 
                   <p class="font-weight-bold dark-grey-text text-center spacing grey lighten-4 py-2 mb-4">
@@ -215,7 +246,7 @@ justify-content: space-around;
                     <div class="col-7">
                       <h6 class="mt-0 font-small">
                         <a>
-                          <strong>Title of the news</strong>
+                          <strong>Title of the blog</strong>
                         </a>
                       </h6>
 
@@ -238,7 +269,7 @@ justify-content: space-around;
             </section>
             <%#  Section: Featured posts %>
 
-            <%# Newsletter %>
+            <%# blogsletter %>
             <section class="my-5">
 
               <%#  Card %>
@@ -274,39 +305,9 @@ justify-content: space-around;
               </div>
 
             </section>
-            <%# Newsletter %>
- <%# Section: Categories %>
-            <section class="section mb-5">
+            <%# blogsletter %>
 
-              <%#  Card %>
-              <div class="card card-body pb-0">
-                <div class="single-post">
-
-                  <p class="font-weight-bold dark-grey-text text-center spacing grey lighten-4 py-2 mb-4">
-                    <strong>CATEGORIES</strong>
-                  </p>
-                  
-                  <ul class="list-group my-4">
-                      <% categories.forEach(category => { %>
-                        <% let newsArray = [] %> 
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                      <a class="">
-                        <% allunalterednews.forEach(news => { %>
-                            <%    news.category == category.title ? newsArray.push(news) : ''%>
-                         <% }) %>
-                        <p class="mb-0"><%=category.title%></p>
-                      </a>
-                      <span class="badge teal badge-pill font-small"> <%= newsArray.length %>  </span>
-                    </li> 
-                    <% }) %>
-                 
-                  </ul>
-                </div>
-
-              </div>
-
-            </section>
-            <%# Section: Categories %>
+ 
 
             <%# Featured posts %>
             <section class="mb-5">
@@ -365,7 +366,7 @@ justify-content: space-around;
                         <div class="carousel-caption">
                           <div class="animated fadeInDown">
                             <h4 class="h4-responsive">
-                              <a href="#!" class="white-text font-weight-bold">News title</a>
+                              <a href="#!" class="white-text font-weight-bold">blogs title</a>
                             </h4>
                             <p>
                               <a href="#!" class="white-text">Lorem ipsum</a>
@@ -389,7 +390,7 @@ justify-content: space-around;
                         <div class="carousel-caption">
                           <div class="animated fadeInDown">
                             <h4 class="h4-responsive">
-                              <a href="#!" class="white-text font-weight-bold">News title</a>
+                              <a href="#!" class="white-text font-weight-bold">blogs title</a>
                             </h4>
                             <p>
                               <a href="#!" class="white-text">Lorem ipsum</a>
@@ -433,4 +434,4 @@ justify-content: space-around;
 
     </div>
   </section>
- <%# News Section %> 
+ <%# blogs Section %> 

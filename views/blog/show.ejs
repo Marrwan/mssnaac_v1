@@ -22,8 +22,8 @@
 
             <%# Post data %>
             <div class="card-body card-body-cascade text-center" style="padding: 7px;">
-              <h2><a><strong><%= news.title %> </strong></a></h2>
-              <p>Written by <a><%= news.author %></a>, <%= news.created.toDateString() %></p>
+              <h2><a><strong><%= blogs.title %> </strong></a></h2>
+              <p>Written by <a><%= blogs.author %></a>, <%= blogs.created.toDateString() %></p>
 
               <%# Social shares %>
               <div class="social-counters ">
@@ -47,16 +47,16 @@
                   <i class="fas fa-comments left "></i>
                   <span class="hidden-md-down ">Comments</span>
                 </a>
-                <span class="counter "><%= news.comments ? news.comments.length: '' %></span>
+                <span class="counter "><%= blogs.comments ? blogs.comments.length: '' %></span>
 
                 <% if(User){ %>
                   <%     if(User.userType == "admin"){ %>
                     
-                <a href="/news/<%=news.slug %>/edit"  class="btn btn-primary  waves-effect waves-light">
+                <a href="/blogs/<%=blogs.slug %>/edit"  class="btn btn-primary  waves-effect waves-light">
                   <span class="hidden-md-down ">Edit</span>
                 </a>
            
-                <form class="inline" action="/news/<%=news.slug%>/delete?_method=DELETE"  method="POST" >
+                <form class="inline" action="/blogs/<%=blogs.slug%>/delete?_method=DELETE"  method="POST" >
                   <button class="btn btn-danger  waves-effect waves-light" type="submit" style="border:none; background-color: transparent; color: #fff;" class=" hidden-md-down" value="Delete">Delete</button>
                 </form>
                 <%} %>
@@ -72,13 +72,8 @@
     
 
             <div class="excerpt mt-5 wow fadeIn" data-wow-delay="0.3s" style="visibility: visible; animation-name: fadeIn; animation-delay: 0.3s;">
-              <p><%- news.post %>
+              <p><%- blogs.post %>
               </p>
-            
-             
-             
-           
-         
           </div>
 
         </div>
@@ -209,40 +204,7 @@
     </section>
     <%# Section: Blog v.2 %>
 
-    <%# Author box %>
-    <section class="mb-5">
-
-      <div class="jumbotron p-5 text-center text-md-left author-box wow fadeIn" data-wow-delay="0.3s" style="visibility: visible; animation-name: fadeIn; animation-delay: 0.3s;">
-        <%# Name %>
-        <h4 class="h3-responsive text-center font-weight-bold dark-grey-text">About author</h4>
-        <hr>
-        <div class="row">
-          <%# Avatar %>
-          <div class="col-12 col-md-2 mb-md-0 mb-4">
-            <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(32).jpg" class="img-fluid rounded-circle z-depth-2">
-          </div>
-          <%# Author Data %>
-          <div class="col-12 col-md-10">
-            <h5 class="font-weight-bold dark-grey-text mb-3">
-              <strong><%= news.author %></strong>
-            </h5>
-            <div class="personal-sm pb-3">
-              <a class="fb-ic pr-2"><i class="fab fa-facebook-f mr-2"> </i></a>
-              <a class="tw-ic pr-2"><i class="fab fa-twitter mr-2"> </i></a>
-              <a class="gplus-ic pr-2"><i class="fab fa-google-plus-g mr-2"> </i></a>
-              <a class="li-ic pr-2"><i class="fab fa-linkedin-in mr-2"> </i></a>
-            </div>
-            <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint esse nulla quia quam veniam commodi
-              dicta, iusto inventore. Voluptatum pariatur eveniet ea, officiis vitae praesentium beatae
-              quas libero, esse facere.
-            </p>
-          </div>
-        </div>
-      </div>
-
-    </section>
-    <%# Author box %>
+   
 
     <%# Section: Comments list %>
     <section class="mb-5 wow fadeIn" data-wow-delay="0.3s" style="visibility: visible; animation-name: fadeIn; animation-delay: 0.3s;">
@@ -250,8 +212,8 @@
       <%# Main wrapper %>
       <div class="comments-list text-center text-md-left">
 
-        <h3 class="text-center font-weight-bold mb-5 pb-3">Comments <span class="badge pink"><%= news.comments ? news.comments.length: '' %></span></h3>
-        <% news.comments.forEach(comment => { %>
+        <h3 class="text-center font-weight-bold mb-5 pb-3">Comments <span class="badge pink"><%= blogs.comments ? blogs.comments.length: '' %></span></h3>
+        <% blogs.comments.forEach(comment => { %>
          
           <%# Comments row %>
      
@@ -290,7 +252,7 @@
 
     <%# Section: Leave a reply (Logged In User) %>
   <%  if(User){ %>
-      <form action="/comments/<%= news.slug %>/new"  method="POST" class="mb-5 wow fadeIn" data-wow-delay="0.3s" style="visibility: visible; animation-name: fadeIn; animation-delay: 0.3s;">
+      <form action="/comments/<%= blogs.slug %>/new"  method="POST" class="mb-5 wow fadeIn" data-wow-delay="0.3s" style="visibility: visible; animation-name: fadeIn; animation-delay: 0.3s;">
         
         <%# Leave a reply form %>
         <div class="reply-form">

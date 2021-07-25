@@ -57,23 +57,23 @@
 </div>
 <%#  About MSSN%>
 
-<%#   NEWS %>
+<%#   blog %>
 <div class="container">
        
-          <%#   SECOND NEWS SECTION %>
+          <%#   SECOND blog SECTION %>
     
-          <section id="news" class="pt-2 mt-3 pb-3 section news-section">
+          <section id="blog" class="pt-2 mt-3 pb-3 section blog-section">
 
             <h5 class="text-center dark-grey-text text-uppercase font-weight-bold spacing my-5 pt-2 pb-4 wow fadeIn" data-wow-delay="0.2s" style="visibility: visible; animation-name: fadeIn; animation-delay: 0.2s;">
-              <strong>LATEST NEWS</strong>
+              <strong>LATEST blog</strong>
             </h5>
   
      
    
-            <% let partNews = news.slice(0,6) %> 
+            <% let partblogs = blogs.slice(0,6) %> 
             <!-- Grid row -->
             <div class="row">
-              <% partNews.forEach(news => { %>
+              <% partblogs.forEach(blog => { %>
               <!-- Grid column -->
               <div class="col-md-6 col-lg-4">
     
@@ -94,22 +94,22 @@
                     <!--Title-->
                     <a>
                       <h5 class="font-weight-bold text-uppercase">
-                        <strong><%= news.title %> </strong>
+                        <strong><%= blog.title %> </strong>
                       </h5>
                     </a>
                     <a>
-                      <span class="badge badge-info py-2 px-2"><%= news.category %> </span>
+                      <span class="badge badge-info py-2 px-2"><%= blog.category %> </span>
                     </a>
     
                     <!--Text-->
-                    <p class="grey-text mt-2"><%= news.excerpt %> 
+                    <p class="grey-text mt-2"><%= blog.excerpt %> 
                       <!--Grid row-->
                       </p>
               
                     <hr>
                     <!--Grid column-->
                     <div class="col-12 text-center">
-                      <a href="/news/<%=news.slug%>" class="btn btn-info btn-sm font-weight-bold btn-rounded waves-effect waves-light">
+                      <a href="/blogs/<%=blog.slug%>" class="btn btn-info btn-sm font-weight-bold btn-rounded waves-effect waves-light">
                         <strong>Read More...</strong>
                       </a>
                     </div>
@@ -128,14 +128,14 @@
             <!-- Grid row -->
      
           </section> 
-         <%#   SECOND NEWS SECTION %>
+         <%#   SECOND blog SECTION %>
 
             <hr class="between-sections mt-4 mb-4" style="color: #333; background-color: #333; height: 1px;">
      
       
       <%#   Fifth section %>
 </div>
-<%#   NEWS %>
+<%#   blog %>
 <%#  Streak%>
 <div class="streak streak-photo streak-md"
 style="background-image: url('/img/sample.jpg');">
@@ -258,4 +258,4 @@ style="background-image: url('/img/sample.jpg');">
   
     </section>
    </div>
-   <%#   CONTACT %> 381
+   <%#   CONTACT %> 
