@@ -89,12 +89,9 @@ exports.newHandler = async (req, res) => {
 exports.getSpecificBlog = async (req, res) => {
   try{
   let slug = req.params.slug
-let blogs =  await Blog.findOne({ slug})
-  if(blogs){
-    res.render("blogs/show", { blogs });
-  }else{
-  res.render('blogs/error')
-  }
+let blog =  await Blog.findOne({ slug})
+    res.render("blogs/show", { blog });
+
   } catch (error) {
     return new AppError(error.message, error.status);
   }
@@ -151,4 +148,5 @@ exports.deleteBlog = async (req, res) => {
   return new AppError(error.message, error.status);
 }
 };
+
 
