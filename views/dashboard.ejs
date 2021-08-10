@@ -1,6 +1,7 @@
 <%- include('./partials/message'); %>
 <%if(User.userType== "admin"){%>
-    <div id="layoutSidenav">
+
+     <div id="layoutSidenav">
         <div id="layoutSidenav_content">
             <main>
                 
@@ -10,10 +11,7 @@
 
                       <div class="col-sm-3"><a class="btn btn-info" href="/" role="button">Go Home</a></div>
                   </div>
-                  
-
-
-                    <h1 class="mt-4">Admin Dashboard</h1>
+  <h1 class="mt-4">Admin Dashboard</h1>
                    
                      <%# NEW REGIME MODAL%>
         <p  class="btn btn-primary"  data-toggle="modal" data-target="#newRegime">LiST OF REGIMES</p>
@@ -361,8 +359,6 @@
            
         </div>
     </div>
-
-    
 <% }else{ %>
     <div id="layoutSidenav">
         <div id="layoutSidenav_content">

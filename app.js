@@ -37,7 +37,6 @@ mongoose
   .catch((error)=>{
      new AppError(error.message, error.status)
   })
-
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");

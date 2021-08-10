@@ -1,4 +1,6 @@
-
+<title>
+  <% if (blog) { %> <%= blog.title %> <% } else { %> 404 - NOT FOUND <% } %>
+</title>
 
   <div class="container">
         <%# Error/ success messages %>
@@ -7,7 +9,6 @@
     <% if (!blog) { %>
      Sorry the post you are looking for is either moved or deleted. Go back to the <a href="/blogs"> blog page</a>
     <%  } else { %>
-     
    <section class="mt-5 pb-3 wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
 
       <%# Grid row %>
