@@ -92,11 +92,11 @@ app.use(function (err, req, res, next) {
 
   const { status = 500, message = "Something went wrong!" } = err;
   res.locals.error = req.app.get("env") === "development" ? err : {};
-
-  if (status == 404) {
-    res.render("error", { message, status });
-  } else {
-    res.status(status).send(message);
-  }
+  res.render("error", { message, status });
+  // if (status == 404) {
+  //   res.render("error", { message, status });
+  // } else {
+  //   res.status(status).send(message);
+  // }
 });
 module.exports = app;
