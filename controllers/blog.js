@@ -5,7 +5,7 @@ const Blog = require("../models/Blog");
 
 exports.getHomepage =  async(req,res) => {
   try {
-    let { page = 1, limit = 5, category } = req.query;
+  let { page = 1, limit = 5, category } = req.query;
   let categories = await Category.find({});
   let allblogs;
   let allunalteredblogs  = await Blog.find({});
@@ -88,7 +88,7 @@ exports.newHandler = async (req, res) => {
 };
 exports.getSpecificBlog = async (req, res) => {
   try{
-  let slug = req.params.slug
+let slug = req.params.slug
 let blog =  await Blog.findOne({ slug})
     res.render("blogs/show", { blog });
 
@@ -101,6 +101,7 @@ exports.getEditBlogForm = async (req, res) => {
   let slug = req.params.slug;
  let blog =  await Blog.findOne({slug })
  let categories = await Category.find({});
+ 
     res.render("blogs/edit", { blog,categories });
 } catch (error) {
   return new AppError(error.message, error.status);
