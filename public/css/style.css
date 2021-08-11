@@ -89,3 +89,19 @@ a {
 .inline{
     display: inline;
 }
+
+  .map-container-section {
+    overflow: hidden;
+    position: relative;
+    height: 0;
+  }
+  .map-container-section iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+  }
+  .container-fluid{
+      margin-top: 100px;
+  }
