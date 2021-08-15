@@ -326,12 +326,10 @@ style="background-image: url('/img/sample.jpg');">
   function Timer(dt) {
     let td = new Date(dt);
     let tm = new Date(dt);
-    tm.setDate(td.getDate() + 1 )
-
+    tm.setDate(new Date(dt).getDate() + 1 )
+ 
     let x = setInterval(() => {
-      console.log("tm > td:", tm > td);
-console.log("tm < td:", tm < td);
-console.log("tm == td:", tm == td);
+    
     let time =     new Date(dt) - new Date().getTime()
 let day =   Math.floor(time / (1000 * 60 * 60 * 24)) 
 let hour =  Math.floor((time % (1000 * 60 * 60 * 24))/ (1000 * 60 * 60)) 
@@ -345,7 +343,7 @@ document.getElementById('seconds').innerHTML = seconds
         document.getElementById('eventInfo').innerHTML = "IT HAS STARTED!"
         document.getElementById('eventInfo2').style.display = "none"
       }
-      if(td >= tm){
+      if(tm > td){
         clearInterval(x)
         document.getElementById('eventTime').style.display = "none"
         document.getElementById('timehr').style.display = "none"
