@@ -5,6 +5,7 @@ const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const expressLayout = require("express-layouts");
+const expressEjsLayout = require('express-ejs-layouts');
 const mongoose = require("mongoose");
 const session = require("express-session");
 const flash = require("connect-flash");
@@ -40,9 +41,11 @@ mongoose
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
-
+app.set("layout extractScripts", true) // This is to extract all script tags and place them wherever you like
+app.set("layout extractStyles",  true) // This is to extract all style tags and place them wherever you like
 app.use(methodOverride("_method"));
-app.use(expressLayout);
+// app.use(expressLayout);
+app.use(expressEjsLayout);
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: false }));
 app.use(cookieParser());
