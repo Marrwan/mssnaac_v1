@@ -1,6 +1,6 @@
-<title>
-  <% if (blog) { %> Edit <%= blog.title %> <% } else { %> 404 - NOT FOUND <% } %>
-</title>
+
+ 
+
 
 <div class="container">
     <%- include('../partials/message.ejs') %>
@@ -109,5 +109,5 @@
 </form>
 </div>
 
-    
-   
+<%- contentFor('title') %> 
+<% if (blog) { %> Edit | <%= blog.title %> <% } else { %> 404 - NOT FOUND <% } %>

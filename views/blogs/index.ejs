@@ -1,6 +1,5 @@
-<title>
- Blog Page
-</title>
+
+
 <%# Homepage Section %> 
 <section>
     <div class="container-fluid">
@@ -211,7 +210,9 @@
                   <p class="font-weight-bold dark-grey-text text-center spacing grey lighten-4 py-2 mb-4">
                     <strong>POPULAR POSTS</strong>
                   </p>
-               
+               <% popularBlog.forEach(popularBlog => { %>
+                
+            
                 <div class="single-post">
                   <%# Grid row %>
                   <div class="row mb-4">
@@ -220,21 +221,21 @@
                     <%# Excerpt %>
                     <div class="col-7">
                       <h6 class="mt-0 font-small">
-                        <a>
-                          <strong>Title of the blog</strong>
+                        <a href="<%= popularBlog.slug %> ">
+                          <strong><%= popularBlog.title %> </strong>
                         </a>
                       </h6>
 
                       <div class="post-data">
                         <p class="font-small grey-text mb-0">
-                          <i class="far fa-clock-o"></i> 18/08/2017</p>
+                          <i class="far fa-clock-o"></i> <%= popularBlog.created.toDateString() %> </p>
                       </div>
                     </div>
                     <%#  Excerpt %>
                   </div>
                   <%#  Grid row %>
                 </div>
-
+   <% }) %>
                
 
               
@@ -410,3 +411,5 @@
     </div>
   </section>
  <%# blogs Section %> 
+ <%- contentFor('title') %> 
+ Blog Page

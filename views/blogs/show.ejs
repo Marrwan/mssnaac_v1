@@ -1,13 +1,13 @@
-<title>
-  <% if (blog) { %> <%= blog.title %> <% } else { %> 404 - NOT FOUND <% } %>
-</title>
+
 
   <div class="container">
         <%# Error/ success messages %>
         <%- include('../partials/message.ejs') %>
     <%# Section: Blog v.4 %>
     <% if (!blog) { %>
-     Sorry the post you are looking for is either moved or deleted. Go back to the <a href="/blogs"> blog page</a>
+      <h1>
+     Sorry the post you are looking for is either moved or deleted.<br> Go back to the <a href="/blogs"> blog page</a>
+    </h1>
     <%  } else { %>
    <section class="mt-5 pb-3 wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
 
@@ -18,12 +18,7 @@
         <div class="col-md-12">
           <%# Featured image %>
           <div class="card card-cascade wider reverse">
-            <%# <div class="view view-cascade overlay">
-              <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(134).jpg" alt="Wide sample post image" class="img-fluid">
-              <a>
-                <div class=""></div>
-              </a>
-            </div> %>
+
 
             <%# Post data %>
             <div class="card-body card-body-cascade text-center" style="padding: 7px;">
@@ -48,7 +43,7 @@
                 <span class="counter ">22</span>
 
                 <%# Comments %>
-                <a class="btn btn-blue-grey  waves-effect waves-light">
+                <a href="#comment" class="btn btn-blue-grey  waves-effect waves-light">
                   <i class="fas fa-comments left "></i>
                   <span class="hidden-md-down ">Comments</span>
                 </a>
@@ -92,129 +87,67 @@
    <%} %> 
 
     <hr class="mb-5 mt-4">
+<% let three_blogs = blogs.slice(0,3) %> 
+   
+<%# LATEST POSTS %> 
+<section class="text-left mt-4">
 
-    <%# Section: Blog v.2 %>
-    <section class="mb-5 wow fadeIn" data-wow-delay="0.3s" style="visibility: visible; animation-name: fadeIn; animation-delay: 0.3s;">
+  <h4 class="font-weight-bold mt-5 mb-5 text-center">
+    <strong>Latest news</strong>
+  </h4>
 
-      <%# Section heading %>
-      <h3 class="text-center my-5 text-center h3">Recent posts</h3>
+  <div>
+      <!-- Grid row -->
+      <div class="row mb-4 mx-1">
 
-      <%# Grid row %> 
-      <div class="row">
-
-        <%# Grid column %>
-        <div class="col-lg-4 col-md-12 mb-4">
-
-          <%# Card Light %>
+        <!-- Grid column -->
+        <% three_blogs.forEach(blog => { %>
+ 
+        <div class="col-lg-4 my-3">
+          <!-- Card -->
           <div class="card">
-            <%# Card image %>
-            <%# <div class="view overlay">
-              <img src="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20%28147%29.jpg" class="card-img-top" alt="">
-              <a>
-                <div class="mask waves-effect waves-light"></div>
-              </a>
-            </div> %>
-            <%# /.Card image %>
-            <%# Card content %>
+
+          
+
+            <!-- Card content -->
             <div class="card-body">
-              <%# Social shares button %>
-              <a class="activator mr-3"><i class="fas fa-share-alt"></i></a>
-              <%# Title %>
-              <h4 class="card-title">Card title</h4>
+              <!-- Title -->
+              <h6 class="card-title">
+                <strong> <%= blog.title %>  </strong>
+              </h6>
               <hr>
-              <%# Text %>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                card's content.</p>
-              <a class="link-text">
-                <h5>Read more <i class="fas fa-chevron-right"></i></h5>
-              </a>
+
+              <p></p>
+              <p class="font-small font-weight-bold dark-grey-text mb-1">
+                <i class="far fa-clock-o"></i> <%= blog.created.toDateString() %> </p>
+              <p class="font-small grey-text mb-0"><%= blog.author %> </p>
+              <p class="text-right mb-0 font-small font-weight-bold">
+                <a href="/blogs/<%=blog.slug%>">read more
+                  <i class="fas fa-angle-right"></i>
+                </a>
+              </p>
             </div>
-            <%# /.Card content %>
+            <!-- Card content -->
+
           </div>
-          <%# /.Card Light %>
+          <!-- Card -->
 
         </div>
-        <%# Grid column %>
-
-        <%# Grid column %>
-        <div class="col-lg-4 col-md-6 mb-4">
-
-          <%# Card Light %>
-          <div class="card">
-            <%# Card image %>
-            <%# <div class="view overlay">
-              <img src="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20%2850%29.jpg" class="card-img-top" alt="">
-              <a>
-                <div class="mask waves-effect waves-light"></div>
-              </a>
-            </div> %>
-            <%# /.Card image %>
-            <%# Card content %>
-            <div class="card-body">
-              <%# Social shares button %>
-              <a class="activator mr-3"><i class="fas fa-share-alt"></i></a>
-              <%# Title %>
-              <h4 class="card-title">Card title</h4>
-              <hr>
-              <%# Text %>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                card's content.</p>
-              <a class="link-text">
-                <h5>Read more <i class="fas fa-chevron-right"></i></h5>
-              </a>
-            </div>
-            <%# /.Card content %>
-          </div>
-          <%# /.Card Light %>
-
-        </div>
-        <%# Grid column %>
-
-        <%# Grid column %>
-        <div class="col-lg-4 col-md-6 mb-4">
-
-          <%# Card Light %>
-          <div class="card">
-            <%# Card image %>
-            <%# <div class="view overlay">
-              <img src="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20%2897%29.jpg" class="card-img-top" alt="">
-              <a>
-                <div class="mask waves-effect waves-light"></div>
-              </a>
-            </div> %>
-            <%# /.Card image %>
-            <%# Card content %>
-            <div class="card-body">
-              <%# Social shares button %>
-              <a class="activator mr-3"><i class="fas fa-share-alt"></i></a>
-              <%# Title %>
-              <h4 class="card-title">Card title</h4>
-              <hr>
-              <%# Text %>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                card's content.</p>
-              <a class="link-text">
-                <h5>Read more <i class="fas fa-chevron-right"></i></h5>
-              </a>
-            </div>
-            <%# /.Card content %>
-          </div>
-          <%# /.Card Light %>
-
-        </div>
-        <%# Grid column %>
+          <% }) %>
+        <!-- Grid column -->
 
       </div>
-      <%# Grid row %>
+      <!-- Grid row -->
+  </div>
 
-    </section>
-    <%# Section: Blog v.2 %>
 
+</section>
+<%# LATEST POSTS %> 
    
     <% if (blog) { %>
      
     <%# Section: Comments list %>
-    <section class="mb-5 wow fadeIn" data-wow-delay="0.3s" style="visibility: visible; animation-name: fadeIn; animation-delay: 0.3s;">
+    <section class="mb-5 wow fadeIn" id="comment" data-wow-delay="0.3s" style="visibility: visible; animation-name: fadeIn; animation-delay: 0.3s;">
 
       <%# Main wrapper %>
       <div class="comments-list text-center text-md-left">
@@ -225,25 +158,22 @@
           <%# Comments row %>
      
         <div class="row mb-4">
-
-          <%# Image column %>
-          <%# <div class="col-sm-2 col-12 mb-md-0 mb-3">
-            <img src="https://mdbootstrap.com/img/Photos/Avatars/img (9).jpg" class="avatar rounded-circle z-depth-1-half">
-          </div> %>
-
-          <%# Content column %>
-          <div class="col-sm-10 col-12">
+          <div class="col-sm-10 col-12 mb-3">
             <a>
-              <h4 class="font-weight-bold"><%= comment.author.username%> </h4>
+              <h5 class="user-name font-weight-bold"><%= comment.author%></h5>
             </a>
-            <div class="mt-2">
+            <div class="card-data">
               <ul class="list-unstyled">
-                <li class="comment-date"><i class="far fa-clock"></i> <%= comment.created.toDateString() %></li>
+                <li class="comment-date font-small">
+                  <i class="far fa-clock-o"></i> <%= comment.created.toLocaleDateString()%></li>
               </ul>
             </div>
-            <p class="grey-text"><%= comment.text %> .</p>
+            <p class="dark-grey-text article"><%= comment.text%>
+            </p>
           </div>
-          <%# Content column %>
+          
+         
+      
 
         </div>  
            
@@ -257,8 +187,11 @@
   </section>
     <%# Section: Comments list %>
 
+ 
+ 
+ 
     <%# Section: Leave a reply (Logged In User) %>
-  <%  if(User){ %>
+    <%  if(User){ %>
       <form action="/comments/<%= blog.slug %>/new"  method="POST" class="mb-5 wow fadeIn" data-wow-delay="0.3s" style="visibility: visible; animation-name: fadeIn; animation-delay: 0.3s;">
         
         <%# Leave a reply form %>
@@ -293,9 +226,46 @@
       
     </form>
     <%# Section: Leave a reply (Logged In User) %>
-<%  }%>
- <%} %> 
+<%  }else {%>
+  <form action="/comments/<%= blog.slug %>/new"  method="POST" class="mb-5 wow fadeIn" data-wow-delay="0.3s" style="visibility: visible; animation-name: fadeIn; animation-delay: 0.3s;">
+        
+    <%# Leave a reply form %>
+    <div class="reply-form">
+      
+    <h3 class="text-center h3 mb-3">Leave a comment</h3>
+
+   
+    <div class="row text-center text-md-left">
+      <div class="col-sm-10 col-12">
+        <div class="md-form">
+          <input type="text" id="author" name="author" class="form-control" ></input>
+          <label for="author">Your name <i style="color: lightgrey;">optional</i> </label>
+        </div>
+      </div>
+      <div class="col-sm-10 col-12">
+        <div class="md-form">
+          <textarea type="text" id="form-mess" name="text" class="md-textarea form-control" rows="3"></textarea>
+          <label for="form-mess">Your message</label>
+        </div>
+      </div>
+      
+      <div class="col-md-12 text-center mt-4">
+        <button type="submit" class="btn btn-pink btn-rounded waves-effect waves-light">Submit</button>
+      </div>
+      
+    </div>
+    <%# Third row %>
+    
+  </div>
+  <%# Leave a reply form %>
+  
+</form>
+<% }  %>
+<%} %> 
   </div>
 
 
+  <%- contentFor('title') %> 
+  <% if (blog) { %> <%= blog.title %> <% } else { %> 404 - NOT FOUND <% } %>
 
+  

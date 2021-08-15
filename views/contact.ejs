@@ -1,23 +1,11 @@
+<title>
+  Contact Us
+</title>
 <style>
-    body {
-      background-color: #eee;
-    }
-    .map-container-section {
-      overflow: hidden;
-      position: relative;
-      height: 0;
-    }
-    .map-container-section iframe {
-      left: 0;
-      top: 0;
-      height: 100%;
-      width: 100%;
-      position: absolute;
-    }
-    .container-fluid{
-        margin-top: 100px;
-    }
-  </style>
+  body {
+    background-color: #eee;
+  }
+</style>
   <section>
     <div id="map-container-demo-section" class="map-container-section mb-4" style="height: 500px">
       <iframe src="https://maps.google.com/maps?q=Orogun+Road&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" style="border:0"></iframe>
@@ -51,7 +39,7 @@
   
                       <%# Grid column %>
                       <div class="col-md-8 col-xl-9 mb-4">
-                        <form>
+                        <form action="https://formsubmit.co/abdulbasitdamilola6@gmail.com" method="POST">
   
                           <%# Grid row %>
                           <div class="row">
@@ -60,7 +48,7 @@
                             <div class="col-md-6">
                               <div class="md-form mb-0">
                                 <div class="md-form mb-0">
-                                  <input type="text" id="contact-name" class="form-control">
+                                  <input type="text" id="contact-name" name="name" class="form-control">
                                   <label for="contact-name" class="">Your name</label>
                                 </div>
                               </div>
@@ -71,7 +59,7 @@
                             <div class="col-md-6">
                               <div class="md-form mb-0">
                                 <div class="md-form mb-0">
-                                  <input type="text" id="contact-email" class="form-control">
+                                  <input type="text" id="contact-email" name="email" class="form-control">
                                   <label for="contact-email" class="">Your email</label>
                                 </div>
                               </div>
@@ -85,7 +73,7 @@
                           <div class="row">
                             <div class="col-md-12">
                               <div class="md-form mb-0">
-                                <input type="text" id="contact-Subject" class="form-control">
+                                <input type="text" id="contact-Subject" name="subject" class="form-control">
                                 <label for="contact-Subject" class="">Subject</label>
                               </div>
                             </div>
@@ -99,7 +87,7 @@
                             <div class="col-md-12">
   
                               <div class="md-form mb-0">
-                                <textarea type="text" id="contact-message" class="md-textarea form-control"
+                                <textarea type="text" id="contact-message" name="message" class="md-textarea form-control"
                                   rows="3"></textarea>
                                 <label for="contact-message">Your message</label>
                               </div>
@@ -121,17 +109,17 @@
                         <ul class="list-unstyled contact-icons">
                           <li>
                             <i class="fas fa-map-marker-alt fa-2x orange-text"></i>
-                            <p>Orogun, Ibadan, NG</p>
+                            <p>Orogun Ibadan, Oyo, Ng</p>
                           </li>
   
                           <li>
                             <i class="fas fa-phone fa-2x orange-text"></i>
-                            <p>+ 2349016989228</p>
+                            <p>+2348073302821</p>
                           </li>
   
                           <li>
                             <i class="fas fa-envelope fa-2x orange-text"></i>
-                            <p>mssnaac@gmail.com</p>
+                            <p>mssnakinyele.ac@gmail.com</p>
                           </li>
                         </ul>
                       </div>
@@ -154,3 +142,24 @@
         </div>
   
       </div>
+      <script>
+       async function submithandler (e) {
+         try {
+           
+         
+            alert(e.body)
+    // e.preventDefault();
+    // "https://formsubmit.co/abdulbasitdamilola6@gmail.com"
+   await fetch("/blogs/new", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+body: e.body
+      // body: encodeURI({ "form-name": "contact", name, email, subject, message }),
+    })
+    alert('message sent')
+  } catch (error) {
+           alert(error)
+          }
+
+  }
+      </script>

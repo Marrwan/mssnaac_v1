@@ -135,8 +135,8 @@
             <h5 class="text-center dark-grey-text text-uppercase font-weight-bold spacing my-5 pt-2 pb-4 wow fadeIn" data-wow-delay="0.2s" style="visibility: visible; animation-name: fadeIn; animation-delay: 0.2s;">
               <strong>LATEST post</strong>
             </h5>     
-   
-            <% let partblogs = blogs.slice(0,6) %> 
+   <div style="padding: 60px; margin: 10px -50px;" class="jumbotron">
+      <% let partblogs = blogs.slice(0,6) %> 
             <%# Grid row  %>
             <% partblogs.forEach(blog => { %>
               <div class="row">
@@ -193,8 +193,8 @@
             <%# Grid row  %>
 
             <%#   SECOND blog SECTION %>
-
- <hr class="between-sections mt-4 mb-4" style="color: #333; background-color: #333; height: 1px;">
+          </div>
+<%#   <hr class="between-sections mt-4 mb-4" style="color: #333; background-color: #333; height: 1px;">%> 
      
       
       <%#   Fifth section %>
@@ -326,8 +326,8 @@ style="background-image: url('/img/sample.jpg');">
   function Timer(dt) {
     let td = new Date(dt);
     let tm = new Date(dt);
-    tm.setDate(new Date(dt).getDate() + 1 )
-  
+    tm.setDate(td.getDate() + 1 )
+
     let x = setInterval(() => {
     let time =     new Date(dt) - new Date().getTime()
 let day =   Math.floor(time / (1000 * 60 * 60 * 24)) 
@@ -342,7 +342,7 @@ document.getElementById('seconds').innerHTML = seconds
         document.getElementById('eventInfo').innerHTML = "IT HAS STARTED!"
         document.getElementById('eventInfo2').style.display = "none"
       }
-      if(td <= tm){
+      if(td >= tm){
         clearInterval(x)
         document.getElementById('eventTime').style.display = "none"
         document.getElementById('timehr').style.display = "none"
@@ -351,3 +351,5 @@ document.getElementById('seconds').innerHTML = seconds
   }
  </script>
  
+ <%- contentFor('title') %> 
+MSSNAAC

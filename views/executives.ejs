@@ -71,9 +71,16 @@
                       <span class="input-group-text ">Hall</span>
                   </div>
                   <select name="hall" class="form-control">
-                    <% portfolios.forEach(portfolio => { %>
-                      <option value="<%= portfolio.title %> "><%= portfolio.title %> </option>
-                    <% }) %>
+                    <option value="Nnamdi Azikiwe ">Nnamdi Azikiwe </option>
+                    <option value="Independence ">Independence </option>
+                    <option value="Bello ">Bello </option>
+                    <option value="Mellanby ">Mellanby </option>
+                    <option value="Tedder">Tedder</option>
+                    <option value="Kuti">Kuti</option>
+                    <option value="Idia">Idia</option>
+                    <option value="Queen Elizabeth">Queen Elizabeth</option>
+                    <option value="Awolowo">Awolowo</option>
+                    <option value="Off Campus">Off Campus</option>
                   </select>
               </div>
                 <%# Hall %> 
@@ -259,3 +266,5 @@
         </div>
         <%# REGIME TABLE %> 
       </section>
+      <%- contentFor('title') %> 
+      Executives

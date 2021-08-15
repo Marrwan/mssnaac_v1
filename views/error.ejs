@@ -37,6 +37,9 @@
                     data-wow-delay="0.3s">
                     <strong>Internal Server Error </strong>
                   </h1>
+            
+                  <p><%=process.env.NODE_ENV == "development" ? message : ""%> </p>
+                  
                   <% }   else {%>
                     <h1 class="display-1 mt-5 mx-5 mt-lg-0 mb-5 font-weight-bold green-text wow fadeIn"
                     data-wow-delay="0.3s">
@@ -80,5 +83,5 @@
       </div>
     </div>
   </section>
-
- 
+  <%- contentFor('title') %> 
+  <% if (status == "500") { %> Internal Server Error <% } else { %> 404 - NOT FOUND <% } %>
