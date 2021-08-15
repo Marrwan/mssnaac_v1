@@ -4,6 +4,6 @@ const { isAdmin, isLoggedIn } = require("../auth/auth");
 const router = require('express').Router();
 router
 .route('/:slug/new')
-.post(isLoggedIn,isAdmin, newCommentHandler)
+.post(newCommentHandler)
 
 module.exports = router;

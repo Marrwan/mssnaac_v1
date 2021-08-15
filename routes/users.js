@@ -8,13 +8,13 @@ router
   .route("/signup")
   //  GET-ROUTE : Get form to sigup .
   .get(user.getSignupForm)
-  // CREAT-ROUTE:  signup handle
+  // CREATE-ROUTE:  signup handle
   .post(user.signupHandler);
 
 // LOGIN ROUTE
 router
   .route("/login")
-  // CREATE-ROUTE handle login
+  //  handle user login
   .post(user.login);
 
 module.exports = router;

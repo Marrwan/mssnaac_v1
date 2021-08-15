@@ -58,7 +58,5 @@ router.get("/instagram", (req, res) => {
 router.get("/whatsapp", (req, res) => {
   res.redirect("https://wa.me/+2348073302821");
 });
-router.all("*", (req, res, next) => {
-  next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
-});
+
 module.exports = router;
