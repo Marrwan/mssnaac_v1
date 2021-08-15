@@ -10,6 +10,7 @@ exports.getHomepage =  async(req,res) => {
   let allblogs;
   let allunalteredblogs  = await Blog.find({});
   let blogs ;
+  let popularBlog = await Blog.find({}).sort({comments: -1}).limit(5);
   let categori ;
   if(category){
     if(category == "alfaaedah"){
@@ -28,7 +29,7 @@ exports.getHomepage =  async(req,res) => {
     allblogs = await Blog.find({});
     categori = ""
   }
-res.render("blogs/index", {categories,blogs,allblogs, limit,page,allunalteredblogs, categori}) 
+res.render("blogs/index", {categories,blogs,allblogs, limit,page,allunalteredblogs, categori, popularBlog}) 
 } catch (error) {
   return new AppError(error.message, error.status);
   }
@@ -88,9 +89,14 @@ exports.newHandler = async (req, res) => {
 };
 exports.getSpecificBlog = async (req, res) => {
   try{
+let blogs = await Blog.find({}).sort({created : "desc"})
 let slug = req.params.slug
 let blog =  await Blog.findOne({ slug})
-    res.render("blogs/show", { blog });
+if(!blog) {
+  res.render("blogs/show", {blogs, blog});
+}else{
+    res.render("blogs/show", { blog, blogs });
+}
 
   } catch (error) {
     return new AppError(error.message, error.status);
@@ -101,7 +107,6 @@ exports.getEditBlogForm = async (req, res) => {
   let slug = req.params.slug;
  let blog =  await Blog.findOne({slug })
  let categories = await Category.find({});
- 
     res.render("blogs/edit", { blog,categories });
 } catch (error) {
   return new AppError(error.message, error.status);
@@ -149,5 +154,3 @@ exports.deleteBlog = async (req, res) => {
   return new AppError(error.message, error.status);
 }
 };
-
-

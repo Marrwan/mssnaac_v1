@@ -25,15 +25,7 @@ exports.newCategoryHandler = async (req,res)=>{
         }
        
     } catch (error) {
-        
-    }
-}
-
-exports.editCategoryHandler = async( req,res) => {
-    try {
-        
-    } catch (error) {
-        
+        return new AppError(error.message, error.status);
     }
 }
 

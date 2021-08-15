@@ -6,6 +6,7 @@ const Regime = require("../models/Regime");
 const  Executives = require("../models/Executives");
 const Category = require('../models/Category');
 const Event = require('../models/Event');
+
 let errorsPush = (errors, msg) => {
  !msg ?
     errors.push({"msg" : "Please fill in required fields"})

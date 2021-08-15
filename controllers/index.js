@@ -11,14 +11,13 @@ exports.getHomepage = async (req, res) => {
   try {
  let blogs =    await Blog.find({}).sort({ created: "desc" });
  let events = await Event.find({})
- 
-let response = await axios({ method: 'GET',
+ let response = await axios({ method: 'GET',
           url: 'https://api.sunnah.com/v1/hadiths/random',
           headers: { 'x-api-key': 'SqD712P3E82xnwOAEOkGd5JZH8s9wRR24TqNFzjk' },
           body: '{}' });
 const random = Math.floor(Math.random() * response.data.length);
 const data = response.data.hadith[0];
-      return  res.render("index", { blogs, events, data   });
+      return  res.render("index", { blogs, events, data    });
   } catch (error) {
     return new AppError(error.message, error.status);
   }
@@ -58,8 +57,6 @@ errors.push({"msg" : "Please fill in the required fields"})
     return new AppError(error.message, error.status);
   }
 }
-
-
 exports.logout = (req, res) => {
   req.logout();
   req.flash("success_msg", "You are logged out");
