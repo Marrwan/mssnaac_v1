@@ -4,7 +4,12 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "nodemon ./bin/www"
+    "node": "nodemon ./bin/www",
+    "dev": "pm2 start ./bin/www",
+    "stop": "pm2 stop ./bin/www",
+    "list": "pm2 list",
+    "monit": "pm2 monit",
+    "pm2": "pm2"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -16,6 +21,7 @@
     "dotenv": "^8.2.0",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
+    "express-ejs-layouts": "^2.5.1",
     "express-layouts": "^1.0.0",
     "express-session": "^1.17.1",
     "gridfs-stream": "^1.1.1",
