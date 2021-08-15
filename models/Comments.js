@@ -8,13 +8,11 @@ const commmentSchema = new mongoose.Schema(
       required: [true, 'A Comment must belong to a post !'],
     },
     author: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
+      type: String,
       required: [true, 'A Comment must belong to a User !'],
     },
     text: {
       type: String,
-      required: [true, 'A Comment must has a body'],
     },
     created: {
       type: Date,
@@ -29,12 +27,13 @@ const commmentSchema = new mongoose.Schema(
 
 commmentSchema.pre(/^find/, function (next) {
   this.populate({
-    path: 'author',
-    select: 'username ',
-  }).populate({
     path : 'blog',
     select: 'title'
   })
+  // .populate({
+  //   path: 'author',
+  //   select: 'username ',
+  // })
 
   next();
 });

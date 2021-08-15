@@ -2,6 +2,8 @@ var mongoose = require("mongoose");
 var slug = require("mongoose-slug-generator");
 mongoose.plugin(slug);
 
+
+let Comment = require('./Comments')
 const blogSchema = new mongoose.Schema({
   title: {
     type: String,
@@ -33,7 +35,13 @@ category : {
     },
   ],
 });
+blogSchema.pre(/(Delete)|(Remove)/, async function(next){
 
+  let thisblog = await this.find(this.query)
+
+  await Comment.deleteMany({blog : thisblog})
+   next()
+})
 blogSchema.pre(/(findOne)/,   function(next){
   this.populate({
     path: 'comments',
