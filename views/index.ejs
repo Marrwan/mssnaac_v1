@@ -327,10 +327,11 @@ style="background-image: url('/img/sample.jpg');">
     let td = new Date(dt);
     let tm = new Date(dt);
     tm.setDate(td.getDate() + 1 )
-console.log("tm > td:", tm > td);
+
+    let x = setInterval(() => {
+      console.log("tm > td:", tm > td);
 console.log("tm < td:", tm < td);
 console.log("tm == td:", tm == td);
-    let x = setInterval(() => {
     let time =     new Date(dt) - new Date().getTime()
 let day =   Math.floor(time / (1000 * 60 * 60 * 24)) 
 let hour =  Math.floor((time % (1000 * 60 * 60 * 24))/ (1000 * 60 * 60)) 
