@@ -5,6 +5,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "node": "nodemon ./bin/www",
+    "test": "nodemon test.js",
     "dev": "pm2 start ./bin/www",
     "stop": "pm2 stop ./bin/www",
     "list": "pm2 list",

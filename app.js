@@ -101,5 +101,7 @@ app.use(function (err, req, res, next) {
   // } else {
   //   res.status(status).send(message);
   // }
+  next()
 });
+
 module.exports = app;
