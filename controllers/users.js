@@ -21,13 +21,13 @@ exports.signupHandler = async(req, res, next) => {
   } = req.body;
   let errors = [];
   if (
-    !name ||
-    !username ||
-    !email ||
-    !password ||
-    !confirm ||
-    !userType ||
-    !gender
+    name.trim().length === 0 ||
+    username.trim().length === 0 ||
+    email.trim().length === 0 ||
+    password.trim().length === 0 ||
+    confirm.trim().length === 0 ||
+    userType.trim().length === 0 ||
+    gender.trim().length === 0
   ) {
     errors.push({ msg: "Please fill in all fields" });
   }

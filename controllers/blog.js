@@ -10,7 +10,7 @@ exports.getHomepage =  async(req,res) => {
   let allblogs;
   let allunalteredblogs  = await Blog.find({});
   let blogs ;
-  let popularBlog = await Blog.find({}).sort({comments: -1}).limit(5);
+  let popularBlog = await Blog.find({}).sort({comments: -1}).limit(3);
   let categori ;
   if(category){
     if(category == "alfaaedah"){
@@ -49,7 +49,7 @@ exports.newHandler = async (req, res) => {
  let categories = await Category.find({})
     const { title, post, category, excerpt } = req.body;
     let errors = [];
-    if (!title || !post || !excerpt || !category) {
+    if (title.trim().length === 0  || post.trim().length === 0 ||  excerpt.trim().length === 0||  category.trim().length === 0) {
       errors.push({ msg: "Please fill in all fields" });
     }
     if (title.lenght < 5) {
@@ -119,7 +119,7 @@ exports.editBlogHandler = async (req, res) => {
  let blog = await Blog.findOne({slug})
     const { title, post, excerpt,category } = req.body;
     let errors = [];
-    if (!title || !post || !excerpt || !category) {
+    if (title.trim().length === 0 || post.trim().length === 0 || excerpt.trim().length === 0 || category.trim().length === 0) {
       errors.push({ msg: "Please fill in all fields" });
     }
     if (title.lenght < 5) {

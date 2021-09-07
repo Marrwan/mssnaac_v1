@@ -39,7 +39,7 @@ exports.newExecutivesHandler = async(req,res)=>{
     let executives = await Executives.find({}).sort({created: "desc"})
     let { portfolio,name,level, hall,phoneNumber,department,yearOfAdmission,yearOfGraduation,country,regime} = req.body;
     let errors = [];
-    if(!portfolio || !name || !level  || !hall || !phoneNumber || !department || !yearOfAdmission || !yearOfGraduation || !country || !regime){
+    if(portfolio.trim().length === 0   || name.trim().length === 0 || level.trim().length === 0  || hall.trim().length === 0 || phoneNumber.trim().length === 0 || department.trim().length === 0 || yearOfAdmission.trim().length === 0 || yearOfGraduation.trim().length === 0 || country.trim().length === 0 || regime.trim().length === 0){
 errors.push({"msg" : "Please fill in the required fields"})
     }
     if(errors.length > 0){

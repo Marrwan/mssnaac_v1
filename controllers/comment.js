@@ -14,7 +14,7 @@ exports.newCommentHandler = async(req,res)=>{
     let blog =  await Blog.findOne({ slug})
     let blogs = await Blog.find({}).sort({created : "desc"})
     let errors = [];
-    if(!text) errors.push({msg:"Comment can not be blank"});
+    if(text.trim().length === 0) errors.push({msg:"Comment can not be blank"});
     if(errors.length > 0) res.render("blogs/show", { blog, blogs, errors });
     author = req.user ? req.user.username : author ? author : "Anonymous 😎";
     let comment = await Comment.create({text,author,blog});

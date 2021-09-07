@@ -3,7 +3,6 @@ const Portfolio = require('../models/Portfolio');
 const User = require("../models/User");
 const AppError = require("../utilities/appError");
 const Regime = require("../models/Regime");
-const  Executives = require("../models/Executives");
 const Category = require('../models/Category');
 const Event = require('../models/Event');
 
@@ -23,7 +22,7 @@ try {
  let {title,date,image} = req.body;
  
  let errors = [];
- if(!title || !date ) {
+ if(title.trim().length === 0 || !date || date.trim().length === 0 ) {
 errorsPush(errors)
  } 
  if(new Date(date) < new Date().getTime()){
@@ -74,7 +73,7 @@ exports.newRegimeHandler = async(req,res) => {
     let events = await Event.find({})
  let {year} = req.body;
  let errors = []; 
- if(!year){
+ if(year.trim().length === 0){
   errorsPush(errors)
  }
  if(errors.length > 0){
@@ -107,7 +106,7 @@ exports.updateRegimeHandler = async(req,res) => {
   let errors = [];
 let regime =   await Regime.findOne({_id:id})
     let {year} = req.body
-    if(!year){
+    if(year.trim().length === 0){
       errors.push({"msg": "please fill in the required fields"})
     }
     if(errors.length > 0){
@@ -150,10 +149,9 @@ exports.newPortfolioHandler = async(req,res) => {
   let errors = [];
  let {title} = req.body;
 
-if(!title){
+if(title.trim().length === 0){
   errorsPush(errors)
 }
-
 if(errors.length > 0) {
       res.render("dashboard", { users,errors,title,portfolios, regimes,categories ,events});
 }
