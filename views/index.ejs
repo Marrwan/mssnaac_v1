@@ -130,14 +130,14 @@
   <hr class="between-sections mt-0 mb-4">
 
 <%#   blog %>
-<div class="container-fluid">
+<div class="container-fluid ">
           <%#   SECOND blog SECTION %>
-          <section id="blog" class="pt-2 mt-3 pb-3 section blog-section">
+          <section id="blog" class="pt-2 mt-3 pb-3 section blog-section ">
             <h5 class="text-center dark-grey-text text-uppercase font-weight-bold spacing my-5 pt-2 pb-4 wow fadeIn" data-wow-delay="0.2s" style="visibility: visible; animation-name: fadeIn; animation-delay: 0.2s;">
               <strong>LATEST post</strong>
             </h5>     
    <div style="padding: 60px; margin: 10px -50px;" class="jumbotron">
-      <% let partblogs = blogs.slice(0,6) %> 
+      <% let partblogs = blogs.slice(0,5) %> 
             <%# Grid row  %>
             <% partblogs.forEach(blog => { %>
               <div class="row">
@@ -201,16 +201,18 @@
       <%#   Fifth section %>
 </div>
 <%#   blog %>
+
 <%#  Streak%>
 <div class="streak streak-photo streak-md"
-style="background-image: url('/img/sample.jpg');">
+style="background-image: url('/img/sample.jpg'); 
+overflow:hidden;">
 <div class="flex-center mask rgba-purple-light">
   <div class="text-center white-text w-responsive  mb-5 pt-5">  
     <h5 class="text-center font-italic wow fadeIn" data-wow-delay="0.2s"><%- data.chapterTitle%> </h5>
-    <p ><i>
+    <p >
       <%- data.body%>
       <%#   HADEETH API %>
-     </i>
+    
       </p>
   </div>
 </div>
@@ -286,7 +288,7 @@ style="background-image: url('/img/sample.jpg');">
   
           <%#   Google map %>
           <div id="map-container-google-2" class="col-lg-7 mb-lg-0 mb-4 z-depth-1-half map-container" style="height: 500px; ">
-            <iframe style="height: 100%; width: 100%;border:0;"  id="home_map" src="https://maps.google.com/maps?q=Orogun+Road&t=&z=15&ie=UTF8&iwloc=&output=embed"   allowfullscreen="" ></iframe>
+            <iframe style="height: 100%; width: 100%;border:0;"  id="home_map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6478.916108607711!2d3.9123989406427118!3d7.453619201395156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1039ed7ce0c9259d%3A0x26a85c5ea7899251!2s12%20Orogun%20Rd%2C%20200132%2C%20Ibadan%2C%20Nigeria!5e1!3m2!1sen!2sus!4v1630997816092!5m2!1sen!2sus"   allowfullscreen="" ></iframe>
           </div>
   
           <%#   Buttons %>
