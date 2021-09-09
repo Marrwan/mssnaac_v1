@@ -1,12 +1,14 @@
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
 const validator = require('validator');
-
+const AppError = require('../utilities/appError')
+const {isEmpty} = require('validator')
 // LOAD MODELS
 const User = require("../models/User");
 
 exports.getSignupForm = (req, res) => {
   res.render("signup");
+  
 };
 exports.signupHandler = async(req, res, next) => {
  try{
@@ -20,17 +22,15 @@ exports.signupHandler = async(req, res, next) => {
     userType,
   } = req.body;
   let errors = [];
-  if (
-    name.trim().length === 0 ||
-    username.trim().length === 0 ||
-    email.trim().length === 0 ||
-    password.trim().length === 0 ||
-    confirm.trim().length === 0 ||
-    userType.trim().length === 0 ||
-    gender.trim().length === 0
-  ) {
-    errors.push({ msg: "Please fill in all fields" });
-  }
+ Object.entries(req.body).forEach(([el,val]) => {
+   if( el == 'confirm'){
+     el = 'confirm password'
+   }
+    if(isEmpty(val.trim())){
+      errors.push({ msg:`${el} can not be empty` });
+    }
+  });
+ 
 if(!validator.isEmail(email)){
   errors.push({msg: "Email is not valid"});
 }
