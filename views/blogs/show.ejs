@@ -21,26 +21,12 @@
 
 
             <%# Post data %>
-            <div class="card-body card-body-cascade text-center" style="padding: 7px;">
+            <div class="card-body card-body-cascade text-center mp-5" >
               <h2><a><strong><%= blog.title %> </strong></a></h2>
               <p>Written by <a><%= blog.author %></a>, <%= blog.created.toDateString() %></p>
 
               <%# Social shares %>
               <div class="social-counters ">
-
-                <%# Facebook %>
-                <a class="btn btn-fb  waves-effect waves-light">
-                  <i class="fab fa-facebook-f left "></i>
-                  <span class="hidden-md-down ">Facebook</span>
-                </a>
-                <span class="counter ">46</span>
-
-                <%# Twitter %>
-                <a class="btn btn-tw  waves-effect waves-light">
-                  <i class="fab fa-twitter left "></i>
-                  <span class="hidden-md-down ">Twitter</span>
-                </a>
-                <span class="counter ">22</span>
 
                 <%# Comments %>
                 <a href="#comment" class="btn btn-blue-grey  waves-effect waves-light">
