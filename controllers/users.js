@@ -1,6 +1,6 @@
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
-
+const validator = require('validator');
 
 // LOAD MODELS
 const User = require("../models/User");
@@ -31,7 +31,9 @@ exports.signupHandler = async(req, res, next) => {
   ) {
     errors.push({ msg: "Please fill in all fields" });
   }
-
+if(!validator.isEmail(email)){
+  errors.push({msg: "Email is not valid"});
+}
   if (password.length <= 5) {
     errors.push({ msg: "Password must be greater than five characters" });
   }
