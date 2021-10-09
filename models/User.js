@@ -1,4 +1,5 @@
 var mongoose = require("mongoose");
+var timestamp = require('mongoose-timestamp');
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -25,4 +26,8 @@ const userSchema = new mongoose.Schema({
   },
 });
 
+userSchema.plugin(timestamp,{
+  createdAt: 'created',
+  updatedAt: 'updated'
+})
 module.exports = mongoose.model("User", userSchema);

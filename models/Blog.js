@@ -1,5 +1,6 @@
 var mongoose = require("mongoose");
 var slug = require("mongoose-slug-generator");
+var timestamp = require('mongoose-timestamp')
 mongoose.plugin(slug);
 
 
@@ -24,10 +25,6 @@ category : {
   excerpt: {
     type: String
       },
-  created: {
-    type: Date,
-    default: Date.now,
-  },
   comments: [
     {
       type: mongoose.Schema.Types.ObjectId,
@@ -35,6 +32,10 @@ category : {
     },
   ],
 });
+blogSchema.plugin(timestamp, {
+  createdAt: 'created',
+  updatedAt: 'updated'
+})
 blogSchema.pre(/(Delete)|(Remove)/, async function(next){
 
   let thisblog = await this.find(this.query)
