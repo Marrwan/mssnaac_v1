@@ -1,0 +1,24 @@
+
+
+  <form class="container" action="/login" method="POST">
+    <%- include('./partials/message.ejs') %>
+    <div>
+        <div class="input-group pb-1">
+            <div class="input-group-prepend">
+                <span class="input-group-text "><i class="fa fa-user"></i></span>
+            </div>
+          <input type="email" name="email" id="username" placeholder="Email" class="form-control"> 
+        </div>
+        <span class="text-danger p-3 error"  style="font-style: italic;"></span>
+    </div>
+    <div>
+        <div class="input-group pb-1">
+            <div class="input-group-prepend">
+                <span class="input-group-text "><i class="fas fa-key"></i></span>
+            </div>
+            <input type="password" name="password" id="password" placeholder="Password" class="form-control"> 
+        </div>
+        <span class="text-danger p-3 error"  style="font-style: italic;"></span>
+    </div>
+    <button type="submit" class="btn btn-primary btn-md mb-3" id="loginBtn">Login</button>  
+</form>

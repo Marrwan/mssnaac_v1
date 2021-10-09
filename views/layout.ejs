@@ -11,6 +11,16 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/mdb.min.css">   
     <link rel="stylesheet" href="/css/style.css">
+    <style>
+       body{
+    margin:0;
+    font-family: 'Roboto', sans-serif;
+    font-weight:normal;
+    overflow-x:hidden;
+    font-size:14px;
+    
+  }
+    </style>
 </head>
 <%- defineContent('style') %>
 <body>
@@ -64,7 +74,7 @@
                 <li class="nav-item ">
                    <%#  trigger modal %>
 
-                  <a  class="nav-link"  data-toggle="modal" data-target="#exampleModalScrollable">
+                  <a class="nav-link" href="/login">
                   Login
                 </a>
     
@@ -146,44 +156,6 @@
 
 
 <%# Modal %>
-<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    
-    <form class="modal-content" action="/login" method="POST">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalScrollableTitle"> Login</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-       
-    <div>
-        <div class="input-group pb-1">
-            <div class="input-group-prepend">
-                <span class="input-group-text "><i class="fa fa-user"></i></span>
-            </div>
-          <input type="email" name="email" id="username" placeholder="Email" class="form-control"> 
-        </div>
-        <span class="text-danger p-3 error"  style="font-style: italic;"></span>
-    </div>
-    <div>
-        <div class="input-group pb-1">
-            <div class="input-group-prepend">
-                <span class="input-group-text "><i class="fas fa-key"></i></span>
-            </div>
-            <input type="password" name="password" id="password" placeholder="Password" class="form-control"> 
-        </div>
-        <span class="text-danger p-3 error"  style="font-style: italic;"></span>
-    </div>
-    </div>
-      <div class="modal-footer">
-        
-        <button type="submit" class="btn btn-primary btn-md mb-3" id="loginBtn">Login</button>   
-      </div>
-    </form>
-  </div>
-</div>
 <main style="margin: 60px;">
   <%-body%>
 </main>
@@ -214,10 +186,10 @@
         <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3 white-text">
           <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
           <p>
-            <i class="fas fa-home mr-1"></i>Orogun Ibadan, Oyo, Ng
+            <i class="fas fa-home mr-1"></i>Orogun Ibadan
           <p>
             <a href="mailto:mssnakinyele.ac@gmail.com">
-              <i class="fas fa-envelope mr-1"></i>mssnakinyele.ac@gmail.com
+              <i class="fas fa-envelope mr-1"></i>mssnaac
             </a>
           <p>
             <a href="tel:+2348073302821">
