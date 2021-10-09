@@ -44,27 +44,27 @@ module.exports.passportLocalConfig = function (passport) {
  
 };
 
-module.exports.passportGoogleConfig = (passport) =>{
+// module.exports.passportGoogleConfig = (passport) =>{
  
-  passport.use( new googleStrategy({
-      clientID: process.env.GOOGLECLIENTID,
-      clientSecret: process.env.GOOGLECLIENTSECRET,
-      callbackURL: "/google/redirect"
-    }, async(accessToken, refreshToken, profile, cb)=>{
-        try {
-            let user = await User.findOne({googleId: profile.id})
-            if(user){
-               return cb(null, user)
-            }
+//   passport.use( new googleStrategy({
+//       clientID: process.env.GOOGLECLIENTID,
+//       clientSecret: process.env.GOOGLECLIENTSECRET,
+//       callbackURL: "/google/redirect"
+//     }, async(accessToken, refreshToken, profile, cb)=>{
+//         try {
+//             let user = await User.findOne({googleId: profile.id})
+//             if(user){
+//                return cb(null, user)
+//             }
       
-      let newUser = await new User({
-          email: profile.emails[0].value,
-          username: profile.displayName,
-          googleId : profile.id,
-      }).save()  
-  return cb(null, newUser)
-          } catch (error) {
-            AppError(error.message,error.status);
-        }
-    } ))
-}
+//       let newUser = await new User({
+//           email: profile.emails[0].value,
+//           username: profile.displayName,
+//           googleId : profile.id,
+//       }).save()  
+//   return cb(null, newUser)
+//           } catch (error) {
+//             AppError(error.message,error.status);
+//         }
+//     } ))
+// }

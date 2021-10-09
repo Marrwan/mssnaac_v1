@@ -13,9 +13,9 @@ const passport = require("passport");
 const methodOverride = require("method-override");
 const MongoStore = require("connect-mongo"); 
 
-const {passportGoogleConfig, passportLocalConfig, serializeDeserializeUser} = require('./config/passport')
+const {passportLocalConfig, serializeDeserializeUser} = require('./config/passport')
 serializeDeserializeUser(passport)
-passportGoogleConfig(passport)
+// passportGoogleConfig(passport) 
 passportLocalConfig(passport)
 
 const AppError = require("./utilities/appError");

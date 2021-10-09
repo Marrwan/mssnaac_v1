@@ -19,6 +19,6 @@ router
   //  handle user login
   .post(user.login);
 
-router.get('/google', user.getGoogleLogin);
-router.get('/google/redirect',passport.authenticate('google'), user.googleRedirect)
+// router.get('/google', user.getGoogleLogin);
+// router.get('/google/redirect',passport.authenticate('google'), user.googleRedirect)
 module.exports = router;

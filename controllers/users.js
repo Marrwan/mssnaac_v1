@@ -112,9 +112,9 @@ exports.login = (req, res, next) => {
       successFlash: true,
     })(req, res, next);
   }
-exports.getGoogleLogin = passport.authenticate('google', {
-    scope: ['profile', 'email']
-  })
-exports.googleRedirect =  (req,res)=>{
-  res.redirect('/dashboard')
-}
+// exports.getGoogleLogin = passport.authenticate('google', {
+//     scope: ['profile', 'email']
+//   })
+// exports.googleRedirect =  (req,res)=>{
+//   res.redirect('/dashboard')
+// }
