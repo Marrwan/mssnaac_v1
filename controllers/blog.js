@@ -89,9 +89,9 @@ exports.newHandler = async (req, res) => {
 };
 exports.getSpecificBlog = async (req, res) => {
   try{
-let blogs = await Blog.find({}).sort({created : "desc"})
-let slug = req.params.slug
-let blog =  await Blog.findOne({ slug})
+    let slug = req.params.slug
+    let blog =  await Blog.findOne({ slug})
+    let blogs = await Blog.find({}).sort({created : "desc"})
 if(!blog) {
   res.render("blogs/show", {blogs, blog});
 }else{

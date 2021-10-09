@@ -101,10 +101,20 @@ if(!validator.isEmail(email)){
   return new AppError(error.message, error.status);
 }
 };
+exports.getLogin = (req,res)=>{
+  res.render('login')
+}
 exports.login = (req, res, next) => {
     passport.authenticate("local", {
-      successRedirect: "back",
+      successRedirect: "/dashboard",
       failureRedirect: "back",
       failureFlash: true,
+      successFlash: true,
     })(req, res, next);
   }
+exports.getGoogleLogin = passport.authenticate('google', {
+    scope: ['profile', 'email']
+  })
+exports.googleRedirect =  (req,res)=>{
+  res.redirect('/dashboard')
+}

@@ -17,7 +17,7 @@ exports.getHomepage = async (req, res) => {
           body: '{}' });
 const random = Math.floor(Math.random() * response.data.length);
 const data = response.data.hadith[0];
-      return  res.render("index", { blogs, events,  data    });
+      return  res.render("index", { blogs, events, data    });
   } catch (error) {
     return new AppError(error.message, error.status);
   }
@@ -60,6 +60,6 @@ errors.push({"msg" : "Please fill in the required fields"})
 exports.logout = (req, res) => {
   req.logout();
   req.flash("success_msg", "You are logged out");
-  res.redirect("back");
+  res.redirect("/login");
 };
 
