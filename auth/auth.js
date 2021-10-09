@@ -4,14 +4,14 @@ module.exports = {
             return next();
         }
         req.flash('error_msg', 'You have to log in to view that');
-        res.redirect('/')
+        res.redirect('/login')
     },
     isAdmin : function(req,res,next){
         if(req.isAuthenticated() && req.user.userType == 'admin'){
             return next();
         }
         req.flash('error_msg', 'Sorry, this is available only  for the admin');
-        res.redirect('/')
+        res.redirect('/login')
     },
     isStudent: function(req,res,next){
         if(req.isAuthenticated() && req.user.userType == 'student' ){

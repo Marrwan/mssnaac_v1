@@ -13,7 +13,11 @@ const passport = require("passport");
 const methodOverride = require("method-override");
 const MongoStore = require("connect-mongo"); 
 
-require("./config/passport")(passport);
+const {passportGoogleConfig, passportLocalConfig, serializeDeserializeUser} = require('./config/passport')
+serializeDeserializeUser(passport)
+passportGoogleConfig(passport)
+passportLocalConfig(passport)
+
 const AppError = require("./utilities/appError");
 
 const app = express();
@@ -52,7 +56,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(
   session({
-    secret: "AbdulbasitAlabi",
+    secret: process.env.SESSIONSECRET,
     saveUninitialized: false,
     resave: false,
     store: MongoStore.create({
@@ -96,11 +100,11 @@ app.use(function (err, req, res, next) {
   const { status = 500, message = "Something went wrong!" } = err;
   res.locals.error = req.app.get("env") === "development" ? err : {};
   res.render("error", { message, status });
-  // if (status == 404) {
-  //   res.render("error", { message, status });
-  // } else {
-  //   res.status(status).send(message);
-  // }
+//  if (status == 404) {
+//     res.render("error", { message, status });
+//   } else {
+//     res.status(status).send(message);
+//   } 
   next()
 });
 
