@@ -4,7 +4,8 @@ class AppError extends Error {
     this.message = message;
     this.status = status ? status : 500;
     if(process.env.NODE_ENV == "development"){
-      console.log(this.message)
+      console.log(status);
+      console.log("appError : " + message)
     }
   }
 }
