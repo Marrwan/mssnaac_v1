@@ -137,7 +137,7 @@ exports.editBlogHandler = async (req, res) => {
       });
     } else {
       await Blog.findOneAndUpdate({slug},req.body, {runValidators: true})     
-          req.flash("success_msg", `Update Successfull`);
+          req.flash("success_msg", `Update Successful`);
           res.redirect(`/blogs`);
     }
 } catch (error) {
