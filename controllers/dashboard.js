@@ -59,6 +59,9 @@ exports.getDashboard = async (req, res) => {
     let regimes =    await Regime.find({}).sort({year : "asc"})
     let categories = await Category.find({})
     let events = await Event.find({})
+    if(req.user.userType == 'admin'){
+    return res.render("adminsignup", { users,portfolios,regimes, categories,events });
+    }
  res.render("dashboard", { users,portfolios,regimes, categories,events });
   } catch (error) {
     return new AppError(error.message, error.status);

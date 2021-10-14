@@ -1,7 +1,6 @@
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcryptjs");
-const AppError = require('../utilities/appError')
-const googleStrategy = require('passport-google-oauth20').Strategy
+const AppError = require('../utilities/appError');
 //Load User Model
 const User = require("../models/User");
 
@@ -14,7 +13,7 @@ module.exports.serializeDeserializeUser = (passport) =>{
       done(err, user);
     });
   });
-}
+};
 module.exports.passportLocalConfig = function (passport) {
   passport.use(
     new LocalStrategy({ usernameField: "email" }, (email, password, done) => {
@@ -45,7 +44,6 @@ module.exports.passportLocalConfig = function (passport) {
 };
 
 // module.exports.passportGoogleConfig = (passport) =>{
- 
 //   passport.use( new googleStrategy({
 //       clientID: process.env.GOOGLECLIENTID,
 //       clientSecret: process.env.GOOGLECLIENTSECRET,

@@ -1,10 +1,8 @@
 require("dotenv").config();
 require('events').EventEmitter.prototype._maxListeners = 70;
-const createError = require("http-errors");
 const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
-const expressLayout = require("express-layouts");
 const expressEjsLayout = require('express-ejs-layouts');
 const mongoose = require("mongoose");
 const session = require("express-session");
@@ -15,7 +13,6 @@ const MongoStore = require("connect-mongo");
 
 const {passportLocalConfig, serializeDeserializeUser} = require('./config/passport')
 serializeDeserializeUser(passport)
-// passportGoogleConfig(passport) 
 passportLocalConfig(passport)
 
 const AppError = require("./utilities/appError");
@@ -48,7 +45,6 @@ app.set("view engine", "ejs");
 app.set("layout extractScripts", true) // This is to extract all script tags and place them wherever you like
 app.set("layout extractStyles",  true) // This is to extract all style tags and place them wherever you like
 app.use(methodOverride("_method"));
-// app.use(expressLayout);
 app.use(expressEjsLayout);
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: false }));
