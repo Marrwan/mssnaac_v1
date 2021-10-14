@@ -9,7 +9,6 @@
 <title> <%-defineContent('title') %> </title> <%#This does'nt show error if title is not defined%>
 <%#<title> %> <%#title%> <%# </title> %>      <%#this shows error if title is not defined%>
 
-<% if (path !== "/dashboard") { %>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/mdb.min.css">   
     <link rel="stylesheet" href="/css/style.css">
@@ -23,11 +22,11 @@
     
   }
     </style>
-     <% } %>
+ 
 </head>
 <%- defineContent('style') %>
 <body>
-  <% if (path !== "/dashboard") { %>
+  
    
  
    <%# the navbar section starts here %>
@@ -119,7 +118,7 @@
     </div>
     <%# Sidebar navigation %>
   
- <% } %>
+
   
       <%#the navbar section ends here%>
       
@@ -166,7 +165,6 @@
   
   <%-body%>
 </main>
-<% if (path !== "/dashboard") { %>
   <%#the footer section starts here%>
   <footer class="page-footer rgba-stylish-strong text-center text-md-left mt-0 pt-4 text-light" style="background-color: #81C784; opacity: 0.87; text-decoration: none;">
 
@@ -268,13 +266,11 @@
     </div>
   
   </footer>
-  <% } %>
   <%-defineContent('script') %>  <%# This allows you to extract all the scripts & place them here at the end. %> 
 
 
       <%#the footer section ends here%>
 
-      <% if (path !== "/dashboard") { %>
   <script  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <%# Bootstrap tooltips %>
   <script  src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
@@ -332,7 +328,6 @@
   
     </script>
     <%}%>
-    <% } %>
   </body>
   </html>
    
