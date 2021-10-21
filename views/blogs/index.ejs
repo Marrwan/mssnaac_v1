@@ -7,9 +7,8 @@
       <%# Excerpt %>
       <br>
       <h1 class="text-center dark-grey-text pb-3 mt-5 pt-5">
-        <strong>BlOG</strong> PAGE</h1>
+        <strong style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">BLOG</strong> PAGE</h1>
 
-      <p class="grey-text text-center mb-4 text-uppercase spacing">Welcome! </p>
 
       <%# Grid row %>
       <div class="row flex-center">
@@ -18,9 +17,7 @@
         <div class="col-md-10 col-xl-5">
 
           <p class="grey-text text-center">
-            <em>"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
-              deleniti atque corrupti quos dolores.Nemo enim ipsam voluptatem quia voluptas. Nemo enim ipsam
-              voluptatem quia voluptas sit aspernatur."</em>
+            <em>"Uplifting the integrity of the MSSN."</em>
           </p>
 
         </div>
@@ -36,7 +33,7 @@
  <%# blogs Section %> 
  <section>
 
-    <div class="container-fluid grey lighten-4">     
+    <div class="grey lighten-4">     
   <% if(User){ %>
     <%     if(User.userType == "admin"){ %>
      <a href="/blogs/new" class="btn btn-primary">Add new post</a>
@@ -76,11 +73,11 @@
                     <!-- Card image -->
 
                     <!-- Card content -->
-                    <div class="card-body mx-4">
+                    <div class="card-body mx-2">
                       <!-- Title -->
-                      <h4 class="card-title">
+                      <h6 class="card-title">
                         <strong> <%= blog.title%> </strong>
-                      </h4>
+                      </h6>
                       <hr>
                       <div class=" text-sm-center text-md-right text-lg-left">
                           <% let color %> 
