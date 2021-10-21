@@ -34,7 +34,7 @@ res.render("blogs/index", {categories,blogs,allblogs, limit,page,allunalteredblo
   return new AppError(error.message, error.status);
   }
 }
-exports.getNewForm = async (req, res) => {
+exports.getNewForm = async(req, res) => {
   try {
     let blogs = await Blog.find({})
     let categories = await Category.find({})
@@ -43,7 +43,7 @@ exports.getNewForm = async (req, res) => {
   return new AppError(error.message, error.status);
 }
 };
-exports.newHandler = async (req, res) => {
+exports.newHandler = async(req, res) => {
   try {
  let blogs =  await Blog.find({})
  let categories = await Category.find({})
@@ -92,12 +92,11 @@ exports.getSpecificBlog = async (req, res) => {
     let slug = req.params.slug
     let blog =  await Blog.findOne({ slug})
     let blogs = await Blog.find({}).sort({created : "desc"})
-if(!blog) {
-  res.render("blogs/show", {blogs, blog});
-}else{
+// if(!blog) {
+//   res.render("blogs/show", {blogs, blog});
+// }else{
     res.render("blogs/show", { blog, blogs });
-}
-
+  // }
   } catch (error) {
     return new AppError(error.message, error.status);
   }
@@ -112,7 +111,7 @@ exports.getEditBlogForm = async (req, res) => {
   return new AppError(error.message, error.status);
 }
 };
-exports.editBlogHandler = async (req, res) => {
+exports.editBlogHandler = async(req, res) => {
   try {
   let slug = req.params.slug;
   let categories = await Category.find({})
@@ -123,7 +122,7 @@ exports.editBlogHandler = async (req, res) => {
       errors.push({ msg: "Please fill in all fields" });
     }
     if (title.lenght < 5) {
-      errors.push({ msg: "Title must be at least 5 characters" });
+      errors.push({ msg: "Title must be at least 5 characters"});
     }
     if (errors.length > 0) {
       res.render("blogs/edit", {
