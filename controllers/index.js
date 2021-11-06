@@ -17,6 +17,7 @@ exports.getHomepage = async (req, res) => {
           body: '{}' });
 const random = Math.floor(Math.random() * response.data.length);
 const data = response.data.hadith[0];
+console.log(data);
       return  res.render("index", { blogs, events, data    });
   } catch (error) {
     return new AppError(error.message, error.status);
