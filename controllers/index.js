@@ -13,11 +13,11 @@ exports.getHomepage = async (req, res) => {
  let events = await Event.find({})
  let response = await axios({ method: 'GET',
           url: 'https://api.sunnah.com/v1/hadiths/random',
-          headers: { 'x-api-key': 'SqD712P3E82xnwOAEOkGd5JZH8s9wRR24TqNFzjk' },
+          headers: { 'x-api-key': process.env.API_KEY },
           body: '{}' });
 const random = Math.floor(Math.random() * response.data.length);
 const data = response.data.hadith[0];
-console.log(data);
+
       return  res.render("index", { blogs, events, data    });
   } catch (error) {
     return new AppError(error.message, error.status);
