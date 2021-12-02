@@ -79,7 +79,7 @@ if(!validator.isEmail(email)){
           userType,
           gender,
         });
-      await  bcrypt.genSalt(10, (err, salt) => {
+      await bcrypt.genSalt(10, (err, salt) => {
           bcrypt.hash(newUser.password, salt, async(err, hashed) => {
             newUser.password = hashed;
         await newUser.save()

@@ -30,6 +30,8 @@ router
 router.delete("/:slug/delete", isLoggedIn, isAdmin, blog.deleteBlog);
   
  
-router.get('/alfaaedah', (req,res)=>{res.redirect('http://alfaaedahpress.wordpress.com')})
+router.get('/alfaaedah', (req,res)=>{
+  res.redirect('http://alfaaedahpress.wordpress.com')
+})
 
 module.exports = router;

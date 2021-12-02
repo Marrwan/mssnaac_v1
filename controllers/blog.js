@@ -52,7 +52,7 @@ exports.newHandler = async(req, res) => {
     if (title.trim().length === 0  || post.trim().length === 0 ||  excerpt.trim().length === 0||  category.trim().length === 0) {
       errors.push({ msg: "Please fill in all fields" });
     }
-    if (title.lenght < 5) {
+    if (title.length < 5) {
       errors.push({ msg: "Title must be at least 5 characters" });
     }
     if (errors.length > 0) {
