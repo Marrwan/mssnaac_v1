@@ -13,7 +13,7 @@ router.get("/logout", index.logout);
 
 //  GET-ROUTE : Get about page.
 router.get("/about", (req, res) => {
-  res.render("about"); 
+  res.render("about");  
 });
 //  GET-ROUTE : Get about page.
 router.get("/back", (req, res) => {
