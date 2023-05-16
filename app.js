@@ -11,9 +11,9 @@ const passport = require("passport");
 const methodOverride = require("method-override");
 const MongoStore = require("connect-mongo"); 
 
-const {passportLocalConfig, serializeDeserializeUser} = require('./config/passport')
-serializeDeserializeUser(passport)
-passportLocalConfig(passport)
+// const {passportLocalConfig, serializeDeserializeUser} = require('./config/passport')
+// serializeDeserializeUser(passport)
+// passportLocalConfig(passport)
 
 const AppError = require("./utilities/appError");
 
@@ -23,7 +23,7 @@ const app = express();
 //db
 let db 
 if (process.env.NODE_ENV == "development") {
-  db = require("./config/config").mongoURI;
+  db = require("./config/config").mongoURI; 
 } else {
   db = process.env.mongoURI;
 }
@@ -42,14 +42,14 @@ mongoose
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
-app.set("layout extractScripts", true) // This is to extract all script tags and place them wherever you like
-app.set("layout extractStyles",  true) // This is to extract all style tags and place them wherever you like
 app.use(methodOverride("_method"));
 app.use(expressEjsLayout);
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+app.set("layout extractScripts", true) // This is to extract all script tags and place them wherever you like
+app.set("layout extractStyles",  true) // This is to extract all style tags and place them wherever you like
 app.use(
   session({
     secret: process.env.SESSIONSECRET,
@@ -67,12 +67,13 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Message handler
-app.use(function (req, res, next) {
+app.use((req, res, next)=> {
+ 
   res.locals.path = req.path;
   res.locals.success_msg = req.flash("success_msg");
   res.locals.error_msg = req.flash("error_msg");
   res.locals.error = req.flash("error");
-  res.locals.User = req.user;
+  res.locals.User = req?.user || null;
   next();
 });
 
