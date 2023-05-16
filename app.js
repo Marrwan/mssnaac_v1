@@ -23,6 +23,7 @@ const app = express();
 //db
 let db 
 if (process.env.NODE_ENV == "development") {
+  console.log("development");
   db = require("./config/config").mongoURI; 
 } else {
   db = process.env.mongoURI;

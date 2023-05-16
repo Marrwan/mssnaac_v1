@@ -3,8 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "build": "pm2-runtime start ecosystem.config.js --env production",
+    "start": "pm2-runtime start ecosystem.config.js --env production",
     "test": "nodemon test.js",
     "dev": "nodemon ./bin/www",
     "stop": "pm2 stop ./bin/www",
